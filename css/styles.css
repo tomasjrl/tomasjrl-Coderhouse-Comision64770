@@ -24,7 +24,7 @@ h2 {
   font-size: 1.9rem;
 }
 
-.nombre-producto {
+.marca-producto {
   font-size: 1.1rem;
 }
 
@@ -84,14 +84,14 @@ main {
   gap: 10px;
 }
 
-.productos-contenedor {
+.producto-contenedor {
   background-color: #153081;
   border-radius: 4px;
   padding: 2px;
   color: #eaeaea;
 }
 
-.productos-contenedor img {
+.producto-contenedor img {
   width: 100%;
 }
 
