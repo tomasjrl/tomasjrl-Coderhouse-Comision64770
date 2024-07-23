@@ -1,0 +1,213 @@
+/* ----------------- FUENTE TIPOGRAFICA DE GOOGLEFONT----------------- */
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500&display=swap");
+
+/* ----------------- UNIVERSALES ----------------- */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+}
+
+/* ----------------- TEXTOS ----------------- */
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 1.9rem;
+}
+
+.nombre-producto {
+  font-size: 1.1rem;
+}
+
+.precio-producto {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+/* ----------------- HEADER HERO FOOTER ----------------- */
+
+header,
+.hero-section,
+footer,
+footer #redes li a {
+  background-color: #153081;
+  color: #eaeaea;
+}
+
+header {
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 3rem;
+}
+
+.hero-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 24px;
+  padding: 10px 0;
+}
+
+.su-compra {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px 10px;
+  background-color: rgb(220, 222, 223);
+}
+
+#buscador-productos {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+}
+
+.productos-contenedor {
+  background-color: #153081;
+  border-radius: 4px;
+  padding: 2px;
+  color: #eaeaea;
+}
+
+.productos-contenedor img {
+  width: 100%;
+}
+
+.productos-informacion {
+  background-color:  rgb(205, 6, 23);
+}
+
+footer,
+#redes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+footer #redes li {
+  margin-right: 10px;
+  margin-top: 4px;
+}
+
+footer #redes li a:hover {
+  color: #f5ea1e;
+  transition: 0.2s;
+}
+
+/* ----------------- ELEMENTOS / BOTONES ----------------- */
+
+.hero-section table {
+  text-align: end;
+}
+
+.search-bar,
+button {
+  padding: 6px 12px;
+  margin-top: 20px;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.search-bar {
+  margin-right: 10px;
+  width: 80%;
+}
+
+.search-bar:hover {
+  background-color: #f5ea1e;
+  transition: 0.2s;
+}
+
+.botones-pago-cancelar {
+  padding: 10px 0;
+}
+
+.botones-comprar-cancelar{
+  display: flex;
+  justify-content: center;
+}
+
+.boton-buscar {
+  background-color: rgb(205, 6, 23);
+  color: #eaeaea;
+}
+
+.boton-buscar:hover,
+.boton-cancelar:hover {
+  background-color: rgb(241, 1, 21);
+  transition: 0.2s;
+}
+
+.boton-pagar,
+.boton-comprar {
+  background: rgb(14, 169, 27);
+  color: #eaeaea;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.boton-pagar:hover,
+.boton-comprar:hover {
+  background: rgb(7, 233, 26);
+  transition: 0.2s;
+}
+
+.boton-cancelar {
+  background: none;
+  color: #eaeaea;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.boton-cancelar:hover {
+  background-color: rgb(205, 6, 23);
+  transition: 0.2s;
+}
+
+.pago-total {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+main #lista-productos {
+  padding: 20px 0;
+}
+
+
+
+
+/* ----------------- MEDIAQUERIES ----------------- */
+
+@media (max-width: 580px) {
+  .hero-section {
+flex-direction: column;
+  }
+
+  footer {
+    flex-direction: column;
+  }
+}

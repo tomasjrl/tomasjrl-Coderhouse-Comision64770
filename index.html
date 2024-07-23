@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- METADATOS -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ENLACE A FAVICON -->
+  <link rel="shortcut icon" href="assets/icons/favicon.svg" type="image/x-icon">
+
+  <!-- ENLACE A ESTILOS -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- TITULO DEL SITIO WEB -->
+  <title>SuperPrecios</title>
+
+  <!-- DESCRIPCION DEL SITIO WEB -->
+  <meta name="description"
+    content="Sitio estilo 'SuperPrecios' con fines didácticos para el aprendizaje del lenguaje Javascript">
+  <meta name="keywords" content="comercio, productos, venta, compra, tienda, precio, lista">
+  <meta name="author" content="Tomás Stabilini">
+</head>
+
+<!-- BODY -->
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>SuperPrecios</h1>
+  </header>
+
+  <!-- MAIN -->
+
+  <main>
+    <div class="hero-section">
+<div class="su-compra">
+      <h2>SU COMPRA</h2>
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#f2f2f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="20.5" r="1"/><circle cx="18" cy="20.5" r="1"/><path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1"/></svg>
+    </div>
+      <table>
+        <tbody>
+          <tr>
+            <td>Productos:</td>
+            <td><span>0</span></td>
+          </tr>
+          <tr>
+            <td>Suma:</td>
+            <td><span>$0</span></td>
+          </tr>
+          <tr>
+            <td>IVA:</td>
+            <td><span>* 1.21</span></td>
+          </tr>
+          <tr>
+            <td class="pago-total">Total:</td>
+            <td><span class="pago-total">$0</span></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2" class="botones-pago-cancelar">
+              <button class="boton-pagar">PAGAR</button>
+              <button class="boton-cancelar">Cancelar</button>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div id="buscador-productos">
+      <input class="search-bar" type="text" placeholder="Producto">
+      <button class="boton-buscar">Buscar</button>
+    </div>
+
+
+
+    <section class="productos-grid">
+      <div class="productos-contenedor">
+        <div>
+          <img src="assets/images/1.webp">
+        </div>
+        <section class="productos-informacion">
+          <div class="nombre-producto">
+            TRES TORRES <br><span>Amargo <br>x2lt.</span>
+          </div>
+
+          <div class="precio-producto">
+            $999
+          </div>
+        </section>
+        <div>
+          <select>
+            <option selected value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+
+        <div class="botones-comprar-cancelar">
+          <button class="boton-comprar">COMPRAR</button>
+          <button class="boton-cancelar">Cancelar</button>
+        </div>
+      </div>
+
+      <div class="productos-contenedor">
+        <div>
+          <img src="assets/images/2.webp">
+        </div>
+        <section class="productos-informacion">
+          <div class="nombre-producto">
+            LA QUESERA <br><span>Queso azul <br>x100gr.</span>
+          </div>
+
+          <div class="precio-producto">
+            $1199
+          </div>
+        </section>
+        <div>
+          <select>
+            <option selected value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+
+        <div class="botones-comprar-cancelar">
+          <button class="boton-comprar">COMPRAR</button>
+          <button class="boton-cancelar">Cancelar</button>
+        </div>
+      </div>
+
+      <div class="productos-contenedor">
+        <div>
+          <img src="assets/images/3.webp">
+        </div>
+        <section class="productos-informacion">
+          <div class="nombre-producto">
+            MATARAZZO <br><span>Fideos varios <br>x500gr.</span>
+          </div>
+
+          <div class="precio-producto">
+            $949
+          </div>
+        </section>
+        <div>
+          <select>
+            <option selected value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+
+        <div class="botones-comprar-cancelar">
+          <button class="boton-comprar">COMPRAR</button>
+          <button class="boton-cancelar">Cancelar</button>
+        </div>
+      </div>
+
+      <div class="productos-contenedor">
+        <div>
+          <img src="assets/images/4.webp">
+        </div>
+        <section class="productos-informacion">
+          <div class="nombre-producto">
+            SKYY <br><span>Vodka sabores <br>x700cc.</span>
+          </div>
+
+          <div class="precio-producto">
+            $999
+          </div>
+        </section>
+        <div>
+          <select>
+            <option selected value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+
+        <div class="botones-comprar-cancelar">
+          <button class="boton-comprar">COMPRAR</button>
+          <button class="boton-cancelar">Cancelar</button>
+        </div>
+      </div>
+
+      <div class="productos-contenedor">
+        <div>
+          <img src="assets/images/5.webp">
+        </div>
+        <section class="productos-informacion">
+          <div class="nombre-producto">
+            NIVEA MEN <br><span>Antitranspirante aerosol <br>x150ml.</span>
+          </div>
+
+          <div class="precio-producto">
+            $1689
+          </div>
+        </section>
+        <div>
+          <select>
+            <option selected value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+
+        <div class="botones-comprar-cancelar">
+          <button class="boton-comprar">COMPRAR</button>
+          <button class="boton-cancelar">Cancelar</button>
+        </div>
+      </div>
+
+      <div class="productos-contenedor">
+        <div>
+          <img src="assets/images/6.webp">
+        </div>
+        <section class="productos-informacion">
+          <div class="nombre-producto">
+            POETT <br><span>Desodorante de ambiente <br>x360ml.</span>
+          </div>
+
+          <div class="precio-producto">
+            $1435
+          </div>
+        </section>
+        <div>
+          <select>
+            <option selected value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+
+        <div class="botones-comprar-cancelar">
+          <button class="boton-comprar">COMPRAR</button>
+          <button class="boton-cancelar">Cancelar</button>
+        </div>
+      </div>
+
+      <div class="productos-contenedor">
+        <div>
+          <img src="assets/images/7.webp">
+        </div>
+        <section class="productos-informacion">
+          <div class="nombre-producto">
+            LUCCHETTI <br><span>Arron largo fino <br>bolsa x1kg.</span>
+          </div>
+
+          <div class="precio-producto">
+            $1589
+          </div>
+        </section>
+        <div>
+          <select>
+            <option selected value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+
+        <div class="botones-comprar-cancelar">
+          <button class="boton-comprar">COMPRAR</button>
+          <button class="boton-cancelar">Cancelar</button>
+        </div>
+      </div>
+
+      <div class="productos-contenedor">
+        <div>
+          <img src="assets/images/8.webp">
+        </div>
+        <section class="productos-informacion">
+          <div class="nombre-producto">
+            DOLCA <br><span>Café instantáneo <br>frasco x100gr.</span>
+          </div>
+
+          <div class="precio-producto">
+            $2589
+          </div>
+        </section>
+        <div>
+          <select>
+            <option selected value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+
+        <div class="botones-comprar-cancelar">
+          <button class="boton-comprar">COMPRAR</button>
+          <button class="boton-cancelar">Cancelar</button>
+        </div>
+      </div>
+
+      <div class="productos-contenedor">
+        <div>
+          <img src="assets/images/9.webp">
+        </div>
+        <section class="productos-informacion">
+          <div class="nombre-producto">
+            CHAMIGO <br><span>Yerba <br>x500gr.</span>
+          </div>
+
+          <div class="precio-producto">
+            $999
+          </div>
+        </section>
+        <div>
+          <select>
+            <option selected value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+
+        <div class="botones-comprar-cancelar">
+          <button class="boton-comprar">COMPRAR</button>
+          <button class="boton-cancelar">Cancelar</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>&copy; 2024 SuperPrecios</span>
+    <div>
+      <ul id="redes">
+        <li>
+          <a href="#" target="_blank" aria-label="Abrir enlace a WhatsApp"><svg xmlns="http://www.w3.org/2000/svg"
+              width="24" height="24" viewBox="0 0 24 24" fill="CurrentColor">
+              <path
+                d="M12 0a12 12 0 1 1 0 24 12 12 0 0 1 0-24zm.14 4.5a7.34 7.34 0 0 0-6.46 10.82l.15.26L4.5 19.5l4.08-1.3a7.38 7.38 0 0 0 10.92-6.4c0-4.03-3.3-7.3-7.36-7.3zm0 1.16c3.41 0 6.19 2.76 6.19 6.15a6.17 6.17 0 0 1-9.37 5.27l-.23-.15-2.38.76.77-2.28a6.08 6.08 0 0 1-1.17-3.6 6.17 6.17 0 0 1 6.19-6.15zM9.66 8.47a.67.67 0 0 0-.48.23l-.14.15c-.2.23-.5.65-.5 1.34 0 .72.43 1.41.64 1.71l.14.2a7.26 7.26 0 0 0 3.04 2.65l.4.14c1.44.54 1.47.33 1.77.3.33-.03 1.07-.43 1.22-.85.15-.42.15-.78.1-.85-.02-.05-.08-.08-.15-.12l-1.12-.54a5.15 5.15 0 0 0-.3-.13c-.17-.06-.3-.1-.41.09-.12.18-.47.58-.57.7-.1.1-.18.13-.32.08l-.4-.18a4.64 4.64 0 0 1-2.13-1.98c-.1-.18-.01-.28.08-.37l.27-.31c.1-.1.12-.18.18-.3a.3.3 0 0 0 .01-.26l-.1-.23-.48-1.15c-.15-.36-.3-.3-.4-.3l-.35-.02z" />
+            </svg></a>
+        </li>
+        <li>
+          <a href="#" target="_blank" aria-label="Abrir enlace a Messenger"><svg xmlns="http://www.w3.org/2000/svg"
+              width="24" height="24" viewBox="0 0 24 24" fill="CurrentColor">
+              <path
+                d="M12 0a12 12 0 1 1 0 24 12 12 0 0 1 0-24zm0 5c-3.87 0-7 2.9-7 6.48a6.3 6.3 0 0 0 2.6 5.05V19l2.4-1.3c.63.17 1.3.26 2 .26 3.87 0 7-2.9 7-6.48C19 7.9 15.87 5 12 5zm4.52 4.67l-3.82 4.06-1.79-1.9-3.48 1.9 3.83-4.06 1.83 1.9 3.43-1.9z" />
+            </svg></a>
+        </li>
+        <li>
+          <a href="#" target="_blank" aria-label="Abrir enlace a Facebook"><svg xmlns="http://www.w3.org/2000/svg"
+              width="24" height="24" viewBox="0 0 24 24" fill="CurrentColor">
+              <path
+                d="M12 0c6.627 0 12 5.373 12 12s-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0zm4 7.278V4.5h-2.286c-2.1 0-3.428 1.6-3.428 3.889v1.667H8v2.777h2.286V19.5h2.857v-6.667h2.286L16 10.056h-2.857V8.944c0-1.11.572-1.666 1.714-1.666H16z" />
+            </svg></a>
+        </li>
+        <li>
+          <a href="#" target="_blank" aria-label="Abrir enlace a Instagram"><svg xmlns="http://www.w3.org/2000/svg"
+              width="24" height="24" viewBox="0 0 24 24" fill="CurrentColor">
+              <path
+                d="M12 0c6.6274 0 12 5.3726 12 12s-5.3726 12-12 12S0 18.6274 0 12 5.3726 0 12 0zm3.115 4.5h-6.23c-2.5536 0-4.281 1.6524-4.3805 4.1552L4.5 8.8851v6.1996c0 1.3004.4234 2.4193 1.2702 3.2359.7582.73 1.751 1.1212 2.8818 1.1734l.2633.006h6.1694c1.3004 0 2.389-.4234 3.1754-1.1794.762-.734 1.1817-1.7576 1.2343-2.948l.0056-.2577V8.8851c0-1.2702-.4234-2.3589-1.2097-3.1452-.7338-.762-1.7575-1.1817-2.9234-1.2343l-.252-.0056zM8.9152 5.8911h6.2299c.9072 0 1.6633.2722 2.2076.8166.4713.499.7647 1.1758.8103 1.9607l.0063.2167v6.2298c0 .9375-.3327 1.6936-.877 2.2077-.499.4713-1.176.7392-1.984.7806l-.2237.0057H8.9153c-.9072 0-1.6633-.2722-2.2076-.7863-.499-.499-.7693-1.1759-.8109-2.0073l-.0057-.2306V8.885c0-.9073.2722-1.6633.8166-2.2077.4712-.4713 1.1712-.7392 1.9834-.7806l.2242-.0057h6.2299-6.2299zM12 8.0988c-2.117 0-3.871 1.7238-3.871 3.871A3.8591 3.8591 0 0 0 12 15.8408c2.1472 0 3.871-1.7541 3.871-3.871 0-2.117-1.754-3.871-3.871-3.871zm0 1.3911c1.3609 0 2.4798 1.119 2.4798 2.4799 0 1.3608-1.119 2.4798-2.4798 2.4798-1.3609 0-2.4798-1.119-2.4798-2.4798 0-1.361 1.119-2.4799 2.4798-2.4799zm4.0222-2.3589a.877.877 0 1 0 0 1.754.877.877 0 0 0 0-1.754z" />
+            </svg></a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="js/principal.js" type="module"></script>
+</body>
+
+</html>
