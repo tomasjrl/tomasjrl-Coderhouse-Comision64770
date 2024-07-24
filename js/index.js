@@ -102,6 +102,17 @@ document.querySelectorAll(".js-boton-agregar").forEach((boton) => {
         });
       }
     }
-    console.log(compra);
+
+    // actualiza numero de "cantidad" de compras para seccion "hero" del html
+
+    let cantidadDeCompras = 0;
+
+    compra.forEach((item) => {
+      cantidadDeCompras += item.cantidad;
+    });
+
+    // traigo a javascript la etiqueta 'js-cantidad-compras'
+    // reescribo el html con la cantidad actualizada
+    document.querySelector('.js-cantidad-compras').innerHTML = cantidadDeCompras;
   });
 });
