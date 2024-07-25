@@ -80,8 +80,8 @@ main {
 
 .productos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
 }
 
 .producto-contenedor {
@@ -89,6 +89,8 @@ main {
   border-radius: 4px;
   padding: 2px;
   color: #eaeaea;
+  max-width: 400px;
+  margin: 0 auto; /* Centra el contenedor del grid */
 }
 
 .producto-contenedor img {
@@ -126,7 +128,8 @@ footer #redes li a:hover {
 .search-bar,
 button {
   padding: 6px 12px;
-  margin-top: 20px;
+  margin: 10px 0;
+  padding: 10px;
   border-radius: 16px;
   border: none;
   cursor: pointer;
@@ -149,17 +152,6 @@ button {
 .botones-agregar-cancelar{
   display: flex;
   justify-content: center;
-}
-
-.boton-buscar {
-  background-color: rgb(205, 6, 23);
-  color: #eaeaea;
-}
-
-.boton-buscar:hover,
-.boton-cancelar:hover {
-  background-color: rgb(241, 1, 21);
-  transition: 0.2s;
 }
 
 .boton-pagar,
