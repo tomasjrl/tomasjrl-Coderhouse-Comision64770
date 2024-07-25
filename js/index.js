@@ -1,6 +1,6 @@
 /*--------------------------------------------------------------//
 
-      FUNCION PARA AGREGAR AL HTML TODOS LOS PRODUCTOS DESDE JAVASCRIPT
+      CODIGO PARA AGREGAR AL HTML TODOS LOS PRODUCTOS DESDE JAVASCRIPT
       
 //--------------------------------------------------------------*/
 
@@ -29,13 +29,12 @@ productos.forEach((producto) => {
           <div class="precio-producto">$${(producto.precio)}</div>
         </section>
         <div class="botones-agregar-cancelar">
-          <button class="boton-agregar js-boton-agregar" 
+          <button class="boton-agregar js-boton-agregar-producto" 
           data-producto-id="${producto.identificador}" 
           data-producto-marca="${producto.marca}"
           data-producto-contenido="${producto.contenido}" 
           data-producto-medida="${producto.medida}"
-          data-producto-precio="${(producto.precio)
-              }"
+          data-producto-precio="${(producto.precio)}"
           >AGREGAR</button>
         </div>
       </div>
@@ -49,7 +48,7 @@ document.querySelector(".js-productos-grid").innerHTML = productosHTML;
 
 /*--------------------------------------------------------------//
 
-                FUNCION PARA BUSCAR PRODUCTOS
+     CODIGO PARA BUSCAR PRODUCTOS
 
 //--------------------------------------------------------------*/
 
@@ -93,18 +92,20 @@ document.querySelector("#buscador").addEventListener("input", buscarProductos);
 
 /*--------------------------------------------------------------//
 
-      FUNCION AL APRETAR EL BOTON "AGREGAR" PRODUCTO AL CARRITO DE COMPRAS
+      CODIGO AL APRETAR EL BOTON "AGREGAR" PRODUCTO AL CARRITO DE COMPRAS
 
 //--------------------------------------------------------------*/
 
+let botonCancelar = document.querySelector(".js-boton-cancelar-compra");
 
-document.querySelectorAll(".js-boton-agregar").forEach((boton) => {
+document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
   boton.addEventListener("click", () => {
     let cantidad;
 
     // agrego un alert para indicar si desea confirmar el producto
     // agrego un confirm para que indique la cantidad de productos
     // agrego un 2do alert confirmando la cantidad agregada
+    // deshabilito boton de agregar producto
 
     if (
       confirm(
@@ -132,18 +133,23 @@ document.querySelectorAll(".js-boton-agregar").forEach((boton) => {
         }
       }
 
-      alert(
-        "Agregado al carrito de compras\n\n(información agregada al console.log)"
-      );
       const productoId = boton.dataset.productoId;
       const productoMarca = boton.dataset.productoMarca;
       const productoContenido = boton.dataset.productoContenido;
       const productoMedida = boton.dataset.productoMedida;
       const productoPrecio = boton.dataset.productoPrecio;
 
+      alert(
+        `Agregado al carrito de compras\n\n${productoMarca} ${productoContenido} ${productoMedida}\n\nPrecio $${productoPrecio} * Unidades ${cantidad} = $${(parseFloat(productoPrecio) * parseInt(cantidad)).toFixed(2)}`
+      );
+
+      boton.innerHTML = "AGREGADO";
+      boton.disabled = true;
+
+
 /*--------------------------------------------------------------//
 
-      FUNCION PARA ACTUALIZAR CANTIDAD EN EL CARRITO (y en el console.log)
+      CODIGO PARA ACTUALIZAR CANTIDAD / SUBTOTAL / TOTAL EN EL CARRITO (y en el console.log)
 
 //--------------------------------------------------------------*/
       let matchingItem;
@@ -188,6 +194,9 @@ document.querySelectorAll(".js-boton-agregar").forEach((boton) => {
         `$${sumaDeCompras}`;
         document.querySelector(".js-pago-total").innerHTML =
         `$${(sumaDeCompras * 1.21).toFixed(2)}`;
+        
+      
+      botonCancelar.disabled = false;
 
       console.log(
         "%cNUEVO PRODUCTO AGREGADO",
@@ -209,4 +218,75 @@ document.querySelectorAll(".js-boton-agregar").forEach((boton) => {
       
     }
   });
+});
+
+/*--------------------------------------------------------------//
+
+      CODIGO PARA PAGAR LA COMPRA TOTAL (y limpiar el console.log)
+
+//--------------------------------------------------------------*/
+
+
+document.querySelector(".js-boton-pagar-compra").addEventListener("click", () => {
+  if (confirm("¿Confirma EL PAGO de su compra?\n\n(esto finalizará el proceso y reiniciará los valores y el console.log)")) {
+    // Restablecer valores a 0
+    document.querySelector(".js-cantidad-compras").innerHTML = "0";
+    document.querySelector(".js-suma-compras").innerHTML = "$0";
+    document.querySelector(".js-pago-total").innerHTML = "$0";
+
+    botonCancelar.disabled = true;
+
+    // Restablezco el array de compra.js
+    compra = [];
+
+    // Limpio el console.log
+    console.clear();
+    console.log("Proceso de compra completado.\n\nTodos los datos han sido reiniciados.")
+
+    // agrego un alert avisando la confirmación
+    alert("Proceso de compra completado.\n\nTodos los datos han sido reiniciados.");
+
+    document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
+      boton.innerHTML = "AGREGAR";
+      boton.disabled = false;
+    });
+  } else {
+    // Si el usuario no confirma, no se ejecuta nada
+  }
+});
+
+
+/*--------------------------------------------------------------//
+
+      CODIGO PARA CANCELAR LA COMPRA TOTAL (y limpiar el console.log)
+
+//--------------------------------------------------------------*/
+
+
+document.querySelector(".js-boton-cancelar-compra").addEventListener("click", () => {
+  if (confirm("¿Confirma CANCELAR su compra?\n\n(esto reiniciará los valores y el console.log)")) {
+    // Restablecer valores a 0
+    document.querySelector(".js-cantidad-compras").innerHTML = "0";
+    document.querySelector(".js-suma-compras").innerHTML = "$0";
+    document.querySelector(".js-pago-total").innerHTML = "$0";
+
+    botonCancelar.disabled = true;
+
+    // Restablezco el array de compra.js
+    compra = [];
+
+    // Limpio el console.log
+    console.clear();
+    console.log("Proceso de compra cancelado.\n\nTodos los datos han sido reiniciados.")
+
+    // agrego un alert avisando la cancelación
+    alert("Proceso de compra cancelado.\n\nTodos los datos han sido reiniciados.");
+
+    document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
+      boton.innerHTML = "AGREGAR";
+      boton.disabled = false;
+    });
+  } else {
+    // Si el usuario no confirma, no se ejecuta nada
+  }
 });
