@@ -1,6 +1,6 @@
 /*--------------------------------------------------------------//
 
-      CODIGO PARA AGREGAR AL HTML TODOS LOS PRODUCTOS DESDE JAVASCRIPT
+      CODIGO PARA AGREGAR AL HTML TODOS LOS PRODUCTOS
       
 //--------------------------------------------------------------*/
 
@@ -88,6 +88,46 @@ document.querySelector("#buscador").addEventListener("input", buscarProductos);
 
 /*--------------------------------------------------------------//
 
+      CODIGO PARA AGREGAR PRODUCTOS DE COMPRA AL TEXTAREA DEL POP-UP
+      
+//--------------------------------------------------------------*/
+
+let compra = [];
+
+// Función para actualizar el contenido del textarea
+function actualizarTextarea() {
+  if (compra.length === 0) {
+    document.getElementById("texto-popup").value = "Lista de productos:";
+  } else {
+    const contenido = compra
+      .map((obj) => {
+        const valores = Object.values(obj);
+        const valoresFiltrados = valores.filter(
+          (valor, indice) => indice !== 0 && indice !== 6
+        );
+        const linea2y3 = valoresFiltrados[1] + " " + valoresFiltrados[2];
+        valoresFiltrados.splice(1, 2, linea2y3);
+        valoresFiltrados[2] = "$" + valoresFiltrados[2];
+        valoresFiltrados[3] = "Unidades: " + valoresFiltrados[3];
+        return valoresFiltrados.join("\n");
+      })
+      .join("\n\n");
+    document.getElementById("texto-popup").value =
+      "Lista de productos:\n\n" + contenido;
+  }
+}
+
+// Cuando se agrega un nuevo elemento al array, actualiza el textarea
+compra.push = function () {
+  Array.prototype.push.apply(this, arguments); // Agrega el nuevo elemento al array
+  actualizarTextarea(); // Actualiza el contenido del textarea
+};
+
+// Inicializa el contenido del textarea
+actualizarTextarea();
+
+/*--------------------------------------------------------------//
+
       CODIGO AL APRETAR EL BOTON "AGREGAR" PRODUCTO AL CARRITO DE COMPRAS
 
 //--------------------------------------------------------------*/
@@ -147,7 +187,9 @@ document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
       productoPrecio = boton.dataset.productoPrecio;
 
       alert(
-        `Agregado al carrito de compras\n\n${productoMarca} ${productoContenido} ${productoMedida}\n\nPrecio $${productoPrecio} * Unidades ${cantidad} = $${(
+        `Agregado al carrito de compras\n\n${productoMarca} 
+        ${productoContenido} 
+        ${productoMedida}\n\nPrecio $${productoPrecio} * Unidades ${cantidad} = $${(
           parseFloat(productoPrecio) * parseInt(cantidad)
         ).toFixed(2)}`
       );
@@ -241,7 +283,10 @@ function restablecerCompra(tipo) {
   botonPagar.disabled = true;
 
   // Restablezco el array de compra.js
-  compra = [];
+  compra.splice(0, compra.length);
+
+  // Actualizo el contenido del textarea
+  actualizarTextarea();
 
   // Limpio el console.log
   console.clear();

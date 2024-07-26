@@ -62,6 +62,7 @@
           <tr>
             <td class="pago-total">Total:</td>
             <td class="pago-total js-pago-total">$0</td>
+
           </tr>
         </tbody>
         <tfoot>
@@ -73,6 +74,12 @@
           </tr>
         </tfoot>
       </table>
+           <!-- Popup -->
+           <div id="popup">
+            <div id="contenido-popup">
+              <textarea id="texto-popup" disabled></textarea>
+            </div>
+          </div>
     </section>
 
     <div id="buscador-productos">
@@ -83,7 +90,7 @@
 
     <section class="productos-grid js-productos-grid">
 
-        <!-- codigo agregado con javascript -->
+      <!-- codigo agregado con javascript -->
 
     </section>
   </main>
@@ -126,10 +133,9 @@
   </footer>
 
   <!-- SCRIPTS -->
-  <!-- compras.js y productos.js deben estar cargado ANTES que index.js -->
-  <script src="js/compras.js"></script>
+  <!-- productos.js deben estar cargado ANTES que index.js -->
   <script src="js/productos.js"></script>
-  <script src="js/index.js"></script>
+  <script src="js/index.js" type="module"></script>
 </body>
 
 </html>

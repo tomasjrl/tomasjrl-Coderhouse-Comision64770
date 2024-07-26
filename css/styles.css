@@ -35,6 +35,21 @@ h2 {
 
 /* ----------------- HEADER HERO FOOTER ----------------- */
 
+
+#contenido-popup {
+  padding: 10px;
+  width: 230px;
+}
+
+#texto-popup {
+  width: 100%; 
+  height: 150px; 
+  resize: vertical;
+  background-color: rgb(220, 222, 223);
+  padding: 5px;
+  border-radius: 6px;
+}
+
 header,
 .hero-section,
 footer,
@@ -199,7 +214,7 @@ button:disabled:hover {
 
 /* ----------------- MEDIAQUERIES ----------------- */
 
-@media (max-width: 580px) {
+@media (max-width: 645px) {
   .hero-section,
   footer {
 flex-direction: column;
