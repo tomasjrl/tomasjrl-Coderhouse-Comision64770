@@ -115,8 +115,7 @@ footer,
 }
 
 footer #redes li {
-  margin-right: 10px;
-  margin-top: 4px;
+  margin: 4px 10px 0 0;
 }
 
 .js-pago-total-amarillo,
@@ -127,10 +126,6 @@ footer #redes li a:hover {
 
 /* ----------------- ELEMENTOS / BOTONES ----------------- */
 
-.hero-section table {
-  text-align: end;
-}
-
 .search-bar,
 button {
   padding: 6px 12px;
@@ -138,7 +133,7 @@ button {
   padding: 10px;
   border-radius: 16px;
   border: none;
-  cursor: pointer;
+  cursor: text;
 }
 
 .search-bar {
@@ -178,6 +173,12 @@ button {
   transition: 0.2s;
 }
 
+.js-boton-agregar-producto:enabled:hover, 
+.js-boton-pagar-compra:enabled:hover {
+  transform: scale(1.1);
+  transition: 0.2s;
+}
+
 .pago-total {
   font-size: 1.2rem;
   font-weight: 500;
@@ -188,29 +189,19 @@ main #lista-productos {
 }
 
 
-button:disabled {
+button:disabled,
+button:disabled:hover {
   cursor: default;
   background-color: transparent;
   color: #bfc0c8;
 }
-
-button:disabled:hover{
-  cursor: default;
-  background-color: transparent;
-  color: #bfc0c8;
-}
-
-
 
 
 /* ----------------- MEDIAQUERIES ----------------- */
 
 @media (max-width: 580px) {
-  .hero-section {
-flex-direction: column;
-  }
-
+  .hero-section,
   footer {
-    flex-direction: column;
+flex-direction: column;
   }
 }

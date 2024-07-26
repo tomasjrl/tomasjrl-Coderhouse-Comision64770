@@ -225,75 +225,45 @@ document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
 
 /*--------------------------------------------------------------//
 
-      CODIGO PARA PAGAR LA COMPRA TOTAL (y limpiar el console.log)
+      CODIGO PARA PAGAR / CANCELAR LA COMPRA TOTAL (y limpiar el console.log)
 
 //--------------------------------------------------------------*/
 
+
+function restablecerCompra(tipo) {
+  // Restablecer valores a 0
+  document.querySelector(".js-cantidad-compras").innerHTML = "0";
+  document.querySelector(".js-suma-compras").innerHTML = "$0";
+  document.querySelector(".js-pago-total").innerHTML = "$0";
+
+  botonCancelar.disabled = true;
+  botonPagar.disabled = true;
+
+  // Restablezco el array de compra.js
+  compra = [];
+
+  // Limpio el console.log
+  console.clear();
+  console.log(`Proceso de compra ${tipo === "pagar" ? "COMPLETADO" : "CANCELADO"}. Todos los datos han sido reiniciados.`);
+
+  // agrego un alert avisando la confirmación
+  alert(`Proceso de compra ${tipo === "pagar" ? "COMPLETADO" : "CANCELADO"}. Todos los datos han sido reiniciados.`);
+
+  document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
+    boton.innerHTML = "AGREGAR";
+    boton.disabled = false;
+    document.querySelector(".js-pago-total").classList.remove("js-pago-total-amarillo");
+  });
+}
 
 document.querySelector(".js-boton-pagar-compra").addEventListener("click", () => {
   if (confirm("¿Confirma EL PAGO de su compra?\n\n(esto finalizará el proceso y reiniciará los valores y el console.log)")) {
-    // Restablecer valores a 0
-    document.querySelector(".js-cantidad-compras").innerHTML = "0";
-    document.querySelector(".js-suma-compras").innerHTML = "$0";
-    document.querySelector(".js-pago-total").innerHTML = "$0";
-
-    botonCancelar.disabled = true;
-    botonPagar.disabled = true;
-
-    // Restablezco el array de compra.js
-    compra = [];
-
-    // Limpio el console.log
-    console.clear();
-    console.log("Proceso de compra completado.\n\nTodos los datos han sido reiniciados.")
-
-    // agrego un alert avisando la confirmación
-    alert("Proceso de compra completado.\n\nTodos los datos han sido reiniciados.");
-
-    document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
-      boton.innerHTML = "AGREGAR";
-      boton.disabled = false;
-      document.querySelector(".js-pago-total").classList.remove("js-pago-total-amarillo");
-    });
-  } else {
-    // Si el usuario no confirma, no se ejecuta nada
+    restablecerCompra("pagar");
   }
 });
 
-
-/*--------------------------------------------------------------//
-
-      CODIGO PARA CANCELAR LA COMPRA TOTAL (y limpiar el console.log)
-
-//--------------------------------------------------------------*/
-
-
 document.querySelector(".js-boton-cancelar-compra").addEventListener("click", () => {
   if (confirm("¿Confirma CANCELAR su compra?\n\n(esto reiniciará los valores y el console.log)")) {
-    // Restablecer valores a 0
-    document.querySelector(".js-cantidad-compras").innerHTML = "0";
-    document.querySelector(".js-suma-compras").innerHTML = "$0";
-    document.querySelector(".js-pago-total").innerHTML = "$0";
-
-    botonCancelar.disabled = true;
-    botonPagar.disabled = true;
-
-    // Restablezco el array de compra.js
-    compra = [];
-
-    // Limpio el console.log
-    console.clear();
-    console.log("Proceso de compra cancelado.\n\nTodos los datos han sido reiniciados.")
-
-    // agrego un alert avisando la cancelación
-    alert("Proceso de compra cancelado.\n\nTodos los datos han sido reiniciados.");
-
-    document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
-      boton.innerHTML = "AGREGAR";
-      boton.disabled = false;
-      document.querySelector(".js-pago-total").classList.remove("js-pago-total-amarillo");
-    });
-  } else {
-    // Si el usuario no confirma, no se ejecuta nada
+    restablecerCompra("cancelar");
   }
 });
