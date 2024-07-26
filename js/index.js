@@ -96,6 +96,7 @@ document.querySelector("#buscador").addEventListener("input", buscarProductos);
 
 //--------------------------------------------------------------*/
 
+let botonPagar = document.querySelector(".js-boton-pagar-compra");
 let botonCancelar = document.querySelector(".js-boton-cancelar-compra");
 
 document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
@@ -197,6 +198,8 @@ document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
         
       
       botonCancelar.disabled = false;
+      botonPagar.disabled = false;
+      document.querySelector(".js-pago-total").classList.add("js-pago-total-amarillo");
 
       console.log(
         "%cNUEVO PRODUCTO AGREGADO",
@@ -235,6 +238,7 @@ document.querySelector(".js-boton-pagar-compra").addEventListener("click", () =>
     document.querySelector(".js-pago-total").innerHTML = "$0";
 
     botonCancelar.disabled = true;
+    botonPagar.disabled = true;
 
     // Restablezco el array de compra.js
     compra = [];
@@ -249,6 +253,7 @@ document.querySelector(".js-boton-pagar-compra").addEventListener("click", () =>
     document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
       boton.innerHTML = "AGREGAR";
       boton.disabled = false;
+      document.querySelector(".js-pago-total").classList.remove("js-pago-total-amarillo");
     });
   } else {
     // Si el usuario no confirma, no se ejecuta nada
@@ -271,6 +276,7 @@ document.querySelector(".js-boton-cancelar-compra").addEventListener("click", ()
     document.querySelector(".js-pago-total").innerHTML = "$0";
 
     botonCancelar.disabled = true;
+    botonPagar.disabled = true;
 
     // Restablezco el array de compra.js
     compra = [];
@@ -285,6 +291,7 @@ document.querySelector(".js-boton-cancelar-compra").addEventListener("click", ()
     document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
       boton.innerHTML = "AGREGAR";
       boton.disabled = false;
+      document.querySelector(".js-pago-total").classList.remove("js-pago-total-amarillo");
     });
   } else {
     // Si el usuario no confirma, no se ejecuta nada
