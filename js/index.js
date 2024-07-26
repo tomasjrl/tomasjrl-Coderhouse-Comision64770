@@ -11,8 +11,6 @@ let productosHTML = "";
 // para que sume el contenido obtenido de cada producto a productosHTML
 
 productos.forEach((producto) => {
-
-
   productosHTML += `
   <div class="producto-contenedor js-producto-contenedor" 
      data-producto-id="${producto.identificador}"
@@ -26,7 +24,7 @@ productos.forEach((producto) => {
           <div class="marca-producto">${producto.marca}</div>
           <div class="contenido-producto">${producto.contenido}</div>
           <div class="medida-producto">${producto.medida}</div>
-          <div class="precio-producto">$${(producto.precio)}</div>
+          <div class="precio-producto">$${producto.precio}</div>
         </section>
         <div class="botones-agregar-cancelar">
           <button class="boton-agregar js-boton-agregar-producto" 
@@ -34,14 +32,14 @@ productos.forEach((producto) => {
           data-producto-marca="${producto.marca}"
           data-producto-contenido="${producto.contenido}" 
           data-producto-medida="${producto.medida}"
-          data-producto-precio="${(producto.precio)}"
+          data-producto-precio="${producto.precio}"
           >AGREGAR</button>
         </div>
       </div>
  `;
 });
 
-// traigo a javascript la etiqueta con clase "js-productos-grid" 
+// traigo a javascript la etiqueta con clase "js-productos-grid"
 // y agrego al html el codigo obtenido en la variable productosHTML
 
 document.querySelector(".js-productos-grid").innerHTML = productosHTML;
@@ -53,18 +51,17 @@ document.querySelector(".js-productos-grid").innerHTML = productosHTML;
 //--------------------------------------------------------------*/
 
 function buscarProductos() {
-
   const terminoBusqueda = document
     .querySelector("#buscador")
     .value.toLowerCase();
-
-  const productosElementos = document.querySelectorAll(".js-producto-contenedor");
+  const productosElementos = document.querySelectorAll(
+    ".js-producto-contenedor"
+  );
 
   // Obtengo todos los elementos de la clase "js-producto-contenedor"
   // Recorro todos los elementos de productos y sus atributos data
 
   productosElementos.forEach((productoElemento) => {
-
     const id = productoElemento.getAttribute("data-producto-id") || "";
     const marca = productoElemento.getAttribute("data-producto-marca") || "";
     const contenido =
@@ -89,7 +86,6 @@ function buscarProductos() {
 
 document.querySelector("#buscador").addEventListener("input", buscarProductos);
 
-
 /*--------------------------------------------------------------//
 
       CODIGO AL APRETAR EL BOTON "AGREGAR" PRODUCTO AL CARRITO DE COMPRAS
@@ -98,7 +94,6 @@ document.querySelector("#buscador").addEventListener("input", buscarProductos);
 
 let botonPagar = document.querySelector(".js-boton-pagar-compra");
 let botonCancelar = document.querySelector(".js-boton-cancelar-compra");
-
 document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
   boton.addEventListener("click", () => {
     let cantidad;
@@ -113,6 +108,17 @@ document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
         "¿Confirma este producto al carrito de compras?\n\n(esta información será agregada al console.log)"
       )
     ) {
+      let cantidad,
+        productoId,
+        productoMarca,
+        productoContenido,
+        productoMedida,
+        productoPrecio,
+        subtotal,
+        cantidadDeCompras,
+        sumaDeCompras,
+        matchingItem;
+
       while (true) {
         let input = prompt(
           "Ingrese la cantidad de este producto que desea agregar:"
@@ -134,27 +140,22 @@ document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
         }
       }
 
-      const productoId = boton.dataset.productoId;
-      const productoMarca = boton.dataset.productoMarca;
-      const productoContenido = boton.dataset.productoContenido;
-      const productoMedida = boton.dataset.productoMedida;
-      const productoPrecio = boton.dataset.productoPrecio;
+      productoId = boton.dataset.productoId;
+      productoMarca = boton.dataset.productoMarca;
+      productoContenido = boton.dataset.productoContenido;
+      productoMedida = boton.dataset.productoMedida;
+      productoPrecio = boton.dataset.productoPrecio;
 
       alert(
-        `Agregado al carrito de compras\n\n${productoMarca} ${productoContenido} ${productoMedida}\n\nPrecio $${productoPrecio} * Unidades ${cantidad} = $${(parseFloat(productoPrecio) * parseInt(cantidad)).toFixed(2)}`
+        `Agregado al carrito de compras\n\n${productoMarca} ${productoContenido} ${productoMedida}\n\nPrecio $${productoPrecio} * Unidades ${cantidad} = $${(
+          parseFloat(productoPrecio) * parseInt(cantidad)
+        ).toFixed(2)}`
       );
 
       boton.innerHTML = "AGREGADO";
       boton.disabled = true;
 
-
-/*--------------------------------------------------------------//
-
-      CODIGO PARA ACTUALIZAR CANTIDAD / SUBTOTAL / TOTAL EN EL CARRITO (y en el console.log)
-
-//--------------------------------------------------------------*/
-      let matchingItem;
-      let subtotal = parseFloat(productoPrecio) * cantidad;
+      subtotal = parseFloat(productoPrecio) * cantidad;
 
       compra.forEach((item) => {
         if (productoId === item.productoId) {
@@ -165,8 +166,7 @@ document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
       if (matchingItem) {
         matchingItem.cantidad += cantidad;
         matchingItem.subtotal += subtotal;
-      } 
-      else {
+      } else {
         compra.push({
           productoId: productoId,
           productoMarca: productoMarca,
@@ -178,47 +178,49 @@ document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
         });
       }
 
-      let cantidadDeCompras = 0;
-      let sumaDeCompras = 0;
-
-    // si ya existe agrega solo incrementa la cantidad especificada
-    // si no existe agrega los valores del producto a la compra
+      cantidadDeCompras = 0;
+      sumaDeCompras = 0;
 
       compra.forEach((item) => {
         cantidadDeCompras += item.cantidad;
         sumaDeCompras += item.subtotal;
       });
 
-      document.querySelector(".js-cantidad-compras").innerHTML =
-      `${cantidadDeCompras}`;
-      document.querySelector(".js-suma-compras").innerHTML =
-        `$${sumaDeCompras}`;
-        document.querySelector(".js-pago-total").innerHTML =
-        `$${(sumaDeCompras * 1.21).toFixed(2)}`;
-        
-      
+      document.querySelector(
+        ".js-cantidad-compras"
+      ).innerHTML = `${cantidadDeCompras}`;
+      document.querySelector(
+        ".js-suma-compras"
+      ).innerHTML = `$${sumaDeCompras}`;
+      document.querySelector(".js-pago-total").innerHTML = `$${(
+        sumaDeCompras * 1.21
+      ).toFixed(2)}`;
+
       botonCancelar.disabled = false;
       botonPagar.disabled = false;
-      document.querySelector(".js-pago-total").classList.add("js-pago-total-amarillo");
+      document
+        .querySelector(".js-pago-total")
+        .classList.add("js-pago-total-amarillo");
 
       console.log(
         "%cNUEVO PRODUCTO AGREGADO",
         "text-decoration: underline; color: red; font-weight: bold;"
       );
       console.log(`${productoMarca} ${productoContenido} ${productoMedida}`);
-      console.log(`Precio $${productoPrecio} * Unidades ${cantidad} = $${(parseFloat(productoPrecio) * parseInt(cantidad))}`);
+      console.log(
+        `Precio $${productoPrecio} * Unidades ${cantidad} = $${
+          parseFloat(productoPrecio) * parseInt(cantidad)
+        }`
+      );
       console.log(
         `%cSUB-TOTAL = $${sumaDeCompras} // TOTAL UNIDADES = ${cantidadDeCompras}`,
         "color: lightblue; font-weight: bold;"
       );
-      console.log(
-        "IVA: * 1.21"
-      );
+      console.log("IVA: * 1.21");
       console.log(
         `%cTOTAL = $${(sumaDeCompras * 1.21).toFixed(2)}`,
         "color: lightgreen; font-weight: bold;"
       );
-      
     }
   });
 });
@@ -228,7 +230,6 @@ document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
       CODIGO PARA PAGAR / CANCELAR LA COMPRA TOTAL (y limpiar el console.log)
 
 //--------------------------------------------------------------*/
-
 
 function restablecerCompra(tipo) {
   // Restablecer valores a 0
@@ -246,25 +247,34 @@ function restablecerCompra(tipo) {
   console.clear();
 
   // MensajeFinal indicando proceso de compra COMPLETADO O CANCELADO  para alert + console.log
-  const mensajeFinal = `Proceso de compra ${tipo === "pagar" ? "COMPLETADO" : "CANCELADO"}. Todos los datos han sido reiniciados.`;
+  const mensajeFinal = `Proceso de compra ${
+    tipo === "pagar" ? "COMPLETADO" : "CANCELADO"
+  }. Todos los datos han sido reiniciados.`;
   console.log(mensajeFinal);
   alert(mensajeFinal);
-
 
   document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
     boton.innerHTML = "AGREGAR";
     boton.disabled = false;
-    document.querySelector(".js-pago-total").classList.remove("js-pago-total-amarillo");
+    document
+      .querySelector(".js-pago-total")
+      .classList.remove("js-pago-total-amarillo");
   });
 }
 
-  // MensajePregunta indicando proceso de compra COMPLETADO O CANCELADO  para alert + console.log
+// MensajePregunta indicando proceso de compra COMPLETADO O CANCELADO  para alert + console.log
 function agregarEventoBoton(tipo) {
-  document.querySelector(`.js-boton-${tipo}-compra`).addEventListener("click", () => {
-    if (confirm(`¿Confirma ${tipo} su compra?\n\n(esto reiniciará los valores y el console.log)`)) {
-      restablecerCompra(tipo);
-    }
-  });
+  document
+    .querySelector(`.js-boton-${tipo}-compra`)
+    .addEventListener("click", () => {
+      if (
+        confirm(
+          `¿Confirma ${tipo} su compra?\n\n(esto reiniciará los valores y el console.log)`
+        )
+      ) {
+        restablecerCompra(tipo);
+      }
+    });
 }
 
 agregarEventoBoton("pagar");
