@@ -244,10 +244,12 @@ function restablecerCompra(tipo) {
 
   // Limpio el console.log
   console.clear();
-  console.log(`Proceso de compra ${tipo === "pagar" ? "COMPLETADO" : "CANCELADO"}. Todos los datos han sido reiniciados.`);
 
-  // agrego un alert avisando la confirmación
-  alert(`Proceso de compra ${tipo === "pagar" ? "COMPLETADO" : "CANCELADO"}. Todos los datos han sido reiniciados.`);
+  // MensajeFinal indicando proceso de compra COMPLETADO O CANCELADO  para alert + console.log
+  const mensajeFinal = `Proceso de compra ${tipo === "pagar" ? "COMPLETADO" : "CANCELADO"}. Todos los datos han sido reiniciados.`;
+  console.log(mensajeFinal);
+  alert(mensajeFinal);
+
 
   document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
     boton.innerHTML = "AGREGAR";
@@ -256,14 +258,14 @@ function restablecerCompra(tipo) {
   });
 }
 
-document.querySelector(".js-boton-pagar-compra").addEventListener("click", () => {
-  if (confirm("¿Confirma EL PAGO de su compra?\n\n(esto finalizará el proceso y reiniciará los valores y el console.log)")) {
-    restablecerCompra("pagar");
-  }
-});
+  // MensajePregunta indicando proceso de compra COMPLETADO O CANCELADO  para alert + console.log
+function agregarEventoBoton(tipo) {
+  document.querySelector(`.js-boton-${tipo}-compra`).addEventListener("click", () => {
+    if (confirm(`¿Confirma ${tipo} su compra?\n\n(esto reiniciará los valores y el console.log)`)) {
+      restablecerCompra(tipo);
+    }
+  });
+}
 
-document.querySelector(".js-boton-cancelar-compra").addEventListener("click", () => {
-  if (confirm("¿Confirma CANCELAR su compra?\n\n(esto reiniciará los valores y el console.log)")) {
-    restablecerCompra("cancelar");
-  }
-});
+agregarEventoBoton("pagar");
+agregarEventoBoton("cancelar");
