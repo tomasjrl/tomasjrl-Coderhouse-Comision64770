@@ -1,17 +1,20 @@
-import { productos } from "./data/productos.js";
-import {generarHTMLProductos} from "./funciones/contenedor-html.js"
-import { buscarProductos } from "./funciones/buscador.js";
+let listadoDeCompra = [];
 
+import { productos } from "./data/productos.js";
+import { generarHTMLProductos } from "./funciones/contenedor-html.js";
+import { buscarProductos } from "./funciones/buscador.js";
+import { actualizarTotales } from "./funciones/cuenta-compras.js";
+export { listadoDeCompra };
 
 /*--------------------------------------------------------------//
      PARA AGREGAR AL HTML EL LISTADO DE PRODUCTOS  
 //--------------------------------------------------------------*/
 
 let htmlProductos = generarHTMLProductos(productos);
-document.querySelector('.js-productos-grid').innerHTML = htmlProductos;
+document.querySelector(".js-productos-grid").innerHTML = htmlProductos;
 
 /*--------------------------------------------------------------//
-      PARA BUSCAR PRODUCTOS EN EL HTML
+     PARA BUSCAR PRODUCTOS EN EL HTML
 //--------------------------------------------------------------*/
 
 buscarProductos();
@@ -21,73 +24,11 @@ document.querySelector("#buscador").addEventListener("input", buscarProductos);
      PARA SUMAR UNIDADES Y SUBTOTAL DEL LISTADO DE COMPRA
 //--------------------------------------------------------------*/
 
-let unidadesDeCompras = 0;
-let subtotalDeCompras = 0;
-
-function actualizarTotales() {
-  unidadesDeCompras = 0;
-  subtotalDeCompras = 0;
-
-  listadoDeCompra.forEach((item) => {
-    unidadesDeCompras += item.productoUnidades;
-    subtotalDeCompras += item.productoSubtotal;
-  });
-
-  document.querySelector(
-    ".js-cantidad-compras"
-  ).innerHTML = `${unidadesDeCompras}`;
-  document.querySelector(
-    ".js-suma-compras"
-  ).innerHTML = `$${subtotalDeCompras}`;
-  document.querySelector(".js-pago-total").innerHTML = `$${(
-    subtotalDeCompras * 1.21
-  ).toFixed(2)}`;
-
-  console.clear();
-
-  console.log(
-    `%cCUENTAS DE SUPERPRECIOS`,
-    "color: lightyellow; font-weight: bold;"
-  );
-
-  console.log(
-    `%cListado de Compra = ${JSON.stringify(
-      listadoDeCompra.map((producto) => ({
-        ...producto,
-        productoPrecio: `$${producto.productoPrecio}`,
-        productoSubtotal: `$${producto.productoSubtotal}`,
-      })),
-      null,
-      2
-    )}`,
-    "color: lightpink; font-weight: bold;"
-  );
-
-  console.log(
-    `%cTOTAL UNIDADES = ${unidadesDeCompras}`,
-    "color: lightblue; font-weight: bold;"
-  );
-
-  console.log(
-    `%cSUB-TOTAL = $${subtotalDeCompras}`,
-    "color: lightblue; font-weight: bold;"
-  );
-
-  console.log(`%cIVA: * 1.21`, "color: lightgray; font-weight: bold;");
-
-  console.log(
-    `%cTOTAL = $${(subtotalDeCompras * 1.21).toFixed(2)}`,
-    "color: lightgreen; font-weight: bold;"
-  );
-
-  return { unidadesDeCompras, subtotalDeCompras };
-}
+actualizarTotales();
 
 /*--------------------------------------------------------------//
-       PARA AGREGAR AL HTML EL LISTADO DE COMPRA AL TEXTAREA DEL POP-UP      
+     PARA AGREGAR AL HTML EL LISTADO DE COMPRA AL TEXTAREA DEL POP-UP      
 //--------------------------------------------------------------*/
-
-let listadoDeCompra = [];
 
 // Función para actualizar el contenido del textarea
 function actualizarTextarea() {
@@ -122,7 +63,7 @@ listadoDeCompra.push = function () {
 actualizarTextarea();
 
 /*--------------------------------------------------------------//
-       PARA AGREGAR / CANCELAR PRODUCTO AL LISTADO DE COMPRA
+     PARA AGREGAR / CANCELAR PRODUCTO AL LISTADO DE COMPRA
 //--------------------------------------------------------------*/
 
 document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
@@ -247,7 +188,7 @@ document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
 });
 
 /*--------------------------------------------------------------//
-       PARA PAGAR / CANCELAR LA COMPRA TOTAL
+     PARA PAGAR / CANCELAR LA COMPRA TOTAL
 //--------------------------------------------------------------*/
 
 let botonPagar = document.querySelector(".js-boton-pagar-compra");
