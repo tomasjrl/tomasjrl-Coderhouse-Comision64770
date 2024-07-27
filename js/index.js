@@ -26,14 +26,20 @@ function actualizarTotales() {
 
 
   console.log(
-    `%cLISTA DE SUPERPRECIOS`,
+    `%cCUENTAS DE SUPERPRECIOS`,
     "color: lightyellow; font-weight: bold;"
   );
 
   console.log(
-    `%cSUB-TOTAL = $${sumaDeCompras} // TOTAL UNIDADES = ${cantidadDeCompras}`,
+    `%cTOTAL UNIDADES = ${cantidadDeCompras}`,
     "color: lightblue; font-weight: bold;"
   );
+
+  console.log(
+    `%cSUB-TOTAL = $${sumaDeCompras}`,
+    "color: lightblue; font-weight: bold;"
+  );
+
   console.log(`%cIVA: * 1.21`,
     "color: lightgray; font-weight: bold;");
 
@@ -144,7 +150,7 @@ let compra = [];
 // Función para actualizar el contenido del textarea
 function actualizarTextarea() {
   if (compra.length === 0) {
-    document.getElementById("texto-popup").value = "Lista de productos:";
+    document.getElementById("texto-popup").value = "Detalles de productos:";
   } else {
     const contenido = compra
       .map((obj) => {
@@ -160,7 +166,7 @@ function actualizarTextarea() {
       })
       .join("\n\n");
     document.getElementById("texto-popup").value =
-      "Lista de productos:\n\n" + contenido;
+      "Detalles de productos:\n\n" + contenido;
   }
 }
 
@@ -191,7 +197,7 @@ document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
 
       if (
         confirm(
-          "¿Confirma este producto al carrito de compras?\n\n(esta información será agregada al console.log)"
+          "¿Confirma agregar este producto a la lista de compras?\n\n(esta información será agregada al console.log)"
         )
       ) {
         let cantidad,
@@ -207,7 +213,7 @@ document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
 
         while (true) {
           let input = prompt(
-            "Ingrese la cantidad de este producto que desea agregar:"
+            "Ingrese la cantidad de unidades que desea agregar:"
           );
 
           if (input === null) {
@@ -233,9 +239,7 @@ document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
         productoPrecio = boton.dataset.productoPrecio;
 
         alert(
-          `Agregado al carrito de compras\n\n${productoMarca} 
-        ${productoContenido} 
-        ${productoMedida}\n\nPrecio $${productoPrecio} * Unidades ${cantidad} = $${
+          `Agregado a la lista de compras:\n\n${productoMarca} ${productoContenido} ${productoMedida}\n\nPrecio $${productoPrecio} * Unidades ${cantidad} = $${
             parseFloat(productoPrecio) * parseInt(cantidad)
           }`
         );
