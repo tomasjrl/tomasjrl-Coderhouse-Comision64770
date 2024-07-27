@@ -1,7 +1,5 @@
 /*--------------------------------------------------------------//
-
-       PARA AGREGAR AL HTML EL LISTADO DE PRODUCTOS (productos.js)
-      
+     PARA AGREGAR AL HTML EL LISTADO DE PRODUCTOS (productos.js)
 //--------------------------------------------------------------*/
 
 // La funcion forEach recorre cada objeto de productos.js

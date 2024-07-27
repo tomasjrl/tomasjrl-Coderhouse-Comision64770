@@ -1,7 +1,5 @@
 /*--------------------------------------------------------------//
-
-      PARA BUSCAR PRODUCTOS EN EL HTML
-
+     PARA BUSCAR PRODUCTOS EN EL HTML
 //--------------------------------------------------------------*/
 
 export function buscarProductos() {
