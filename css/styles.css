@@ -189,6 +189,10 @@ button {
   transition: 0.2s;
 }
 
+.js-boton-pagar-compra {
+  background-color: rgb(20, 178, 20);
+}
+
 .js-boton-agregar-producto:enabled:hover, 
 .js-boton-pagar-compra:enabled:hover,
 .js-boton-cancelar-producto:hover {
