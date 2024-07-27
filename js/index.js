@@ -1,59 +1,6 @@
 /*--------------------------------------------------------------//
 
-       VARIABLES Y FUNCION PARA SUMAR PRODUCTOS DE COMPRA
-      
-//--------------------------------------------------------------*/
-
-let cantidadDeCompras = 0;
-let sumaDeCompras = 0;
-
-function actualizarTotales() {
-  cantidadDeCompras = 0;
-  sumaDeCompras = 0;
-
-  compra.forEach((item) => {
-    cantidadDeCompras += item.cantidad;
-    sumaDeCompras += item.subtotal;
-  });
-
-  document.querySelector(
-    ".js-cantidad-compras"
-  ).innerHTML = `${cantidadDeCompras}`;
-  document.querySelector(".js-suma-compras").innerHTML = `$${sumaDeCompras}`;
-  document.querySelector(".js-pago-total").innerHTML = `$${(
-    sumaDeCompras * 1.21
-  ).toFixed(2)}`;
-
-
-  console.log(
-    `%cCUENTAS DE SUPERPRECIOS`,
-    "color: lightyellow; font-weight: bold;"
-  );
-
-  console.log(
-    `%cTOTAL UNIDADES = ${cantidadDeCompras}`,
-    "color: lightblue; font-weight: bold;"
-  );
-
-  console.log(
-    `%cSUB-TOTAL = $${sumaDeCompras}`,
-    "color: lightblue; font-weight: bold;"
-  );
-
-  console.log(`%cIVA: * 1.21`,
-    "color: lightgray; font-weight: bold;");
-
-  console.log(
-    `%cTOTAL = $${(sumaDeCompras * 1.21).toFixed(2)}`,
-    "color: lightgreen; font-weight: bold;"
-  );
-
-  return { cantidadDeCompras, sumaDeCompras };
-}
-
-/*--------------------------------------------------------------//
-
-       PARA AGREGAR AL HTML TODOS LOS PRODUCTOS
+       PARA AGREGAR AL HTML EL LISTADO DE PRODUCTOS (productos.js)
       
 //--------------------------------------------------------------*/
 
@@ -99,7 +46,7 @@ document.querySelector(".js-productos-grid").innerHTML = productosHTML;
 
 /*--------------------------------------------------------------//
 
-      PARA BUSCAR PRODUCTOS
+      PARA BUSCAR PRODUCTOS EN EL HTML
 
 //--------------------------------------------------------------*/
 
@@ -141,18 +88,86 @@ document.querySelector("#buscador").addEventListener("input", buscarProductos);
 
 /*--------------------------------------------------------------//
 
-       PARA AGREGAR PRODUCTOS DE COMPRA AL TEXTAREA DEL POP-UP
+    PARA SUMAR UNIDADES Y SUBTOTAL DEL LISTADO DE COMPRA
       
 //--------------------------------------------------------------*/
 
-let compra = [];
+let unidadesDeCompras = 0;
+let subtotalDeCompras = 0;
+
+function actualizarTotales() {
+  unidadesDeCompras = 0;
+  subtotalDeCompras = 0;
+
+  listadoDeCompra.forEach((item) => {
+    unidadesDeCompras += item.productoUnidades;
+    subtotalDeCompras += item.productoSubtotal;
+  });
+
+  document.querySelector(
+    ".js-cantidad-compras"
+  ).innerHTML = `${unidadesDeCompras}`;
+  document.querySelector(
+    ".js-suma-compras"
+  ).innerHTML = `$${subtotalDeCompras}`;
+  document.querySelector(".js-pago-total").innerHTML = `$${(
+    subtotalDeCompras * 1.21
+  ).toFixed(2)}`;
+
+  console.clear();
+
+  console.log(
+    `%cCUENTAS DE SUPERPRECIOS`,
+    "color: lightyellow; font-weight: bold;"
+  );
+
+  console.log(
+    `%cListado de Compra = ${JSON.stringify(
+      listadoDeCompra.map((producto) => ({
+        ...producto,
+        productoPrecio: `$${producto.productoPrecio}`,
+        productoSubtotal: `$${producto.productoSubtotal}`,
+      })),
+      null,
+      2
+    )}`,
+    "color: lightpink; font-weight: bold;"
+  );
+
+  console.log(
+    `%cTOTAL UNIDADES = ${unidadesDeCompras}`,
+    "color: lightblue; font-weight: bold;"
+  );
+
+  console.log(
+    `%cSUB-TOTAL = $${subtotalDeCompras}`,
+    "color: lightblue; font-weight: bold;"
+  );
+
+  console.log(`%cIVA: * 1.21`, "color: lightgray; font-weight: bold;");
+
+  console.log(
+    `%cTOTAL = $${(subtotalDeCompras * 1.21).toFixed(2)}`,
+    "color: lightgreen; font-weight: bold;"
+  );
+
+  return { unidadesDeCompras, subtotalDeCompras };
+}
+
+/*--------------------------------------------------------------//
+
+       PARA AGREGAR AL HTML EL LISTADO DE COMPRA AL TEXTAREA DEL POP-UP
+      
+//--------------------------------------------------------------*/
+
+let listadoDeCompra = [];
 
 // Función para actualizar el contenido del textarea
 function actualizarTextarea() {
-  if (compra.length === 0) {
-    document.getElementById("texto-popup").value = "Detalles de productos:";
+  if (listadoDeCompra.length === 0) {
+    document.getElementById("texto-popup").value = "Listado de compra:";
   } else {
-    const contenido = compra
+    const contenido = listadoDeCompra
       .map((obj) => {
         const valores = Object.values(obj);
         const valoresFiltrados = valores.filter(
@@ -160,18 +175,18 @@ function actualizarTextarea() {
         );
         const linea2y3 = valoresFiltrados[1] + " " + valoresFiltrados[2];
         valoresFiltrados.splice(1, 2, linea2y3);
-        valoresFiltrados[2] = "$" + valoresFiltrados[2];
+        valoresFiltrados[2] = "Precio por unidad: $" + valoresFiltrados[2];
         valoresFiltrados[3] = "Unidades: " + valoresFiltrados[3];
         return valoresFiltrados.join("\n");
       })
       .join("\n\n");
     document.getElementById("texto-popup").value =
-      "Detalles de productos:\n\n" + contenido;
+      "Listado de compra:\n\n" + contenido;
   }
 }
 
 // Cuando se agrega un nuevo elemento al array, actualiza el textarea
-compra.push = function () {
+listadoDeCompra.push = function () {
   Array.prototype.push.apply(this, arguments); // Agrega el nuevo elemento al array
   actualizarTextarea(); // Actualiza el contenido del textarea
 };
@@ -181,34 +196,28 @@ actualizarTextarea();
 
 /*--------------------------------------------------------------//
 
-       AL APRETAR EL BOTON "AGREGAR" PRODUCTO AL CARRITO DE COMPRAS
+       PARA AGREGAR / CANCELAR PRODUCTO AL LISTADO DE COMPRA
 
 //--------------------------------------------------------------*/
 
 document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
   boton.addEventListener("click", () => {
     if (boton.classList.contains("js-boton-agregar-producto")) {
-      let cantidad;
+      let unidades;
 
       // agrego un alert para indicar si desea confirmar el producto
       // agrego un confirm para que indique la cantidad de productos
       // agrego un 2do alert confirmando la cantidad agregada
       // deshabilito boton de agregar producto
 
-      if (
-        confirm(
-          "¿Confirma agregar este producto a la lista de compras?\n\n(esta información será agregada al console.log)"
-        )
-      ) {
-        let cantidad,
+      if (confirm("¿Confirma agregar este producto a la lista de compras?")) {
+        let unidades,
           productoId,
           productoMarca,
           productoContenido,
           productoMedida,
           productoPrecio,
           subtotal,
-          cantidadDeCompras,
-          sumaDeCompras,
           matchingItem;
 
         while (true) {
@@ -221,9 +230,9 @@ document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
             return;
           }
 
-          cantidad = parseInt(input);
+          unidades = parseInt(input);
 
-          if (!isNaN(cantidad) && cantidad > 0) {
+          if (!isNaN(unidades) && unidades > 0) {
             break;
           } else {
             alert(
@@ -239,31 +248,31 @@ document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
         productoPrecio = boton.dataset.productoPrecio;
 
         alert(
-          `Agregado a la lista de compras:\n\n${productoMarca} ${productoContenido} ${productoMedida}\n\nPrecio $${productoPrecio} * Unidades ${cantidad} = $${
-            parseFloat(productoPrecio) * parseInt(cantidad)
+          `Agregado a la lista de compras:\n\n${productoMarca} ${productoContenido} ${productoMedida}\n\nPrecio $${productoPrecio} * Unidades ${unidades} = $${
+            parseFloat(productoPrecio) * unidades
           }`
         );
 
-        subtotal = parseFloat(productoPrecio) * cantidad;
+        subtotal = parseFloat(productoPrecio) * unidades;
 
-        compra.forEach((item) => {
+        listadoDeCompra.forEach((item) => {
           if (productoId === item.productoId) {
             matchingItem = item;
           }
         });
 
         if (matchingItem) {
-          matchingItem.cantidad += cantidad;
-          matchingItem.subtotal += subtotal;
+          matchingItem.productoUnidades += unidades;
+          matchingItem.productoSubtotal += subtotal;
         } else {
-          compra.push({
+          listadoDeCompra.push({
             productoId: productoId,
             productoMarca: productoMarca,
             productoContenido: productoContenido,
             productoMedida: productoMedida,
             productoPrecio: productoPrecio,
-            cantidad: cantidad,
-            subtotal: subtotal,
+            productoUnidades: unidades,
+            productoSubtotal: subtotal,
           });
         }
 
@@ -291,11 +300,13 @@ document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
       let productoId = boton.dataset.productoId;
 
       // Encontrar el objeto del producto en el array compra
-      let indice = compra.findIndex((item) => item.productoId === productoId);
+      let indice = listadoDeCompra.findIndex(
+        (item) => item.productoId === productoId
+      );
 
       // Eliminar el objeto del producto del array compra
       if (indice !== -1) {
-        compra.splice(indice, 1);
+        listadoDeCompra.splice(indice, 1);
       }
       // Actualizar totales
       actualizarTotales();
@@ -312,7 +323,7 @@ document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
 
 /*--------------------------------------------------------------//
 
-       PARA PAGAR / CANCELAR LA COMPRA TOTAL (y limpiar el console.log)
+       PARA PAGAR / CANCELAR LA COMPRA TOTAL
 
 //--------------------------------------------------------------*/
 
@@ -329,7 +340,7 @@ function restablecerCompra(tipo) {
   botonPagar.disabled = true;
 
   // Restablezco el array de compra.js
-  compra.splice(0, compra.length);
+  listadoDeCompra.splice(0, listadoDeCompra.length);
 
   // Actualizo el contenido del textarea
   actualizarTextarea();
