@@ -1,13 +1,10 @@
 /*--------------------------------------------------------------//
 
-      ESTRUCTURA DE LISTAS DE PRODUCTOS
+     LISTA DE PRODUCTOS
 
 //--------------------------------------------------------------*/
 
-
-// precio en centavos para evitar conflictos con redondeos posteriores
-
-const productos = [
+export const productos = [
   {
     identificador: '00000001',
     imagen: "assets/images/1.webp",

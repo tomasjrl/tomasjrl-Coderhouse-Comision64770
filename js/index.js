@@ -1,95 +1,24 @@
-/*--------------------------------------------------------------//
+import { productos } from "./data/productos.js";
+import {generarHTMLProductos} from "./funciones/contenedor-html.js"
+import { buscarProductos } from "./funciones/buscador.js";
 
-       PARA AGREGAR AL HTML EL LISTADO DE PRODUCTOS (productos.js)
-      
+
+/*--------------------------------------------------------------//
+     PARA AGREGAR AL HTML EL LISTADO DE PRODUCTOS  
 //--------------------------------------------------------------*/
 
-let productosHTML = "";
-
-// creo variable productosHTML para insertar el html generado con todos los productos
-// La funcion forEach recorre cada objeto de productos.js
-// para que sume el contenido obtenido de cada producto a productosHTML
-
-productos.forEach((producto) => {
-  productosHTML += `
-  <div class="producto-contenedor js-producto-contenedor" 
-     data-producto-id="${producto.identificador}"
-     data-producto-marca="${producto.marca}"
-     data-producto-contenido="${producto.contenido}"
-     data-producto-medida="${producto.medida}">
-        <div>
-          <img src="${producto.imagen}">
-        </div>
-        <section class="productos-informacion">
-          <div class="marca-producto">${producto.marca}</div>
-          <div class="contenido-producto">${producto.contenido}</div>
-          <div class="medida-producto">${producto.medida}</div>
-          <div class="precio-producto">$${producto.precio}</div>
-        </section>
-        <div class="botones-agregar-cancelar">
-          <button class="boton-agregar js-boton-agregar-producto" 
-          data-producto-id="${producto.identificador}" 
-          data-producto-marca="${producto.marca}"
-          data-producto-contenido="${producto.contenido}" 
-          data-producto-medida="${producto.medida}"
-          data-producto-precio="${producto.precio}"
-          >AGREGAR</button>
-        </div>
-      </div>
- `;
-});
-
-// traigo a javascript la etiqueta con clase "js-productos-grid"
-// y agrego al html el codigo obtenido en la variable productosHTML
-
-document.querySelector(".js-productos-grid").innerHTML = productosHTML;
+let htmlProductos = generarHTMLProductos(productos);
+document.querySelector('.js-productos-grid').innerHTML = htmlProductos;
 
 /*--------------------------------------------------------------//
-
       PARA BUSCAR PRODUCTOS EN EL HTML
-
 //--------------------------------------------------------------*/
 
-function buscarProductos() {
-  const terminoBusqueda = document
-    .querySelector("#buscador")
-    .value.toLowerCase();
-  const productosElementos = document.querySelectorAll(
-    ".js-producto-contenedor"
-  );
-
-  // Obtengo todos los elementos de la clase "js-producto-contenedor"
-  // Recorro todos los elementos de productos y sus atributos data
-
-  productosElementos.forEach((productoElemento) => {
-    const id = productoElemento.getAttribute("data-producto-id") || "";
-    const marca = productoElemento.getAttribute("data-producto-marca") || "";
-    const contenido =
-      productoElemento.getAttribute("data-producto-contenido") || "";
-    const medida = productoElemento.getAttribute("data-producto-medida") || "";
-
-    // Verifico si alguno de los atributos contiene el término de búsqueda
-
-    if (
-      marca.toLowerCase().includes(terminoBusqueda) ||
-      contenido.toLowerCase().includes(terminoBusqueda) ||
-      medida.toLowerCase().includes(terminoBusqueda)
-    ) {
-      productoElemento.style.display = "";
-    } else {
-      productoElemento.style.display = "none";
-    }
-  });
-}
-
-// event listener al campo de búsqueda para que se ejecute la función al escribir
-
+buscarProductos();
 document.querySelector("#buscador").addEventListener("input", buscarProductos);
 
 /*--------------------------------------------------------------//
-
-    PARA SUMAR UNIDADES Y SUBTOTAL DEL LISTADO DE COMPRA
-      
+     PARA SUMAR UNIDADES Y SUBTOTAL DEL LISTADO DE COMPRA
 //--------------------------------------------------------------*/
 
 let unidadesDeCompras = 0;
@@ -155,9 +84,7 @@ function actualizarTotales() {
 }
 
 /*--------------------------------------------------------------//
-
-       PARA AGREGAR AL HTML EL LISTADO DE COMPRA AL TEXTAREA DEL POP-UP
-      
+       PARA AGREGAR AL HTML EL LISTADO DE COMPRA AL TEXTAREA DEL POP-UP      
 //--------------------------------------------------------------*/
 
 let listadoDeCompra = [];
@@ -195,9 +122,7 @@ listadoDeCompra.push = function () {
 actualizarTextarea();
 
 /*--------------------------------------------------------------//
-
        PARA AGREGAR / CANCELAR PRODUCTO AL LISTADO DE COMPRA
-
 //--------------------------------------------------------------*/
 
 document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
@@ -322,9 +247,7 @@ document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
 });
 
 /*--------------------------------------------------------------//
-
        PARA PAGAR / CANCELAR LA COMPRA TOTAL
-
 //--------------------------------------------------------------*/
 
 let botonPagar = document.querySelector(".js-boton-pagar-compra");
