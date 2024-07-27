@@ -182,6 +182,7 @@ button {
   cursor: pointer;
 }
 
+.js-boton-cancelar-producto,
 .boton-cancelar:hover {
   color: rgb(240, 233, 233);
   background-color: rgb(205, 6, 23);
@@ -189,7 +190,8 @@ button {
 }
 
 .js-boton-agregar-producto:enabled:hover, 
-.js-boton-pagar-compra:enabled:hover {
+.js-boton-pagar-compra:enabled:hover,
+.js-boton-cancelar-producto:hover {
   transform: scale(1.1);
   transition: 0.2s;
 }

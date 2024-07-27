@@ -1,6 +1,53 @@
 /*--------------------------------------------------------------//
 
-      CODIGO PARA AGREGAR AL HTML TODOS LOS PRODUCTOS
+       VARIABLES Y FUNCION PARA SUMAR PRODUCTOS DE COMPRA
+      
+//--------------------------------------------------------------*/
+
+let cantidadDeCompras = 0;
+let sumaDeCompras = 0;
+
+function actualizarTotales() {
+  cantidadDeCompras = 0;
+  sumaDeCompras = 0;
+
+  compra.forEach((item) => {
+    cantidadDeCompras += item.cantidad;
+    sumaDeCompras += item.subtotal;
+  });
+
+  document.querySelector(
+    ".js-cantidad-compras"
+  ).innerHTML = `${cantidadDeCompras}`;
+  document.querySelector(".js-suma-compras").innerHTML = `$${sumaDeCompras}`;
+  document.querySelector(".js-pago-total").innerHTML = `$${(
+    sumaDeCompras * 1.21
+  ).toFixed(2)}`;
+
+
+  console.log(
+    `%cLISTA DE SUPERPRECIOS`,
+    "color: lightyellow; font-weight: bold;"
+  );
+
+  console.log(
+    `%cSUB-TOTAL = $${sumaDeCompras} // TOTAL UNIDADES = ${cantidadDeCompras}`,
+    "color: lightblue; font-weight: bold;"
+  );
+  console.log(`%cIVA: * 1.21`,
+    "color: lightgray; font-weight: bold;");
+
+  console.log(
+    `%cTOTAL = $${(sumaDeCompras * 1.21).toFixed(2)}`,
+    "color: lightgreen; font-weight: bold;"
+  );
+
+  return { cantidadDeCompras, sumaDeCompras };
+}
+
+/*--------------------------------------------------------------//
+
+       PARA AGREGAR AL HTML TODOS LOS PRODUCTOS
       
 //--------------------------------------------------------------*/
 
@@ -46,7 +93,7 @@ document.querySelector(".js-productos-grid").innerHTML = productosHTML;
 
 /*--------------------------------------------------------------//
 
-     CODIGO PARA BUSCAR PRODUCTOS
+      PARA BUSCAR PRODUCTOS
 
 //--------------------------------------------------------------*/
 
@@ -88,7 +135,7 @@ document.querySelector("#buscador").addEventListener("input", buscarProductos);
 
 /*--------------------------------------------------------------//
 
-      CODIGO PARA AGREGAR PRODUCTOS DE COMPRA AL TEXTAREA DEL POP-UP
+       PARA AGREGAR PRODUCTOS DE COMPRA AL TEXTAREA DEL POP-UP
       
 //--------------------------------------------------------------*/
 
@@ -128,150 +175,145 @@ actualizarTextarea();
 
 /*--------------------------------------------------------------//
 
-      CODIGO AL APRETAR EL BOTON "AGREGAR" PRODUCTO AL CARRITO DE COMPRAS
+       AL APRETAR EL BOTON "AGREGAR" PRODUCTO AL CARRITO DE COMPRAS
 
 //--------------------------------------------------------------*/
 
-let botonPagar = document.querySelector(".js-boton-pagar-compra");
-let botonCancelar = document.querySelector(".js-boton-cancelar-compra");
 document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
   boton.addEventListener("click", () => {
-    let cantidad;
+    if (boton.classList.contains("js-boton-agregar-producto")) {
+      let cantidad;
 
-    // agrego un alert para indicar si desea confirmar el producto
-    // agrego un confirm para que indique la cantidad de productos
-    // agrego un 2do alert confirmando la cantidad agregada
-    // deshabilito boton de agregar producto
+      // agrego un alert para indicar si desea confirmar el producto
+      // agrego un confirm para que indique la cantidad de productos
+      // agrego un 2do alert confirmando la cantidad agregada
+      // deshabilito boton de agregar producto
 
-    if (
-      confirm(
-        "¿Confirma este producto al carrito de compras?\n\n(esta información será agregada al console.log)"
-      )
-    ) {
-      let cantidad,
-        productoId,
-        productoMarca,
-        productoContenido,
-        productoMedida,
-        productoPrecio,
-        subtotal,
-        cantidadDeCompras,
-        sumaDeCompras,
-        matchingItem;
+      if (
+        confirm(
+          "¿Confirma este producto al carrito de compras?\n\n(esta información será agregada al console.log)"
+        )
+      ) {
+        let cantidad,
+          productoId,
+          productoMarca,
+          productoContenido,
+          productoMedida,
+          productoPrecio,
+          subtotal,
+          cantidadDeCompras,
+          sumaDeCompras,
+          matchingItem;
 
-      while (true) {
-        let input = prompt(
-          "Ingrese la cantidad de este producto que desea agregar:"
+        while (true) {
+          let input = prompt(
+            "Ingrese la cantidad de este producto que desea agregar:"
+          );
+
+          if (input === null) {
+            alert("Proceso cancelado.");
+            return;
+          }
+
+          cantidad = parseInt(input);
+
+          if (!isNaN(cantidad) && cantidad > 0) {
+            break;
+          } else {
+            alert(
+              "Cantidad no válida. Pruebe nuevamente ingresando un número mayor a 0."
+            );
+          }
+        }
+
+        productoId = boton.dataset.productoId;
+        productoMarca = boton.dataset.productoMarca;
+        productoContenido = boton.dataset.productoContenido;
+        productoMedida = boton.dataset.productoMedida;
+        productoPrecio = boton.dataset.productoPrecio;
+
+        alert(
+          `Agregado al carrito de compras\n\n${productoMarca} 
+        ${productoContenido} 
+        ${productoMedida}\n\nPrecio $${productoPrecio} * Unidades ${cantidad} = $${
+            parseFloat(productoPrecio) * parseInt(cantidad)
+          }`
         );
 
-        if (input === null) {
-          alert("Proceso cancelado.");
-          return;
-        }
+        subtotal = parseFloat(productoPrecio) * cantidad;
 
-        cantidad = parseInt(input);
-
-        if (!isNaN(cantidad) && cantidad > 0) {
-          break;
-        } else {
-          alert(
-            "Cantidad no válida. Pruebe nuevamente ingresando un número mayor a 0."
-          );
-        }
-      }
-
-      productoId = boton.dataset.productoId;
-      productoMarca = boton.dataset.productoMarca;
-      productoContenido = boton.dataset.productoContenido;
-      productoMedida = boton.dataset.productoMedida;
-      productoPrecio = boton.dataset.productoPrecio;
-
-      alert(
-        `Agregado al carrito de compras\n\n${productoMarca} 
-        ${productoContenido} 
-        ${productoMedida}\n\nPrecio $${productoPrecio} * Unidades ${cantidad} = $${(
-          parseFloat(productoPrecio) * parseInt(cantidad)
-        ).toFixed(2)}`
-      );
-
-      boton.innerHTML = "AGREGADO";
-      boton.disabled = true;
-
-      subtotal = parseFloat(productoPrecio) * cantidad;
-
-      compra.forEach((item) => {
-        if (productoId === item.productoId) {
-          matchingItem = item;
-        }
-      });
-
-      if (matchingItem) {
-        matchingItem.cantidad += cantidad;
-        matchingItem.subtotal += subtotal;
-      } else {
-        compra.push({
-          productoId: productoId,
-          productoMarca: productoMarca,
-          productoContenido: productoContenido,
-          productoMedida: productoMedida,
-          productoPrecio: productoPrecio,
-          cantidad: cantidad,
-          subtotal: subtotal,
+        compra.forEach((item) => {
+          if (productoId === item.productoId) {
+            matchingItem = item;
+          }
         });
+
+        if (matchingItem) {
+          matchingItem.cantidad += cantidad;
+          matchingItem.subtotal += subtotal;
+        } else {
+          compra.push({
+            productoId: productoId,
+            productoMarca: productoMarca,
+            productoContenido: productoContenido,
+            productoMedida: productoMedida,
+            productoPrecio: productoPrecio,
+            cantidad: cantidad,
+            subtotal: subtotal,
+          });
+        }
+
+        botonCancelar.disabled = false;
+        botonPagar.disabled = false;
+        document
+          .querySelector(".js-pago-total")
+          .classList.add("js-pago-total-amarillo");
+
+        actualizarTotales();
+
+        boton.innerHTML = "CANCELAR";
+        boton.classList.add("js-boton-cancelar-producto");
+        boton.classList.remove("js-boton-agregar-producto");
       }
+    } else {
+      if (
+        !confirm("¿Confirma CANCELAR este producto de la lista de compras?")
+      ) {
+        return;
+      }
+      alert("Producto CANCELADO de la lista de compras.");
 
-      cantidadDeCompras = 0;
-      sumaDeCompras = 0;
+      // Declarar la variable productoId
+      let productoId = boton.dataset.productoId;
 
-      compra.forEach((item) => {
-        cantidadDeCompras += item.cantidad;
-        sumaDeCompras += item.subtotal;
-      });
+      // Encontrar el objeto del producto en el array compra
+      let indice = compra.findIndex((item) => item.productoId === productoId);
 
-      document.querySelector(
-        ".js-cantidad-compras"
-      ).innerHTML = `${cantidadDeCompras}`;
-      document.querySelector(
-        ".js-suma-compras"
-      ).innerHTML = `$${sumaDeCompras}`;
-      document.querySelector(".js-pago-total").innerHTML = `$${(
-        sumaDeCompras * 1.21
-      ).toFixed(2)}`;
+      // Eliminar el objeto del producto del array compra
+      if (indice !== -1) {
+        compra.splice(indice, 1);
+      }
+      // Actualizar totales
+      actualizarTotales();
 
-      botonCancelar.disabled = false;
-      botonPagar.disabled = false;
-      document
-        .querySelector(".js-pago-total")
-        .classList.add("js-pago-total-amarillo");
+      // Actualizar el contenido del textarea
+      actualizarTextarea();
 
-      console.log(
-        "%cNUEVO PRODUCTO AGREGADO",
-        "text-decoration: underline; color: red; font-weight: bold;"
-      );
-      console.log(`${productoMarca} ${productoContenido} ${productoMedida}`);
-      console.log(
-        `Precio $${productoPrecio} * Unidades ${cantidad} = $${
-          parseFloat(productoPrecio) * parseInt(cantidad)
-        }`
-      );
-      console.log(
-        `%cSUB-TOTAL = $${sumaDeCompras} // TOTAL UNIDADES = ${cantidadDeCompras}`,
-        "color: lightblue; font-weight: bold;"
-      );
-      console.log("IVA: * 1.21");
-      console.log(
-        `%cTOTAL = $${(sumaDeCompras * 1.21).toFixed(2)}`,
-        "color: lightgreen; font-weight: bold;"
-      );
+      boton.innerHTML = "AGREGAR";
+      boton.classList.remove("js-boton-cancelar-producto");
+      boton.classList.add("js-boton-agregar-producto");
     }
   });
 });
 
 /*--------------------------------------------------------------//
 
-      CODIGO PARA PAGAR / CANCELAR LA COMPRA TOTAL (y limpiar el console.log)
+       PARA PAGAR / CANCELAR LA COMPRA TOTAL (y limpiar el console.log)
 
 //--------------------------------------------------------------*/
+
+let botonPagar = document.querySelector(".js-boton-pagar-compra");
+let botonCancelar = document.querySelector(".js-boton-cancelar-compra");
 
 function restablecerCompra(tipo) {
   // Restablecer valores a 0
@@ -298,9 +340,10 @@ function restablecerCompra(tipo) {
   console.log(mensajeFinal);
   alert(mensajeFinal);
 
-  document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
+  document.querySelectorAll(".js-boton-cancelar-producto").forEach((boton) => {
     boton.innerHTML = "AGREGAR";
-    boton.disabled = false;
+    boton.classList.remove("js-boton-cancelar-producto");
+    boton.classList.add("js-boton-agregar-producto");
     document
       .querySelector(".js-pago-total")
       .classList.remove("js-pago-total-amarillo");
