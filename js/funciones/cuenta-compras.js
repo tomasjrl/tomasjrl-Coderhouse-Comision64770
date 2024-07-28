@@ -1,8 +1,8 @@
-import { listadoDeCompra } from "../index.js";
-
 /*--------------------------------------------------------------//
      PARA SUMAR UNIDADES Y SUBTOTAL DEL LISTADO DE COMPRA
 //--------------------------------------------------------------*/
+
+import { listadoDeCompra } from "../index.js";
 
 let unidadesDeCompras = 0;
 let subtotalDeCompras = 0;
@@ -64,12 +64,4 @@ export function actualizarTotales() {
   );
 
   return { unidadesDeCompras, subtotalDeCompras };
-}
-
-
-export function actualizarListadoDeCompra() {
-  listadoDeCompra.push = function () {
-    Array.prototype.push.apply(this, arguments); // Agrega el nuevo elemento al array
-    actualizarTextarea(); // Actualiza el contenido del textarea
-  };
 }

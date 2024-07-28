@@ -1,12 +1,12 @@
 /*--------------------------------------------------------------//
-     PARA AGREGAR AL HTML EL LISTADO DE PRODUCTOS (productos.js)
+      PARA AGREGAR AL HTML EL LISTADO DE PRODUCTOS (productos.js)
 //--------------------------------------------------------------*/
 
 // La funcion forEach recorre cada objeto de productos.js
 // para que sume el contenido obtenido de cada producto a productosHTML
 
 export function generarHTMLProductos(productos) {
-  let productosHTML = '';
+  let productosHTML = "";
   productos.forEach((producto) => {
     productosHTML += `
     <div class="producto-contenedor js-producto-contenedor" 
