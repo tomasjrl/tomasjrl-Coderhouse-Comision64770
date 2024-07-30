@@ -3,8 +3,8 @@ let listadoDeCompra = [];
 import { productos } from "./data/productos.js";
 import { generarHTMLProductos } from "./html/contenedor-html.js";
 import { buscarProductos } from "./html/buscador.js";
-import { actualizarTotales } from "./funciones/cuenta-compras.js";
-import { procesoCompra } from "./funciones/proceso-compras.js";
+import { actualizarTotales } from "./utils/cuenta-compras.js";
+import { procesoCompra } from "./utils/proceso-compras.js";
 export { listadoDeCompra };
 
 /*--------------------------------------------------------------//
