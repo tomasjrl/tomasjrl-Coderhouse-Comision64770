@@ -8,27 +8,28 @@ import { procesoCompra } from "./funciones/proceso-compras.js";
 export { listadoDeCompra };
 
 /*--------------------------------------------------------------//
-     PARA AGREGAR AL HTML EL LISTADO DE PRODUCTOS  
+     AGREGA EL LISTADO DE PRODUCTOS POR ALFABETO AL HTML 
 //--------------------------------------------------------------*/
 
+productos.sort((a, b) => a.marca.localeCompare(b.marca));
 let htmlProductos = generarHTMLProductos(productos);
 document.querySelector(".js-productos-grid").innerHTML = htmlProductos;
 
 /*--------------------------------------------------------------//
-     PARA BUSCAR PRODUCTOS EN EL HTML
+     BUSCA PRODUCTOS EN EL HTML
 //--------------------------------------------------------------*/
 
 buscarProductos();
 document.querySelector("#buscador").addEventListener("input", buscarProductos);
 
 /*--------------------------------------------------------------//
-     PARA SUMAR UNIDADES Y SUBTOTAL DEL LISTADO DE COMPRA
+     SUMA UNIDADES Y SUBTOTAL DEL LISTADO DE COMPRA
 //--------------------------------------------------------------*/
 
 actualizarTotales();
 
 /*--------------------------------------------------------------//
-     PARA AGREGAR / CANCELAR / PAGAR / CANCELAR PROCESO DE COMPRA     
+     PROCESO DE COMPRA PARA AGREGAR-CANCELAR / PAGAR-CANCELAR     
 //--------------------------------------------------------------*/
 
 procesoCompra(listadoDeCompra);
