@@ -13,15 +13,18 @@ export function generarHTMLProductos(productos) {
        data-producto-id="${producto.identificador}"
        data-producto-marca="${producto.marca}"
        data-producto-contenido="${producto.contenido}"
-       data-producto-medida="${producto.medida}">
+       data-producto-medida="${producto.medida}"
+       data-producto-stock="${producto.stock}">
           <div>
             <img src="${producto.imagen}">
           </div>
           <section class="productos-informacion">
+            <div class="id-producto">${producto.identificador}</div>
             <div class="marca-producto">${producto.marca}</div>
             <div class="contenido-producto">${producto.contenido}</div>
             <div class="medida-producto">${producto.medida}</div>
             <div class="precio-producto">$${producto.precio}</div>
+            <div class="stock-producto stock js-producto-stock">Stock: ${producto.stock}</div>
           </section>
           <div class="botones-agregar-cancelar">
             <button class="boton-agregar js-boton-agregar-producto" 
@@ -30,10 +33,12 @@ export function generarHTMLProductos(productos) {
             data-producto-contenido="${producto.contenido}" 
             data-producto-medida="${producto.medida}"
             data-producto-precio="${producto.precio}"
-            >AGREGAR</button>
+            data-producto-stock="${producto.stock}">
+            AGREGAR</button>
           </div>
         </div>
     `;
   });
   return productosHTML;
 }
+

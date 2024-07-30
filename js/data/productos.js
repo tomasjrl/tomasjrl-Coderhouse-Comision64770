@@ -1,10 +1,4 @@
-/*--------------------------------------------------------------//
-
-     LISTA DE PRODUCTOS
-
-//--------------------------------------------------------------*/
-
-export const productos = [
+export let productos = [
   {
     identificador: "00000001",
     imagen: "assets/images/1.webp",
@@ -12,6 +6,7 @@ export const productos = [
     contenido: "Amargo",
     medida: "x2L",
     precio: 999,
+    stock: 42,
   },
   {
     identificador: "00000002",
@@ -20,6 +15,7 @@ export const productos = [
     contenido: "Queso azul",
     medida: "x100gr",
     precio: 1199,
+    stock: 47,
   },
   {
     identificador: "00000003",
@@ -28,6 +24,7 @@ export const productos = [
     contenido: "Fideos varios",
     medida: "x500gr",
     precio: 949,
+    stock: 44,
   },
   {
     identificador: "00000004",
@@ -36,6 +33,7 @@ export const productos = [
     contenido: "Vodka sabores",
     medida: "x700cc",
     precio: 999,
+    stock: 40,
   },
   {
     identificador: "00000005",
@@ -44,6 +42,7 @@ export const productos = [
     contenido: "Antitranspirante aerosol",
     medida: "x150ml",
     precio: 1689,
+    stock: 46,
   },
   {
     identificador: "00000006",
@@ -52,6 +51,7 @@ export const productos = [
     contenido: "Desodorante de ambiente",
     medida: "x360ml",
     precio: 1435,
+    stock: 44,
   },
   {
     identificador: "00000007",
@@ -60,6 +60,7 @@ export const productos = [
     contenido: "Arroz largo fino",
     medida: "x1kg",
     precio: 1589,
+    stock: 47,
   },
   {
     identificador: "00000008",
@@ -68,6 +69,7 @@ export const productos = [
     contenido: "Café instantáneo frasco",
     medida: "x100gr",
     precio: 2589,
+    stock: 40,
   },
   {
     identificador: "00000009",
@@ -76,6 +78,7 @@ export const productos = [
     contenido: "Yerba",
     medida: "x500gr",
     precio: 999,
+    stock: 48,
   },
   {
     identificador: "00000010",
@@ -84,6 +87,7 @@ export const productos = [
     contenido: "Sabor Original",
     medida: "x2.25L",
     precio: 2100,
+    stock: 49,
   },
   {
     identificador: "00000011",
@@ -92,6 +96,7 @@ export const productos = [
     contenido: "Zero",
     medida: "x2.25L",
     precio: 2100,
+    stock: 41,
   },
   {
     identificador: "00000012",
@@ -100,6 +105,7 @@ export const productos = [
     contenido: "Cerveza Corona Rubia",
     medida: "x710cc",
     precio: 2534,
+    stock: 43,
   },
   {
     identificador: "00000013",
@@ -108,6 +114,7 @@ export const productos = [
     contenido: "Liviana",
     medida: "x1L",
     precio: 1929,
+    stock: 46,
   },
   {
     identificador: "00000014",
@@ -116,6 +123,7 @@ export const productos = [
     contenido: "Salado Sin Piel",
     medida: "x100gr",
     precio: 111,
+    stock: 47,
   },
   {
     identificador: "00000015",
@@ -124,6 +132,7 @@ export const productos = [
     contenido: "Helado Exquisita Vainilla",
     medida: "x52gr",
     precio: 1300,
+    stock: 40,
   },
   {
     identificador: "00000016",
@@ -132,6 +141,7 @@ export const productos = [
     contenido: "Helado Exquisita Chocolate",
     medida: "x52gr",
     precio: 1300,
+    stock: 42,
   },
   {
     identificador: "00000017",
@@ -140,6 +150,7 @@ export const productos = [
     contenido: "Helado Exquisita Frutilla",
     medida: "x52gr",
     precio: 1300,
+    stock: 43,
   },
   {
     identificador: "00000018",
@@ -148,6 +159,7 @@ export const productos = [
     contenido: "Helado Exquisita Dulce De Leche",
     medida: "x52gr",
     precio: 1300,
+    stock: 44,
   },
   {
     identificador: "00000019",
@@ -156,6 +168,7 @@ export const productos = [
     contenido: "Gaseosa Sprite Lima-limón",
     medida: "x2.25L",
     precio: 2175,
+    stock: 40,
   },
   {
     identificador: "00000020",
@@ -164,6 +177,7 @@ export const productos = [
     contenido: "Gaseosa Pepsi Black",
     medida: "x1.5L",
     precio: 1470,
+    stock: 47,
   },
   {
     identificador: "00000021",
@@ -172,6 +186,7 @@ export const productos = [
     contenido: "Gaseosa Mirinda Naranja",
     medida: "x2.25L",
     precio: 1700,
+    stock: 41,
   },
   {
     identificador: "00000022",
@@ -180,6 +195,7 @@ export const productos = [
     contenido: "Sabor Original",
     medida: "x2L",
     precio: 1463,
+    stock: 48,
   },
 
 ];

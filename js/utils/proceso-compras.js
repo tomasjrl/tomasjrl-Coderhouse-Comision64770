@@ -1,9 +1,14 @@
 import { actualizarTotales } from "./cuenta-compras.js";
+import { productos } from "../data/productos.js";
+import { actualizarStock , restaurarStock } from "../html/actualizarStock.js";
 
+let stockOriginal = {};
+let stockRestante = 0;
+let botonPagar = document.querySelector(".js-boton-pagar-compra");
+let botonCancelar = document.querySelector(".js-boton-cancelar-compra");
 
 export function procesoCompra(listadoDeCompra) {
-
-/*--------------------------------------------------------------//
+  /*--------------------------------------------------------------//
      AGREGA/ACTUALIZA AL HTML EL LISTADO DE COMPRA AL TEXTAREA DEL POP-UP      
 //--------------------------------------------------------------*/
 
@@ -27,18 +32,22 @@ export function procesoCompra(listadoDeCompra) {
       document.getElementById("texto-popup").value =
         "Listado de compra:\n\n" + contenido;
     }
+
+    if (listadoDeCompra.length === 0) {
+      botonPagar.disabled = true;
+      botonCancelar.disabled = true;
+    } else {
+      botonPagar.disabled = false;
+      botonCancelar.disabled = false;
+    }
   }
 
-  // Actualiza el textarea
   listadoDeCompra.push = function () {
-    Array.prototype.push.apply(this, arguments); // Agrega el nuevo elemento al array
-    actualizarTextarea(); // Actualiza el contenido del textarea
+    Array.prototype.push.apply(this, arguments);
+    actualizarTextarea();
   };
 
-  // Inicializa el contenido del textarea por defecto
-  actualizarTextarea();
-
-/*--------------------------------------------------------------//
+  /*--------------------------------------------------------------//
      BOTON AGREGAR / CANCELAR PRODUCTO AL LISTADO DE COMPRA
 //--------------------------------------------------------------*/
 
@@ -54,12 +63,27 @@ export function procesoCompra(listadoDeCompra) {
             productoContenido,
             productoMedida,
             productoPrecio,
+            productoStock,
             subtotal,
             matchingItem;
 
+          productoId = boton.dataset.productoId;
+          productoMarca = boton.dataset.productoMarca;
+          productoContenido = boton.dataset.productoContenido;
+          productoMedida = boton.dataset.productoMedida;
+          productoPrecio = boton.dataset.productoPrecio;
+          productoStock = boton.dataset.productoStock;
+
+          //GUARDA ID Y STOCK ORIGINAL
+          if (!stockOriginal[productoId]) {
+            stockOriginal[productoId] = productoStock;
+          }
+
           while (true) {
             let input = prompt(
-              "Ingrese la cantidad de unidades que desea agregar:"
+              "Ingrese la cantidad de unidades que desea agregar (máximo " +
+                productoStock +
+                " unidades):"
             );
 
             if (input === null) {
@@ -69,20 +93,27 @@ export function procesoCompra(listadoDeCompra) {
 
             unidades = parseInt(input);
 
-            if (!isNaN(unidades) && unidades > 0) {
+            if (!isNaN(unidades) && unidades > 0 && unidades <= productoStock) {
+              stockRestante = productoStock - unidades;
+
+              // Actualizar el stock del producto en el array productos
+              productos.forEach((producto) => {
+                if (producto.identificador === productoId) {
+                  producto.stock = stockRestante;
+                }
+              });
+
+              actualizarStock(productoId, stockRestante);
+
               break;
             } else {
               alert(
-                "Cantidad no válida. Pruebe nuevamente ingresando un número mayor a 0."
+                "Cantidad no válida. Pruebe nuevamente ingresando un número mayor a 0 y menor o igual al máximo de unidades " +
+                  productoStock +
+                  "."
               );
             }
           }
-
-          productoId = boton.dataset.productoId;
-          productoMarca = boton.dataset.productoMarca;
-          productoContenido = boton.dataset.productoContenido;
-          productoMedida = boton.dataset.productoMedida;
-          productoPrecio = boton.dataset.productoPrecio;
 
           alert(
             `Agregado a la lista de compras:\n\n${productoMarca} ${productoContenido} ${productoMedida}\n\nPrecio $${productoPrecio} * Unidades ${unidades} = $${
@@ -98,20 +129,15 @@ export function procesoCompra(listadoDeCompra) {
             }
           });
 
-          if (matchingItem) {
-            matchingItem.productoUnidades += unidades;
-            matchingItem.productoSubtotal += subtotal;
-          } else {
-            listadoDeCompra.push({
-              productoId: productoId,
-              productoMarca: productoMarca,
-              productoContenido: productoContenido,
-              productoMedida: productoMedida,
-              productoPrecio: productoPrecio,
-              productoUnidades: unidades,
-              productoSubtotal: subtotal,
-            });
-          }
+          listadoDeCompra.push({
+            productoId: productoId,
+            productoMarca: productoMarca,
+            productoContenido: productoContenido,
+            productoMedida: productoMedida,
+            productoPrecio: productoPrecio,
+            productoUnidades: unidades,
+            productoSubtotal: subtotal,
+          });
 
           botonCancelar.disabled = false;
           botonPagar.disabled = false;
@@ -139,13 +165,31 @@ export function procesoCompra(listadoDeCompra) {
           (item) => item.productoId === productoId
         );
 
+        // debugger; //ANTES DE RESTAURAR STOCK
+        // console.log(productos);
+
         if (indice !== -1) {
+          // Restaurar el stock original
+          productos.forEach((producto) => {
+            if (producto.identificador === productoId) {
+              producto.stock = stockOriginal[productoId];
+            }
+          });
+
           listadoDeCompra.splice(indice, 1);
         }
+
+        // debugger; //DESPUES DE RESTAURAR STOCK
+        // console.log(productos);
 
         actualizarTotales();
 
         actualizarTextarea();
+
+        const idProducto = boton.dataset.productoId;
+        const elementos = document.querySelectorAll(".id-producto");
+
+        restaurarStock();
 
         boton.innerHTML = "AGREGAR";
         boton.classList.remove("js-boton-cancelar-producto");
@@ -154,12 +198,9 @@ export function procesoCompra(listadoDeCompra) {
     });
   });
 
-/*--------------------------------------------------------------//
+  /*--------------------------------------------------------------//
      PARA PAGAR / CANCELAR LA COMPRA TOTAL
 //--------------------------------------------------------------*/
-
-  let botonPagar = document.querySelector(".js-boton-pagar-compra");
-  let botonCancelar = document.querySelector(".js-boton-cancelar-compra");
 
   function restablecerCompra(tipo) {
     // Restablecer valores a 0
@@ -170,16 +211,25 @@ export function procesoCompra(listadoDeCompra) {
     botonCancelar.disabled = true;
     botonPagar.disabled = true;
 
+    // debugger; //ANTES DE RESTAURAR STOCK
+    // console.log(productos);
+
     // Restablezco el array de compra.js
+    listadoDeCompra.forEach((item) => {
+      // Restaurar el stock original para todos los productos en la lista de compra
+      productos.forEach((producto) => {
+        if (producto.identificador === item.productoId) {
+          producto.stock = stockOriginal[item.productoId];
+        }
+      });
+    });
+
     listadoDeCompra.splice(0, listadoDeCompra.length);
 
-    // Actualizo el contenido del textarea
-    actualizarTextarea();
 
-    // Limpio el console.log
+    actualizarTextarea();
     console.clear();
 
-    // MensajeFinal indicando proceso de compra COMPLETADO O CANCELADO alert + console.log
     const mensajeFinal = `Proceso de compra ${
       tipo === "pagar" ? "COMPLETADO" : "CANCELADO"
     }. Todos los datos han sido reiniciados.`;
@@ -198,7 +248,6 @@ export function procesoCompra(listadoDeCompra) {
       });
   }
 
-  // Pregunta indicando proceso de compra COMPLETADO O CANCELADO  para alert + console.log
   function agregarEventoBoton(tipo) {
     document
       .querySelector(`.js-boton-${tipo}-compra`)
@@ -209,6 +258,8 @@ export function procesoCompra(listadoDeCompra) {
           )
         ) {
           restablecerCompra(tipo);
+
+          restaurarStock();
         }
       });
   }

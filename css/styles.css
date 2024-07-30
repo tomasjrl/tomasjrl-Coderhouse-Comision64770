@@ -33,6 +33,10 @@ h2 {
   font-weight: 500;
 }
 
+.stock {
+  font-size: 1rem;
+}
+
 /* ----------------- HEADER HERO FOOTER ----------------- */
 
 
@@ -102,6 +106,10 @@ main {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 16px;
+}
+
+.id-producto {
+  display: none;
 }
 
 .producto-contenedor {
