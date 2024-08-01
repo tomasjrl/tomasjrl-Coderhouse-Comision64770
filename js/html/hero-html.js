@@ -1,3 +1,8 @@
+/*
+
+FUNCION A EXPORTAR CUANDO RESUELVA QUE LOS BOTONES DE LOS PRODUCTOS FUNCIONEN
+POR AHORA QUEDA COMENTADO
+
 export function crearHeroSection() {
   const section = document.querySelector('.hero-section');
   const heroHTML = `
@@ -40,9 +45,11 @@ export function crearHeroSection() {
     <!-- Popup -->
     <div id="popup">
       <div id="contenido-popup">
-        <textarea id="texto-popup">Listado de Compra:</textarea>
+        <textarea id="texto-popup" disabled>Listado de Compra:</textarea>
       </div>
     </div>
   `;
   section.innerHTML = heroHTML;
 }
+
+*/
