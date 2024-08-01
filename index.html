@@ -1,101 +1,42 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<!-- METADATOS -->
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ENLACE A FAVICON -->
   <link rel="shortcut icon" href="assets/icons/favicon.svg" type="image/x-icon">
-
-  <!-- ENLACE A ESTILOS -->
   <link rel="stylesheet" href="css/styles.css">
-
-  <!-- TITULO DEL SITIO WEB -->
   <title>SuperPrecios</title>
-
-  <!-- DESCRIPCION DEL SITIO WEB -->
-  <meta name="description"
-    content="Sitio estilo 'SuperPrecios' con fines didácticos para el aprendizaje del lenguaje Javascript">
+  <meta name="description" content="Sitio estilo 'SuperPrecios' con fines didácticos para el aprendizaje del lenguaje Javascript">
   <meta name="keywords" content="comercio, productos, venta, compra, tienda, precio, lista">
   <meta name="author" content="Tomás Stabilini">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="SuperPrecios">
+  <meta property="og:description" content="Sitio estilo 'SuperPrecios' con fines didácticos para el aprendizaje del lenguaje Javascript">
+  <meta property="og:image" content="assets/icons/meta-image.webp">
+  <meta property="og:url" content="https://tomasjrl.github.io/tomasjrl-Coderhouse-Comision64770/">
 </head>
-
-<!-- BODY -->
 
 <body>
 
-  <!-- HEADER -->
   <header>
     <h1>SuperPrecios</h1>
   </header>
 
-  <!-- MAIN -->
-
   <main>
     <section class="hero-section">
-      <div class="su-compra">
-        <h2>SU COMPRA</h2>
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#f2f2f2"
-          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="10" cy="20.5" r="1" />
-          <circle cx="18" cy="20.5" r="1" />
-          <path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1" />
-        </svg>
-      </div>
-      <table>
-        <tbody>
-          <tr>
-            <td>Unidades:</td>
-            <td class="js-cantidad-compras">0</td>
-          </tr>
-          <tr>
-            <td>Sub-Total:</td>
-            <td class="js-suma-compras">$0</td>
-          </tr>
-          <tr>
-            <td>IVA:</td>
-            <td>* 1.21</td>
-          </tr>
-          <tr>
-            <td class="pago-total">Total:</td>
-            <td class="pago-total js-pago-total">$0</td>
-
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="2" class="botones-pago-cancelar">
-              <button class="boton-pagar js-boton-pagar-compra" disabled>PAGAR</button>
-              <button class="boton-cancelar js-boton-cancelar-compra" disabled>Cancelar</button>
-            </td>
-          </tr>
-        </tfoot>
-      </table>
-           <!-- Popup -->
-           <div id="popup">
-            <div id="contenido-popup">
-              <textarea id="texto-popup" disabled></textarea>
-            </div>
-          </div>
+     <!-- codigo agregado con javascript (index.js -> hero-html.js) -->
     </section>
 
     <div id="buscador-productos">
       <input class="search-bar" type="text" id="buscador" placeholder="Buscador de Productos">
     </div>
 
-
-
     <section class="productos-grid js-productos-grid">
-
-      <!-- codigo agregado con javascript -->
-
+     <!-- codigo agregado con javascript (index.js -> contenedor-html.js) -->
     </section>
   </main>
 
-  <!-- FOOTER -->
   <footer>
     <span>&copy; 2024 SuperPrecios</span>
     <div>
@@ -133,7 +74,7 @@
   </footer>
 
   <!-- SCRIPTS -->
-  <!-- productos.js deben estar cargado ANTES que index.js -->
+  <!-- productos.js deben estar cargados ANTES que index.js -->
   <script src="js/data/productos.js" type="module"></script>
   <script src="js/index.js" type="module"></script>
 </body>
