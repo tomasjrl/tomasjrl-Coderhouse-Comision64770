@@ -41,4 +41,3 @@ export function generarHTMLProductos(productos) {
   });
   return productosHTML;
 }
-

@@ -11,6 +11,13 @@ export function actualizarTotales() {
   unidadesDeCompras = 0;
   subtotalDeCompras = 0;
 
+  if (unidadesDeCompras === 0) {
+    const botones = document.querySelectorAll(".js-boton-hero");
+    botones.forEach((boton) => {
+      boton.disabled = true;
+    });
+  }
+
   listadoDeCompra.forEach((item) => {
     unidadesDeCompras += item.productoUnidades;
     subtotalDeCompras += item.productoSubtotal;

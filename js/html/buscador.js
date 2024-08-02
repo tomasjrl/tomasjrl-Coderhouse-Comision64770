@@ -20,5 +20,7 @@ export function buscarProductos() {
       productoElemento.style.display = "none";
     }
   });
-  document.querySelector("#buscador").addEventListener("input", buscarProductos);
+  document
+    .querySelector("#buscador")
+    .addEventListener("input", buscarProductos);
 }

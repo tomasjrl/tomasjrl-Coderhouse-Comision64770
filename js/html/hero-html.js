@@ -1,8 +1,3 @@
-/*
-
-FUNCION A EXPORTAR CUANDO RESUELVA QUE LOS BOTONES DE LOS PRODUCTOS FUNCIONEN
-POR AHORA QUEDA COMENTADO
-
 export function crearHeroSection() {
   const section = document.querySelector('.hero-section');
   const heroHTML = `
@@ -30,14 +25,14 @@ export function crearHeroSection() {
         </tr>
         <tr>
           <td class="pago-total">Total:</td>
-          <td class="pago-total js-pago-total">$0</td>
+          <td class="pago-total js-pago-total js-pago-total-amarillo">$0.00</td>
         </tr>
       </tbody>
       <tfoot>
         <tr>
           <td colspan="2" class="botones-pago-cancelar">
-            <button class="boton-pagar js-boton-pagar-compra" disabled>PAGAR</button>
-            <button class="boton-cancelar js-boton-cancelar-compra" disabled>Cancelar</button>
+            <button class="boton-pagar js-boton-pagar-compra js-boton-hero" disabled >PAGAR</button>
+            <button class="boton-cancelar js-boton-cancelar-compra js-boton-hero" disabled >Cancelar</button>
           </td>
         </tr>
       </tfoot>
@@ -49,7 +44,7 @@ export function crearHeroSection() {
       </div>
     </div>
   `;
-  section.innerHTML = heroHTML;
-}
 
-*/
+  const fragment = document.createRange().createContextualFragment(heroHTML);
+  section.appendChild(fragment);
+}

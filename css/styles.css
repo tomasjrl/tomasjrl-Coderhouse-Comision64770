@@ -39,15 +39,14 @@ h2 {
 
 /* ----------------- HEADER HERO FOOTER ----------------- */
 
-
 #contenido-popup {
   padding: 10px;
   width: 230px;
 }
 
 #texto-popup {
-  width: 100%; 
-  height: 150px; 
+  width: 100%;
+  height: 150px;
   resize: vertical;
   background-color: rgb(220, 222, 223);
   padding: 5px;
@@ -79,8 +78,8 @@ header {
 }
 
 tbody tr {
-display: flex;
-justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .su-compra {
@@ -126,7 +125,7 @@ main {
 }
 
 .productos-informacion {
-  background-color:  rgb(205, 6, 23);
+  background-color: rgb(205, 6, 23);
 }
 
 footer,
@@ -176,7 +175,7 @@ button {
   padding: 10px 0;
 }
 
-.botones-agregar-cancelar{
+.botones-agregar-cancelar {
   display: flex;
   justify-content: center;
 }
@@ -201,7 +200,7 @@ button {
   background-color: rgb(20, 178, 20);
 }
 
-.js-boton-agregar-producto:enabled:hover, 
+.js-boton-agregar-producto:enabled:hover,
 .js-boton-pagar-compra:enabled:hover,
 .js-boton-cancelar-producto:hover {
   transform: scale(1.1);
@@ -217,7 +216,6 @@ main #lista-productos {
   padding: 20px 0;
 }
 
-
 button:disabled,
 button:disabled:hover {
   cursor: default;
@@ -225,12 +223,11 @@ button:disabled:hover {
   color: #bfc0c8;
 }
 
-
 /* ----------------- MEDIAQUERIES ----------------- */
 
 @media (max-width: 645px) {
   .hero-section,
   footer {
-flex-direction: column;
+    flex-direction: column;
   }
 }

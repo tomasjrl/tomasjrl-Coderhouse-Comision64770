@@ -1,6 +1,5 @@
 import { productos } from "../data/productos.js";
 
-
 export function actualizarStock(productoId, stockRestante) {
   const idProducto = productoId;
   const elementos = document.querySelectorAll(".id-producto");
@@ -15,7 +14,6 @@ export function actualizarStock(productoId, stockRestante) {
   });
 }
 
-
 export function restaurarStock() {
   document.querySelectorAll(".id-producto").forEach((elemento) => {
     const idProducto = elemento.textContent;
@@ -26,4 +24,24 @@ export function restaurarStock() {
       productos.find((producto) => producto.identificador === idProducto).stock
     }`;
   });
+}
+
+export function actualizarTextoPopup(listadoDeCompra) {
+  const listadoDeComprasTexto =
+    listadoDeCompra.length === 0
+      ? "Listado de Compra:"
+      : listadoDeCompra
+          .map((producto) => {
+            return `
+        ${producto.productoMarca} 
+        ${producto.productoContenido} 
+        ${producto.productoMedida}
+        $${producto.productoPrecio}
+        Unidades: ${producto.productoUnidades}
+        Sub-Total: $${producto.productoSubtotal}
+      `;
+          })
+          .join("______________");
+
+  document.getElementById("texto-popup").value = listadoDeComprasTexto;
 }
