@@ -24,7 +24,7 @@ h2 {
   font-size: 1.9rem;
 }
 
-.nombre-producto {
+.marca-producto {
   font-size: 1.1rem;
 }
 
@@ -33,7 +33,25 @@ h2 {
   font-weight: 500;
 }
 
+.stock {
+  font-size: 1rem;
+}
+
 /* ----------------- HEADER HERO FOOTER ----------------- */
+
+#contenido-popup {
+  padding: 10px;
+  width: 230px;
+}
+
+#texto-popup {
+  width: 100%;
+  height: 150px;
+  resize: vertical;
+  background-color: rgb(220, 222, 223);
+  padding: 5px;
+  border-radius: 6px;
+}
 
 header,
 .hero-section,
@@ -59,6 +77,11 @@ header {
   padding: 10px 0;
 }
 
+tbody tr {
+  display: flex;
+  justify-content: space-between;
+}
+
 .su-compra {
   display: flex;
   flex-direction: column;
@@ -80,23 +103,29 @@ main {
 
 .productos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
 }
 
-.productos-contenedor {
+.id-producto {
+  display: none;
+}
+
+.producto-contenedor {
   background-color: #153081;
   border-radius: 4px;
   padding: 2px;
   color: #eaeaea;
+  max-width: 400px;
+  margin: 0 auto; /* Centra el contenedor del grid */
 }
 
-.productos-contenedor img {
+.producto-contenedor img {
   width: 100%;
 }
 
 .productos-informacion {
-  background-color:  rgb(205, 6, 23);
+  background-color: rgb(205, 6, 23);
 }
 
 footer,
@@ -108,10 +137,10 @@ footer,
 }
 
 footer #redes li {
-  margin-right: 10px;
-  margin-top: 4px;
+  margin: 4px 10px 0 0;
 }
 
+.js-pago-total-amarillo,
 footer #redes li a:hover {
   color: #f5ea1e;
   transition: 0.2s;
@@ -119,17 +148,14 @@ footer #redes li a:hover {
 
 /* ----------------- ELEMENTOS / BOTONES ----------------- */
 
-.hero-section table {
-  text-align: end;
-}
-
 .search-bar,
 button {
   padding: 6px 12px;
-  margin-top: 20px;
+  margin: 10px 0;
+  padding: 10px;
   border-radius: 16px;
   border: none;
-  cursor: pointer;
+  cursor: text;
 }
 
 .search-bar {
@@ -137,7 +163,10 @@ button {
   width: 80%;
 }
 
+.boton-pagar:hover,
+.boton-agregar:hover,
 .search-bar:hover {
+  color: #342e00;
   background-color: #f5ea1e;
   transition: 0.2s;
 }
@@ -146,36 +175,13 @@ button {
   padding: 10px 0;
 }
 
-.botones-comprar-cancelar{
+.botones-agregar-cancelar {
   display: flex;
   justify-content: center;
 }
 
-.boton-buscar {
-  background-color: rgb(205, 6, 23);
-  color: #eaeaea;
-}
-
-.boton-buscar:hover,
-.boton-cancelar:hover {
-  background-color: rgb(241, 1, 21);
-  transition: 0.2s;
-}
-
 .boton-pagar,
-.boton-comprar {
-  background: rgb(14, 169, 27);
-  color: #eaeaea;
-  cursor: pointer;
-  font-size: 1.2rem;
-}
-
-.boton-pagar:hover,
-.boton-comprar:hover {
-  background: rgb(7, 233, 26);
-  transition: 0.2s;
-}
-
+.boton-agregar,
 .boton-cancelar {
   background: none;
   color: #eaeaea;
@@ -183,8 +189,21 @@ button {
   cursor: pointer;
 }
 
+.js-boton-cancelar-producto,
 .boton-cancelar:hover {
+  color: rgb(240, 233, 233);
   background-color: rgb(205, 6, 23);
+  transition: 0.2s;
+}
+
+.js-boton-pagar-compra {
+  background-color: rgb(20, 178, 20);
+}
+
+.js-boton-agregar-producto:enabled:hover,
+.js-boton-pagar-compra:enabled:hover,
+.js-boton-cancelar-producto:hover {
+  transform: scale(1.1);
   transition: 0.2s;
 }
 
@@ -197,16 +216,17 @@ main #lista-productos {
   padding: 20px 0;
 }
 
-
-
+button:disabled,
+button:disabled:hover {
+  cursor: default;
+  background-color: transparent;
+  color: #bfc0c8;
+}
 
 /* ----------------- MEDIAQUERIES ----------------- */
 
-@media (max-width: 580px) {
-  .hero-section {
-flex-direction: column;
-  }
-
+@media (max-width: 645px) {
+  .hero-section,
   footer {
     flex-direction: column;
   }

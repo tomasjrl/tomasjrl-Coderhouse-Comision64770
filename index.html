@@ -1,392 +1,42 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<!-- METADATOS -->
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ENLACE A FAVICON -->
   <link rel="shortcut icon" href="assets/icons/favicon.svg" type="image/x-icon">
-
-  <!-- ENLACE A ESTILOS -->
   <link rel="stylesheet" href="css/styles.css">
-
-  <!-- TITULO DEL SITIO WEB -->
   <title>SuperPrecios</title>
-
-  <!-- DESCRIPCION DEL SITIO WEB -->
-  <meta name="description"
-    content="Sitio estilo 'SuperPrecios' con fines didácticos para el aprendizaje del lenguaje Javascript">
+  <meta name="description" content="Sitio estilo 'SuperPrecios' con fines didácticos para el aprendizaje del lenguaje Javascript">
   <meta name="keywords" content="comercio, productos, venta, compra, tienda, precio, lista">
   <meta name="author" content="Tomás Stabilini">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="SuperPrecios">
+  <meta property="og:description" content="Sitio estilo 'SuperPrecios' con fines didácticos para el aprendizaje del lenguaje Javascript">
+  <meta property="og:image" content="assets/icons/meta-image.webp">
+  <meta property="og:url" content="https://tomasjrl.github.io/tomasjrl-Coderhouse-Comision64770/">
 </head>
-
-<!-- BODY -->
 
 <body>
 
-  <!-- HEADER -->
   <header>
     <h1>SuperPrecios</h1>
   </header>
 
-  <!-- MAIN -->
-
   <main>
-    <div class="hero-section">
-<div class="su-compra">
-      <h2>SU COMPRA</h2>
-      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#f2f2f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="20.5" r="1"/><circle cx="18" cy="20.5" r="1"/><path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1"/></svg>
-    </div>
-      <table>
-        <tbody>
-          <tr>
-            <td>Productos:</td>
-            <td><span>0</span></td>
-          </tr>
-          <tr>
-            <td>Suma:</td>
-            <td><span>$0</span></td>
-          </tr>
-          <tr>
-            <td>IVA:</td>
-            <td><span>* 1.21</span></td>
-          </tr>
-          <tr>
-            <td class="pago-total">Total:</td>
-            <td><span class="pago-total">$0</span></td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="2" class="botones-pago-cancelar">
-              <button class="boton-pagar">PAGAR</button>
-              <button class="boton-cancelar">Cancelar</button>
-            </td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
+    <section class="hero-section">
+     <!-- codigo agregado con javascript (index.js -> hero-html.js) -->
+    </section>
 
     <div id="buscador-productos">
-      <input class="search-bar" type="text" placeholder="Producto">
-      <button class="boton-buscar">Buscar</button>
+      <input class="search-bar" type="text" id="buscador" placeholder="Buscador de Productos">
     </div>
 
-
-
-    <section class="productos-grid">
-      <div class="productos-contenedor">
-        <div>
-          <img src="assets/images/1.webp">
-        </div>
-        <section class="productos-informacion">
-          <div class="nombre-producto">
-            TRES TORRES <br><span>Amargo <br>x2lt.</span>
-          </div>
-
-          <div class="precio-producto">
-            $999
-          </div>
-        </section>
-        <div>
-          <select>
-            <option selected value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-        </div>
-
-        <div class="botones-comprar-cancelar">
-          <button class="boton-comprar">COMPRAR</button>
-          <button class="boton-cancelar">Cancelar</button>
-        </div>
-      </div>
-
-      <div class="productos-contenedor">
-        <div>
-          <img src="assets/images/2.webp">
-        </div>
-        <section class="productos-informacion">
-          <div class="nombre-producto">
-            LA QUESERA <br><span>Queso azul <br>x100gr.</span>
-          </div>
-
-          <div class="precio-producto">
-            $1199
-          </div>
-        </section>
-        <div>
-          <select>
-            <option selected value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-        </div>
-
-        <div class="botones-comprar-cancelar">
-          <button class="boton-comprar">COMPRAR</button>
-          <button class="boton-cancelar">Cancelar</button>
-        </div>
-      </div>
-
-      <div class="productos-contenedor">
-        <div>
-          <img src="assets/images/3.webp">
-        </div>
-        <section class="productos-informacion">
-          <div class="nombre-producto">
-            MATARAZZO <br><span>Fideos varios <br>x500gr.</span>
-          </div>
-
-          <div class="precio-producto">
-            $949
-          </div>
-        </section>
-        <div>
-          <select>
-            <option selected value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-        </div>
-
-        <div class="botones-comprar-cancelar">
-          <button class="boton-comprar">COMPRAR</button>
-          <button class="boton-cancelar">Cancelar</button>
-        </div>
-      </div>
-
-      <div class="productos-contenedor">
-        <div>
-          <img src="assets/images/4.webp">
-        </div>
-        <section class="productos-informacion">
-          <div class="nombre-producto">
-            SKYY <br><span>Vodka sabores <br>x700cc.</span>
-          </div>
-
-          <div class="precio-producto">
-            $999
-          </div>
-        </section>
-        <div>
-          <select>
-            <option selected value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-        </div>
-
-        <div class="botones-comprar-cancelar">
-          <button class="boton-comprar">COMPRAR</button>
-          <button class="boton-cancelar">Cancelar</button>
-        </div>
-      </div>
-
-      <div class="productos-contenedor">
-        <div>
-          <img src="assets/images/5.webp">
-        </div>
-        <section class="productos-informacion">
-          <div class="nombre-producto">
-            NIVEA MEN <br><span>Antitranspirante aerosol <br>x150ml.</span>
-          </div>
-
-          <div class="precio-producto">
-            $1689
-          </div>
-        </section>
-        <div>
-          <select>
-            <option selected value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-        </div>
-
-        <div class="botones-comprar-cancelar">
-          <button class="boton-comprar">COMPRAR</button>
-          <button class="boton-cancelar">Cancelar</button>
-        </div>
-      </div>
-
-      <div class="productos-contenedor">
-        <div>
-          <img src="assets/images/6.webp">
-        </div>
-        <section class="productos-informacion">
-          <div class="nombre-producto">
-            POETT <br><span>Desodorante de ambiente <br>x360ml.</span>
-          </div>
-
-          <div class="precio-producto">
-            $1435
-          </div>
-        </section>
-        <div>
-          <select>
-            <option selected value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-        </div>
-
-        <div class="botones-comprar-cancelar">
-          <button class="boton-comprar">COMPRAR</button>
-          <button class="boton-cancelar">Cancelar</button>
-        </div>
-      </div>
-
-      <div class="productos-contenedor">
-        <div>
-          <img src="assets/images/7.webp">
-        </div>
-        <section class="productos-informacion">
-          <div class="nombre-producto">
-            LUCCHETTI <br><span>Arron largo fino <br>bolsa x1kg.</span>
-          </div>
-
-          <div class="precio-producto">
-            $1589
-          </div>
-        </section>
-        <div>
-          <select>
-            <option selected value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-        </div>
-
-        <div class="botones-comprar-cancelar">
-          <button class="boton-comprar">COMPRAR</button>
-          <button class="boton-cancelar">Cancelar</button>
-        </div>
-      </div>
-
-      <div class="productos-contenedor">
-        <div>
-          <img src="assets/images/8.webp">
-        </div>
-        <section class="productos-informacion">
-          <div class="nombre-producto">
-            DOLCA <br><span>Café instantáneo <br>frasco x100gr.</span>
-          </div>
-
-          <div class="precio-producto">
-            $2589
-          </div>
-        </section>
-        <div>
-          <select>
-            <option selected value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-        </div>
-
-        <div class="botones-comprar-cancelar">
-          <button class="boton-comprar">COMPRAR</button>
-          <button class="boton-cancelar">Cancelar</button>
-        </div>
-      </div>
-
-      <div class="productos-contenedor">
-        <div>
-          <img src="assets/images/9.webp">
-        </div>
-        <section class="productos-informacion">
-          <div class="nombre-producto">
-            CHAMIGO <br><span>Yerba <br>x500gr.</span>
-          </div>
-
-          <div class="precio-producto">
-            $999
-          </div>
-        </section>
-        <div>
-          <select>
-            <option selected value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-        </div>
-
-        <div class="botones-comprar-cancelar">
-          <button class="boton-comprar">COMPRAR</button>
-          <button class="boton-cancelar">Cancelar</button>
-        </div>
-      </div>
+    <section class="productos-grid js-productos-grid">
+     <!-- codigo agregado con javascript (index.js -> contenedor-html.js) -->
     </section>
   </main>
 
-  <!-- FOOTER -->
   <footer>
     <span>&copy; 2024 SuperPrecios</span>
     <div>
@@ -424,7 +74,9 @@
   </footer>
 
   <!-- SCRIPTS -->
-  <script src="js/principal.js" type="module"></script>
+  <!-- productos.js deben estar cargados ANTES que index.js -->
+  <script src="js/data/productos.js" type="module"></script>
+  <script src="js/index.js" type="module"></script>
 </body>
 
 </html>
