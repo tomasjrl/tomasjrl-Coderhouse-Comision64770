@@ -124,6 +124,13 @@ export function procesoCompra(listadoDeCompra) {
           listadoDeCompra.splice(indice, 1);
         }
 
+        if (listadoDeCompra.length === 0) {
+          const botones = document.querySelectorAll(".js-boton-hero");
+          botones.forEach((boton) => {
+            boton.disabled = true;
+          });
+        }
+
         actualizarTotales();
         actualizarTextoPopup(listadoDeCompra);
 
