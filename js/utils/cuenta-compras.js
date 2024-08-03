@@ -26,42 +26,42 @@ export function actualizarTotales() {
     subtotalDeCompras * 1.21
   ).toFixed(2)}`;
 
-  console.clear();
+  // console.clear();
 
-  console.log(
-    `%cCUENTAS DE SUPERPRECIOS`,
-    "color: lightyellow; font-weight: bold;"
-  );
+  // console.log(
+  //   `%cCUENTAS DE SUPERPRECIOS`,
+  //   "color: lightyellow; font-weight: bold;"
+  // );
 
-  console.log(
-    `%cListado de Compra = ${JSON.stringify(
-      listadoDeCompra.map((producto) => ({
-        ...producto,
-        productoPrecio: `$${producto.productoPrecio}`,
-        productoSubtotal: `$${producto.productoSubtotal}`,
-      })),
-      null,
-      2
-    )}`,
-    "color: lightpink; font-weight: bold;"
-  );
+  // console.log(
+  //   `%cListado de Compra = ${JSON.stringify(
+  //     listadoDeCompra.map((producto) => ({
+  //       ...producto,
+  //       productoPrecio: `$${producto.productoPrecio}`,
+  //       productoSubtotal: `$${producto.productoSubtotal}`,
+  //     })),
+  //     null,
+  //     2
+  //   )}`,
+  //   "color: lightpink; font-weight: bold;"
+  // );
 
-  console.log(
-    `%cTOTAL UNIDADES = ${unidadesDeCompras}`,
-    "color: lightblue; font-weight: bold;"
-  );
+  // console.log(
+  //   `%cTOTAL UNIDADES = ${unidadesDeCompras}`,
+  //   "color: lightblue; font-weight: bold;"
+  // );
 
-  console.log(
-    `%cSUB-TOTAL = $${subtotalDeCompras}`,
-    "color: lightblue; font-weight: bold;"
-  );
+  // console.log(
+  //   `%cSUB-TOTAL = $${subtotalDeCompras}`,
+  //   "color: lightblue; font-weight: bold;"
+  // );
 
-  console.log(`%cIVA: * 1.21`, "color: lightgray; font-weight: bold;");
+  // console.log(`%cIVA: * 1.21`, "color: lightgray; font-weight: bold;");
 
-  console.log(
-    `%cTOTAL = $${(subtotalDeCompras * 1.21).toFixed(2)}`,
-    "color: lightgreen; font-weight: bold;"
-  );
+  // console.log(
+  //   `%cTOTAL = $${(subtotalDeCompras * 1.21).toFixed(2)}`,
+  //   "color: lightgreen; font-weight: bold;"
+  // );
 
   return { unidadesDeCompras, subtotalDeCompras };
 }
