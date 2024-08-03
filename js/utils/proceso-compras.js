@@ -18,8 +18,10 @@ export function procesoCompra(listadoDeCompra) {
     boton.addEventListener("click", () => {
       if (boton.classList.contains("js-boton-agregar-producto"))
         Swal.fire({
-          title: "¿Confirma agregar este producto a la lista de compras?",
+          title: "¿AGREGAR a la lista de compras?",
           icon: "question",
+          background: "#153081",
+          color: "#eaeaea",
           showDenyButton: true,
           confirmButtonText: "Sí",
           denyButtonText: `No`,
@@ -44,7 +46,7 @@ export function procesoCompra(listadoDeCompra) {
             }
 
             Swal.fire({
-              title: `Ingrese la cantidad de productos: <br> (máximo ${productoStock} unidades)`,
+              title: `Ingrese la cantidad:<br>(máximo ${productoStock} unidades)`,
               input: "number",
               inputAttributes: {
                 autocapitalize: "off",
@@ -52,6 +54,8 @@ export function procesoCompra(listadoDeCompra) {
               showCancelButton: true,
               cancelButtonText: "Cancelar",
               confirmButtonText: "Agregar",
+              background: "#153081",
+              color: "#eaeaea",
               showLoaderOnConfirm: true,
               inputValidator: (value) => {
                 const maximo = parseInt(productoStock);
@@ -84,8 +88,10 @@ export function procesoCompra(listadoDeCompra) {
             }).then((result) => {
               if (result.isConfirmed) {
                 Swal.fire({
-                  title: `Producto agregado a la lista de compras.`,
+                  title: `AGREGADO<br>a lista de compras`,
                   icon: "success",
+                  background: "#153081",
+                  color: "#eaeaea",
                   confirmButtonText: "Continuar",
                 });
 
@@ -113,11 +119,13 @@ export function procesoCompra(listadoDeCompra) {
                   boton.disabled = false;
                 });
               } else if (result.isDismissed) {
-                Swal.fire(
-                  "Producto CANCELADO de la lista de compras.",
-                  "",
-                  "info"
-                );
+                Swal.fire({
+                  title: "Producto CANCELADO de la lista de compras.",
+                  icon: "info",
+                  background: "#153081",
+                  color: "#dcdedf",
+                  showConfirmButton: true,
+                });
               }
             });
           }
@@ -129,9 +137,11 @@ export function procesoCompra(listadoDeCompra) {
 
       if (boton.classList.contains("js-boton-cancelar-producto")) {
         Swal.fire({
-          title: "¿Confirma QUITAR este producto a la lista de compras?",
+          title: "¿ELIMINAR de la lista de compras?",
           icon: "question",
           showDenyButton: true,
+          background: "#153081",
+          color: "#dcdedf",
           confirmButtonText: "Sí",
           denyButtonText: `No`,
         }).then((result) => {
@@ -169,7 +179,13 @@ export function procesoCompra(listadoDeCompra) {
             boton.innerHTML = "AGREGAR";
             boton.classList.remove("js-boton-cancelar-producto");
             boton.classList.add("js-boton-agregar-producto");
-            Swal.fire("Producto cancelado.", "", "info");
+            Swal.fire({
+              title: `ELIMINADO<br>de la lista de compras`,
+              icon: "info",
+              background: "#153081",
+              color: "#eaeaea",
+              confirmButtonText: "Continuar",
+            })
           }
         });
       }
@@ -206,6 +222,8 @@ export function procesoCompra(listadoDeCompra) {
 
     Swal.fire({
       icon: tipo === "pagar" ? "success" : "info",
+      background: "#153081",
+      color: "#eaeaea",
       title: `Proceso de compra ${
         tipo === "pagar" ? "COMPLETADO" : "CANCELADO"
       }.`,
@@ -227,8 +245,10 @@ export function procesoCompra(listadoDeCompra) {
       .querySelector(`.js-boton-${tipo}-compra`)
       .addEventListener("click", () => {
         Swal.fire({
-          title: `¿Confirma ${tipo} su compra?`,
+          title: `¿Desea ${tipo.toUpperCase()} su compra?`,
           icon: "question",
+          background: "#153081",
+          color: "#eaeaea",
           showCancelButton: true,
           confirmButtonText: "Confirmar",
           denyButtonText: "Cancelar",
