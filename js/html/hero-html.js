@@ -40,7 +40,7 @@ export function crearHeroSection() {
     <!-- Popup -->
     <div id="popup">
       <div id="contenido-popup">
-        <textarea id="texto-popup" disabled>Listado de Compra:</textarea>
+        <textarea id="texto-popup" disabled></textarea>
       </div>
     </div>
   `;

@@ -1,10 +1,6 @@
 import { actualizarTotales } from "./cuenta-compras.js";
 import { productos } from "../data/productos.js";
-import {
-  actualizarStock,
-  restaurarStock,
-  actualizarTextoPopup,
-} from "../html/actualizarStock.js";
+import { actualizarStock } from "../html/actualizarStock.js";
 
 let stockOriginal = {};
 let stockRestante = 0;
@@ -108,7 +104,6 @@ export function procesoCompra(listadoDeCompra) {
                 });
 
                 actualizarTotales();
-                actualizarTextoPopup(listadoDeCompra);
 
                 boton.innerHTML = "CANCELAR";
                 boton.classList.add("js-boton-cancelar-producto");
@@ -169,12 +164,9 @@ export function procesoCompra(listadoDeCompra) {
             }
 
             actualizarTotales();
-            actualizarTextoPopup(listadoDeCompra);
 
             const idProducto = boton.dataset.productoId;
             const elementos = document.querySelectorAll(".id-producto");
-
-            restaurarStock();
 
             boton.innerHTML = "AGREGAR";
             boton.classList.remove("js-boton-cancelar-producto");
@@ -185,7 +177,7 @@ export function procesoCompra(listadoDeCompra) {
               background: "#153081",
               color: "#eaeaea",
               confirmButtonText: "Continuar",
-            })
+            });
           }
         });
       }
@@ -197,25 +189,10 @@ export function procesoCompra(listadoDeCompra) {
    //--------------------------------------------------------------*/
 
   function restablecerCompra(tipo) {
-    // Restablezco valores a 0
-    document.querySelector(".js-cantidad-compras").innerHTML = "0";
-    document.querySelector(".js-suma-compras").innerHTML = "$0";
-    document.querySelector(".js-pago-total").innerHTML = "$0";
-
     const botones = document.querySelectorAll(".js-boton-hero");
 
     botones.forEach((boton) => {
       boton.disabled = true;
-    });
-
-    // Restablezco el array de compra.js
-    // Restauro el stock original para todos los productos en la lista de compra
-    listadoDeCompra.forEach((item) => {
-      productos.forEach((producto) => {
-        if (producto.identificador === item.productoId) {
-          producto.stock = stockOriginal[item.productoId];
-        }
-      });
     });
 
     listadoDeCompra.splice(0, listadoDeCompra.length);
@@ -238,6 +215,10 @@ export function procesoCompra(listadoDeCompra) {
         boton.classList.add("js-boton-agregar-producto");
         document.querySelector(".js-pago-total").innerText = "$0.00";
       });
+ 
+    actualizarTotales([]);
+    
+    localStorage.removeItem("listadoDeCompra");
   }
 
   function agregarEventoBoton(tipo) {
@@ -255,8 +236,6 @@ export function procesoCompra(listadoDeCompra) {
         }).then((result) => {
           if (result.isConfirmed) {
             restablecerCompra(tipo);
-            document.getElementById("texto-popup").value = "Listado de Compra:";
-            restaurarStock();
           }
         });
       });
