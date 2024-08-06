@@ -1,10 +1,11 @@
 import { actualizarTotales } from "./cuenta-compras.js";
 import { productos , restablecerProductos } from "../data/productos.js";
-import { actualizarStock } from "../html/actualizarStock.js";
+import { actualizarStock , restaurarStock } from "../html/actualizarStock.js";
 
 let stockOriginal = {};
 let stockRestante = 0;
 
+export { stockOriginal };
 export function procesoCompra(listadoDeCompra) {
   /*--------------------------------------------------------------//
      BOTON AGREGAR PRODUCTO AL LISTADO DE COMPRA
@@ -221,7 +222,7 @@ export function procesoCompra(listadoDeCompra) {
     actualizarTotales([]);
     localStorage.removeItem("listadoDeCompra");
 
-
+    restaurarStock();
   }
 
   function agregarEventoBoton(tipo) {
