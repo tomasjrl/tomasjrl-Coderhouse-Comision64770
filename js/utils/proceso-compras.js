@@ -1,5 +1,5 @@
 import { actualizarTotales } from "./cuenta-compras.js";
-import { productos } from "../data/productos.js";
+import { productos , restablecerProductos } from "../data/productos.js";
 import { actualizarStock } from "../html/actualizarStock.js";
 
 let stockOriginal = {};
@@ -213,12 +213,15 @@ export function procesoCompra(listadoDeCompra) {
         boton.innerHTML = "AGREGAR";
         boton.classList.remove("js-boton-cancelar-producto");
         boton.classList.add("js-boton-agregar-producto");
-        document.querySelector(".js-pago-total").innerText = "$0.00";
       });
+
+     restablecerProductos();
+     localStorage.removeItem("productos");
  
     actualizarTotales([]);
-    
     localStorage.removeItem("listadoDeCompra");
+
+
   }
 
   function agregarEventoBoton(tipo) {

@@ -18,3 +18,13 @@ fetch("./assets/data/productos.json")
       });
     }
   });
+
+
+  export function restablecerProductos() {
+  fetch("./assets/data/productos.json")
+    .then((resp) => resp.json())
+    .then((data) => {
+      productos = data;
+      localStorage.removeItem("productos");
+    });
+}
