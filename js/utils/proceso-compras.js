@@ -218,10 +218,10 @@ export function procesoCompra(listadoDeCompra) {
     document
       .querySelectorAll(".js-boton-cancelar-producto")
       .forEach((boton) => {
+        const productoId = boton.dataset.productoId; 
         boton.innerHTML = "AGREGAR";
         boton.classList.remove("js-boton-cancelar-producto");
         boton.classList.add("js-boton-agregar-producto");
-        document.querySelector(".js-pago-total").innerText = "$0.00";
       });
  
     actualizarTotales([]);
