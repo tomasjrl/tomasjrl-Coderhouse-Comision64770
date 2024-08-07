@@ -148,6 +148,11 @@ footer #redes li a:hover {
 
 /* ----------------- ELEMENTOS / BOTONES ----------------- */
 
+
+.stock-producto {
+  display: none;
+}
+
 .search-bar,
 button {
   padding: 6px 12px;
