@@ -6,7 +6,7 @@
     "contenido": "Amargo",
     "medida": "x2L",
     "precio": 999,
-    "stock": 94
+    "stock": 999
   },
   {
     "identificador": "00000002",
@@ -15,7 +15,7 @@
     "contenido": "Queso azul",
     "medida": "x100gr",
     "precio": 1199,
-    "stock": 95
+    "stock": 999
   },
   {
     "identificador": "00000003",
@@ -24,7 +24,7 @@
     "contenido": "Fideos varios",
     "medida": "x500gr",
     "precio": 949,
-    "stock": 92
+    "stock": 999
   },
   {
     "identificador": "00000004",
@@ -33,7 +33,7 @@
     "contenido": "Vodka sabores",
     "medida": "x700cc",
     "precio": 999,
-    "stock": 91
+    "stock": 999
   },
   {
     "identificador": "00000005",
@@ -42,7 +42,7 @@
     "contenido": "Antitranspirante aerosol",
     "medida": "x150ml",
     "precio": 1689,
-    "stock": 91
+    "stock": 999
   },
   {
     "identificador": "00000006",
@@ -51,7 +51,7 @@
     "contenido": "Desodorante de ambiente",
     "medida": "x360ml",
     "precio": 1435,
-    "stock": 90
+    "stock": 999
   },
   {
     "identificador": "00000007",
@@ -60,7 +60,7 @@
     "contenido": "Arroz largo fino",
     "medida": "x1kg",
     "precio": 1589,
-    "stock": 98
+    "stock": 999
   },
   {
     "identificador": "00000008",
@@ -69,7 +69,7 @@
     "contenido": "Café instantáneo frasco",
     "medida": "x100gr",
     "precio": 2589,
-    "stock": 97
+    "stock": 999
   },
   {
     "identificador": "00000009",
@@ -78,7 +78,7 @@
     "contenido": "Yerba",
     "medida": "x500gr",
     "precio": 999,
-    "stock": 98
+    "stock": 999
   },
   {
     "identificador": "00000010",
@@ -87,7 +87,7 @@
     "contenido": "Sabor Original",
     "medida": "x2.25L",
     "precio": 2100,
-    "stock": 93
+    "stock": 999
   },
   {
     "identificador": "00000011",
@@ -96,7 +96,7 @@
     "contenido": "Zero",
     "medida": "x2.25L",
     "precio": 2100,
-    "stock": 95
+    "stock": 999
   },
   {
     "identificador": "00000012",
@@ -105,7 +105,7 @@
     "contenido": "Cerveza Corona Rubia",
     "medida": "x710cc",
     "precio": 2534,
-    "stock": 94
+    "stock": 999
   },
   {
     "identificador": "00000013",
@@ -114,7 +114,7 @@
     "contenido": "Liviana",
     "medida": "x1L",
     "precio": 1929,
-    "stock": 94
+    "stock": 999
   },
   {
     "identificador": "00000014",
@@ -123,7 +123,7 @@
     "contenido": "Salado Sin Piel",
     "medida": "x100gr",
     "precio": 111,
-    "stock": 90
+    "stock": 999
   },
   {
     "identificador": "00000015",
@@ -132,7 +132,7 @@
     "contenido": "Helado Exquisita Vainilla",
     "medida": "x52gr",
     "precio": 1300,
-    "stock": 92
+    "stock": 999
   },
   {
     "identificador": "00000016",
@@ -141,7 +141,7 @@
     "contenido": "Helado Exquisita Chocolate",
     "medida": "x52gr",
     "precio": 1300,
-    "stock": 90
+    "stock": 999
   },
   {
     "identificador": "00000017",
@@ -150,7 +150,7 @@
     "contenido": "Helado Exquisita Frutilla",
     "medida": "x52gr",
     "precio": 1300,
-    "stock": 92
+    "stock": 999
   },
   {
     "identificador": "00000018",
@@ -159,7 +159,7 @@
     "contenido": "Helado Exquisita Dulce De Leche",
     "medida": "x52gr",
     "precio": 1300,
-    "stock": 93
+    "stock": 999
   },
   {
     "identificador": "00000019",
@@ -168,7 +168,7 @@
     "contenido": "Gaseosa Sprite Lima-limón",
     "medida": "x2.25L",
     "precio": 2175,
-    "stock": 93
+    "stock": 999
   },
   {
     "identificador": "00000020",
@@ -177,7 +177,7 @@
     "contenido": "Gaseosa Pepsi Black",
     "medida": "x1.5L",
     "precio": 1470,
-    "stock": 95
+    "stock": 999
   },
   {
     "identificador": "00000021",
@@ -186,7 +186,7 @@
     "contenido": "Gaseosa Mirinda Naranja",
     "medida": "x2.25L",
     "precio": 1700,
-    "stock": 91
+    "stock": 999
   },
   {
     "identificador": "00000022",
@@ -195,6 +195,6 @@
     "contenido": "Sabor Original",
     "medida": "x2L",
     "precio": 1463,
-    "stock": 91
+    "stock": 999
   }
 ]
