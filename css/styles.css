@@ -153,6 +153,15 @@ footer #redes li a:hover {
   display: none;
 }
 
+.orden-productos-svg {
+  width: 40px;
+  cursor: pointer;
+}
+
+.orden-productos-svg.invertido {
+  transform: scaleY(-1);
+}
+
 .search-bar,
 button {
   padding: 6px 12px;
