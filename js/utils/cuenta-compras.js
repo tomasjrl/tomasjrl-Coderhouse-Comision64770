@@ -5,7 +5,8 @@ let subtotalDeCompras = 0;
 
 export let listadoDeCompra = [];
 
-if (localStorage.getItem('listadoDeCompra')) {
+
+if (localStorage.getItem('listadoDeCompra') && localStorage.getItem('listadoDeCompra') !== 'Listado de Compra:') {
   const stringifiedListadoDeCompra = localStorage.getItem('listadoDeCompra');
   const listadoDeCompraObjeto = JSON.parse(stringifiedListadoDeCompra);
   listadoDeCompra = listadoDeCompraObjeto;
@@ -36,9 +37,6 @@ export function actualizarTotales() {
   );
 
   const stringifiedListadoDeCompra = localStorage.getItem("listadoDeCompra");
-  const listadoDeCompraObjeto = JSON.parse(stringifiedListadoDeCompra);
-
-  console.log(productos);
 
   const texto = listadoDeCompra.length === 0 
   ? "Listado de Compra:" 
@@ -70,3 +68,4 @@ export function actualizarTotales() {
 
   return { unidadesDeCompras, subtotalDeCompras };
 }
+
