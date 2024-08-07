@@ -5,6 +5,9 @@ import { actualizarStock } from "../html/actualizarStock.js";
 let stockOriginal = {};
 let stockRestante = 0;
 
+
+
+export { stockOriginal };
 export function procesoCompra(listadoDeCompra) {
   /*--------------------------------------------------------------//
      BOTON AGREGAR PRODUCTO AL LISTADO DE COMPRA
@@ -42,7 +45,7 @@ export function procesoCompra(listadoDeCompra) {
             }
 
             Swal.fire({
-              title: `Ingrese la cantidad:<br>(máximo ${productoStock} unidades)`,
+              title: `Ingrese la cantidad:<br>(máximo 15 unidades)`,
               input: "number",
               inputAttributes: {
                 autocapitalize: "off",
@@ -55,7 +58,7 @@ export function procesoCompra(listadoDeCompra) {
               showLoaderOnConfirm: true,
               inputValidator: (value) => {
                 const maximo = parseInt(productoStock);
-                if (value <= 0 || value > maximo) {
+                if (value <= 0 || value > 15  || value > maximo) {
                   return "Ingrese un número mayor a 0 sin superar el máximo.";
                 }
               },
@@ -109,6 +112,8 @@ export function procesoCompra(listadoDeCompra) {
                 boton.classList.add("js-boton-cancelar-producto");
                 boton.classList.remove("js-boton-agregar-producto");
 
+                localStorage.setItem(`boton-${productoId}`, "cancelar");
+
                 const botones = document.querySelectorAll(".js-boton-hero");
                 botones.forEach((boton) => {
                   boton.disabled = false;
@@ -125,7 +130,7 @@ export function procesoCompra(listadoDeCompra) {
             });
           }
         });
-
+      
       /*--------------------------------------------------------------//
      BOTON CANCELAR PRODUCTO DEL LISTADO DE COMPRA
    //--------------------------------------------------------------*/
@@ -171,6 +176,9 @@ export function procesoCompra(listadoDeCompra) {
             boton.innerHTML = "AGREGAR";
             boton.classList.remove("js-boton-cancelar-producto");
             boton.classList.add("js-boton-agregar-producto");
+
+            localStorage.setItem(`boton-${productoId}`, "agregar");
+
             Swal.fire({
               title: `ELIMINADO<br>de la lista de compras`,
               icon: "info",
@@ -243,4 +251,16 @@ export function procesoCompra(listadoDeCompra) {
 
   agregarEventoBoton("pagar");
   agregarEventoBoton("cancelar");
+
+  // Recuperar el estado de los botones desde localStorage
+  document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
+    const productoId = boton.dataset.productoId;
+    const estadoBoton = localStorage.getItem(`boton-${productoId}`);
+
+    if (estadoBoton === "cancelar") {
+      boton.innerHTML = "CANCELAR";
+      boton.classList.add("js-boton-cancelar-producto");
+      boton.classList.remove("js-boton-agregar-producto");
+    }
+  });
 }
