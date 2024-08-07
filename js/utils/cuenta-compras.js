@@ -1,6 +1,4 @@
-/*--------------------------------------------------------------//
-     PARA SUMAR UNIDADES Y SUBTOTAL DEL LISTADO DE COMPRA
-//--------------------------------------------------------------*/
+import { productos } from "../data/productos.js";
 
 let unidadesDeCompras = 0;
 let subtotalDeCompras = 0;
@@ -33,15 +31,10 @@ export function actualizarTotales() {
     subtotalDeCompras * 1.21
   ).toFixed(2)}`;
 
-  console.log(listadoDeCompra);
-
   localStorage.setItem(
     "listadoDeCompra",
     JSON.stringify(listadoDeCompra, null, 2)
   );
-
-  console.log("desde localstorage texto");
-  console.log(localStorage.getItem("listadoDeCompra"));
 
   const stringifiedListadoDeCompra = localStorage.getItem("listadoDeCompra");
 
@@ -57,15 +50,21 @@ export function actualizarTotales() {
  ______________________________`
   ).join("\n");
 
-document.getElementById("texto-popup").value = texto;
+  document.getElementById("texto-popup").value = texto;
 
+  if (listadoDeCompra.length > 0) {
+    const botones = document.querySelectorAll(".js-boton-hero");
+    botones.forEach((boton) => {
+      boton.disabled = false;
+    });
+  }
 
-if (listadoDeCompra.length > 0) {
-  const botones = document.querySelectorAll(".js-boton-hero");
-  botones.forEach((boton) => {
-    boton.disabled = false;
-  });
-}
+  // Actualizar productos en localStorage
+  const stringifiedProductos = JSON.stringify(productos, null, 2);
+  localStorage.setItem('productos', stringifiedProductos);
+
+  console.log("Productos guardados en localStorage:");
+  console.log(localStorage.getItem("productos"));
 
   return { unidadesDeCompras, subtotalDeCompras };
 }
