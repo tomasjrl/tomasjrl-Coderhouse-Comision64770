@@ -36,8 +36,6 @@ export function actualizarTotales() {
     JSON.stringify(listadoDeCompra, null, 2)
   );
 
-  const stringifiedListadoDeCompra = localStorage.getItem("listadoDeCompra");
-
   const texto = listadoDeCompra.length === 0 
   ? "Listado de Compra:" 
   : listadoDeCompra.map(item => 
@@ -59,12 +57,9 @@ export function actualizarTotales() {
     });
   }
 
-  // Actualizar productos en localStorage
+
   const stringifiedProductos = JSON.stringify(productos, null, 2);
   localStorage.setItem('productos', stringifiedProductos);
-
-  console.log("Productos guardados en localStorage:");
-  console.log(localStorage.getItem("productos"));
 
   return { unidadesDeCompras, subtotalDeCompras };
 }
