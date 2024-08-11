@@ -50,7 +50,7 @@ export function actualizarTotales() {
  Precio x unidad: $${item.productoPrecio}
  Unidades: ${item.productoUnidades}
  Subtotal: $${item.productoSubtotal}
- ______________________________`
+ _________________________`
           )
           .join("\n");
 
