@@ -179,7 +179,7 @@ export function procesoCompra(listadoDeCompra) {
       icon: tipo === "pagar" ? "success" : "info",
       background: "#153081",
       color: "#eaeaea",
-      title: `Proceso de compra ${
+      title: `Proceso de compra <br> ${
         tipo === "pagar" ? "COMPLETADO" : "CANCELADO"
       }.`,
       showConfirmButton: true,
