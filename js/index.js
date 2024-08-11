@@ -1,11 +1,11 @@
 import { crearHeroSection } from "./html/hero-html.js";
 import { ordenarProductos } from "./html/ordenarProductos.js";
 import { buscarProductos } from "./html/buscador.js";
-import { actualizarTotales , listadoDeCompra } from "./utils/cuenta-compras.js";
+import { actualizarTotales, listadoDeCompra } from "./utils/cuenta-compras.js";
 import { procesoCompra } from "./utils/proceso-compras.js";
 import { toggleMode } from "./html/dark-mode.js";
 
-
+// asigno un timeout de 100ms para que al refrescar la pagina los productos carguen antes que la funcion de ordenamiento / botones / etc.
 setTimeout(() => {
   /* llamo a la funcion que permite cambiar modo claro-oscuro */
   toggleMode();

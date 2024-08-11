@@ -10,6 +10,7 @@ export function generarHTMLProductos(productos) {
   let productosHTML = "";
   productos.forEach((producto) => {
     // codigo HTML que se generará en el navegador por cada producto (objeto del array)
+
     productosHTML += `
     <div class="producto-contenedor js-producto-contenedor" 
        data-producto-id="${producto.identificador}"
@@ -39,6 +40,7 @@ export function generarHTMLProductos(productos) {
     `;
   });
 
-  // productosHTML = es el código html final que contiene a todas las cartas de productos con sus div clases data e imagen
+  // productosHTML = es el código html que contiene todas las cartas de productos
+
   return productosHTML;
 }

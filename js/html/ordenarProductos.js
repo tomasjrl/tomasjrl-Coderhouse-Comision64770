@@ -1,10 +1,11 @@
 import { productos } from "../data/productos.js";
 import { generarHTMLProductos } from "./contenedor-html.js";
 
-
 let ordenAlfabetico = true;
 
-export function  ordenarProductos() {
+// ordeno productos alfabéticamente según la marca
+
+export function ordenarProductos() {
   const invertido = !ordenAlfabetico;
 
   productos.sort((a, b) => {

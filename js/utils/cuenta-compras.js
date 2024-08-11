@@ -3,6 +3,7 @@ import { productos } from "../data/productos.js";
 let unidadesDeCompras = 0;
 let subtotalDeCompras = 0;
 
+// variable donde se almacenan los objetos de compra con sus valores y cantidades asignadas
 export let listadoDeCompra = [];
 
 if (
@@ -14,6 +15,7 @@ if (
   listadoDeCompra = listadoDeCompraObjeto;
 }
 
+// funcion para sumar la cantidad de productos y el subtotal respecto de su precio por unidad
 export function actualizarTotales() {
   unidadesDeCompras = 0;
   subtotalDeCompras = 0;
@@ -38,6 +40,7 @@ export function actualizarTotales() {
     JSON.stringify(listadoDeCompra, null, 2)
   );
 
+  // impresion del texto de listado de compras en el HTML para que el usuario pueda visualiarlo
   const texto =
     listadoDeCompra.length === 0
       ? "Listado de Compra:"
@@ -56,6 +59,8 @@ export function actualizarTotales() {
 
   document.getElementById("texto-popup").value = texto;
 
+  //habilito botones para pagar/cancelar operacion total ya que contiene productos el carrito de compras
+  // solo se habilita si hay productos cargados al carrito de compras
   if (listadoDeCompra.length > 0) {
     const botones = document.querySelectorAll(".js-boton-hero");
     botones.forEach((boton) => {
