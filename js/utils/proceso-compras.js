@@ -1,9 +1,23 @@
 import { botonesProductos } from "./boton-agregar.js";
 import { restablecerCompra, agregarEventoBoton } from "./boton-pagar.js";
+import { cargarProductos } from "../data/productos.js";
 
 let tipo = null;
 
-export function procesoCompra(listadoDeCompra) {
+export async function procesoCompra(listadoDeCompra) {
+
+  document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
+    boton.disabled = true;
+  });
+
+  // Cargar la información asíncrona
+  await cargarProductos();
+
+  // Habilitar los botones después de cargar la información
+  document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
+    boton.disabled = false;
+  });
+
   /*--------------------------------------------------------------//
      BOTON PARA AGREGAR / CANCELAR PRODUCTO AL LISTADO DE COMPRA
   //--------------------------------------------------------------*/
