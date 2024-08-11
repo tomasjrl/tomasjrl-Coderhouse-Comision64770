@@ -4,7 +4,7 @@ import { generarHTMLProductos } from "./contenedor-html.js";
 
 let ordenAlfabetico = true;
 
-export async function ordenarProductos() {
+export function  ordenarProductos() {
   const invertido = !ordenAlfabetico;
 
   productos.sort((a, b) => {

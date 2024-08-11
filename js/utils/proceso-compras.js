@@ -1,23 +1,9 @@
 import { botonesProductos } from "./boton-agregar.js";
-import { restablecerCompra, agregarEventoBoton } from "./boton-pagar.js";
-import { cargarProductos } from "../data/productos.js";
+import { actualizarTotales } from "./cuenta-compras.js";
 
 let tipo = null;
 
-export async function procesoCompra(listadoDeCompra) {
-
-  document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
-    boton.disabled = true;
-  });
-
-  // Cargar la información asíncrona
-  await cargarProductos();
-
-  // Habilitar los botones después de cargar la información
-  document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
-    boton.disabled = false;
-  });
-
+export function procesoCompra(listadoDeCompra) {
   /*--------------------------------------------------------------//
      BOTON PARA AGREGAR / CANCELAR PRODUCTO AL LISTADO DE COMPRA
   //--------------------------------------------------------------*/
@@ -28,8 +14,65 @@ export async function procesoCompra(listadoDeCompra) {
      BOTON PARA PAGAR / CANCELAR LA COMPRA TOTAL
   //--------------------------------------------------------------*/
 
-  restablecerCompra(tipo);
-  agregarEventoBoton(tipo);
+  function restablecerCompra(tipo) {
+    if (tipo === null || tipo === undefined) return;
+  
+    const botones = document.querySelectorAll(".js-boton-hero");
+  
+    botones.forEach((boton) => {
+      boton.disabled = true;
+    });
+  
+    listadoDeCompra.splice(0, listadoDeCompra.length);
+  
+    Swal.fire({
+      icon: tipo === "pagar" ? "success" : "info",
+      background: "#153081",
+      color: "#eaeaea",
+      title: `Proceso de compra <br> ${
+        tipo === "pagar" ? "COMPLETADO" : "CANCELADO"
+      }.`,
+      showConfirmButton: true,
+    });
+  
+    document
+      .querySelectorAll(".js-boton-cancelar-producto")
+      .forEach((boton) => {
+        const productoId = boton.dataset.productoId;
+        boton.innerHTML = "AGREGAR";
+        boton.classList.remove("js-boton-cancelar-producto");
+        boton.classList.add("js-boton-agregar-producto");
+        localStorage.removeItem(`boton-${productoId}`);
+      });
+  
+    localStorage.removeItem("productos");
+  
+    actualizarTotales([]);
+    localStorage.removeItem("listadoDeCompra");
+  }
+  
+  
+  
+  function agregarEventoBoton(tipo) {
+    if (tipo === null || tipo === undefined) return;
+    document
+      .querySelector(`.js-boton-${tipo}-compra`)
+      .addEventListener("click", () => {
+        Swal.fire({
+          title: `¿Desea ${tipo.toUpperCase()} su compra?`,
+          icon: "question",
+          background: "#153081",
+          color: "#eaeaea",
+          showCancelButton: true,
+          confirmButtonText: "Confirmar",
+          denyButtonText: "Cancelar",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            restablecerCompra(tipo);
+          }
+        });
+      });
+  }
   agregarEventoBoton("pagar");
   agregarEventoBoton("cancelar");
 
