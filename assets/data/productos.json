@@ -5,8 +5,7 @@
     "marca": "TRES TORRES",
     "contenido": "Amargo",
     "medida": "x2L",
-    "precio": 999,
-    "stock": 999
+    "precio": 999
   },
   {
     "identificador": "00000002",
@@ -14,8 +13,7 @@
     "marca": "LA QUESERA",
     "contenido": "Queso azul",
     "medida": "x100gr",
-    "precio": 1199,
-    "stock": 999
+    "precio": 1199
   },
   {
     "identificador": "00000003",
@@ -23,8 +21,7 @@
     "marca": "MATARAZZO",
     "contenido": "Fideos varios",
     "medida": "x500gr",
-    "precio": 949,
-    "stock": 999
+    "precio": 949
   },
   {
     "identificador": "00000004",
@@ -32,8 +29,7 @@
     "marca": "SKYY",
     "contenido": "Vodka sabores",
     "medida": "x700cc",
-    "precio": 999,
-    "stock": 999
+    "precio": 999
   },
   {
     "identificador": "00000005",
@@ -41,8 +37,7 @@
     "marca": "NIVEA MEN",
     "contenido": "Antitranspirante aerosol",
     "medida": "x150ml",
-    "precio": 1689,
-    "stock": 999
+    "precio": 1689
   },
   {
     "identificador": "00000006",
@@ -50,8 +45,7 @@
     "marca": "POETT",
     "contenido": "Desodorante de ambiente",
     "medida": "x360ml",
-    "precio": 1435,
-    "stock": 999
+    "precio": 1435
   },
   {
     "identificador": "00000007",
@@ -59,8 +53,7 @@
     "marca": "LUCCHETTI",
     "contenido": "Arroz largo fino",
     "medida": "x1kg",
-    "precio": 1589,
-    "stock": 999
+    "precio": 1589
   },
   {
     "identificador": "00000008",
@@ -68,8 +61,7 @@
     "marca": "DOLCA",
     "contenido": "Café instantáneo frasco",
     "medida": "x100gr",
-    "precio": 2589,
-    "stock": 999
+    "precio": 2589
   },
   {
     "identificador": "00000009",
@@ -77,8 +69,7 @@
     "marca": "CHAMIGO",
     "contenido": "Yerba",
     "medida": "x500gr",
-    "precio": 999,
-    "stock": 999
+    "precio": 999
   },
   {
     "identificador": "00000010",
@@ -86,8 +77,7 @@
     "marca": "COCA-COLA",
     "contenido": "Sabor Original",
     "medida": "x2.25L",
-    "precio": 2100,
-    "stock": 999
+    "precio": 2100
   },
   {
     "identificador": "00000011",
@@ -95,8 +85,7 @@
     "marca": "COCA-COLA",
     "contenido": "Zero",
     "medida": "x2.25L",
-    "precio": 2100,
-    "stock": 999
+    "precio": 2100
   },
   {
     "identificador": "00000012",
@@ -104,8 +93,7 @@
     "marca": "CORONA",
     "contenido": "Cerveza Corona Rubia",
     "medida": "x710cc",
-    "precio": 2534,
-    "stock": 999
+    "precio": 2534
   },
   {
     "identificador": "00000013",
@@ -113,8 +101,7 @@
     "marca": "LA SERENISIMA",
     "contenido": "Liviana",
     "medida": "x1L",
-    "precio": 1929,
-    "stock": 999
+    "precio": 1929
   },
   {
     "identificador": "00000014",
@@ -122,8 +109,7 @@
     "marca": "MANI KING",
     "contenido": "Salado Sin Piel",
     "medida": "x100gr",
-    "precio": 111,
-    "stock": 999
+    "precio": 111
   },
   {
     "identificador": "00000015",
@@ -131,8 +117,7 @@
     "marca": "EXQUISITA",
     "contenido": "Helado Exquisita Vainilla",
     "medida": "x52gr",
-    "precio": 1300,
-    "stock": 999
+    "precio": 1300
   },
   {
     "identificador": "00000016",
@@ -140,8 +125,7 @@
     "marca": "EXQUISITA",
     "contenido": "Helado Exquisita Chocolate",
     "medida": "x52gr",
-    "precio": 1300,
-    "stock": 999
+    "precio": 1300
   },
   {
     "identificador": "00000017",
@@ -149,8 +133,7 @@
     "marca": "EXQUISITA",
     "contenido": "Helado Exquisita Frutilla",
     "medida": "x52gr",
-    "precio": 1300,
-    "stock": 999
+    "precio": 1300
   },
   {
     "identificador": "00000018",
@@ -158,8 +141,7 @@
     "marca": "EXQUISITA",
     "contenido": "Helado Exquisita Dulce De Leche",
     "medida": "x52gr",
-    "precio": 1300,
-    "stock": 999
+    "precio": 1300
   },
   {
     "identificador": "00000019",
@@ -167,8 +149,7 @@
     "marca": "SPRITE",
     "contenido": "Gaseosa Sprite Lima-limón",
     "medida": "x2.25L",
-    "precio": 2175,
-    "stock": 999
+    "precio": 2175
   },
   {
     "identificador": "00000020",
@@ -176,8 +157,7 @@
     "marca": "PEPSI",
     "contenido": "Gaseosa Pepsi Black",
     "medida": "x1.5L",
-    "precio": 1470,
-    "stock": 999
+    "precio": 1470
   },
   {
     "identificador": "00000021",
@@ -185,8 +165,7 @@
     "marca": "MIRINDA",
     "contenido": "Gaseosa Mirinda Naranja",
     "medida": "x2.25L",
-    "precio": 1700,
-    "stock": 999
+    "precio": 1700
   },
   {
     "identificador": "00000022",
@@ -194,7 +173,6 @@
     "marca": "PEPSI",
     "contenido": "Sabor Original",
     "medida": "x2L",
-    "precio": 1463,
-    "stock": 999
+    "precio": 1463
   }
 ]

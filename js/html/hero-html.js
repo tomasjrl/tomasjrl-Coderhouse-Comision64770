@@ -1,13 +1,11 @@
-
 // funcion que genera codigo html para la <section class="hero-section">
 
 export function crearHeroSection() {
-
   // toma la etiqueta con clase "hero-section" para sumarle el código generado por javascript
   // en este código se muestran las cuentas al sumar productos al listado de compras
   // junto a los botones pagar / cancelar para completar la operación
 
-  const section = document.querySelector('.hero-section');
+  const section = document.querySelector(".hero-section");
   const heroHTML = `
     <div class="su-compra">
       <h2>SU COMPRA</h2>
@@ -53,10 +51,9 @@ export function crearHeroSection() {
     </div>
   `;
 
-
   /* tomo el HTML generado en la variable heroHTML, creo un fragmento de documento con el HTML generado
   y lo agrego como "hijo" del elemento <section class="hero-section">*/
-  
+
   const fragment = document.createRange().createContextualFragment(heroHTML);
   section.appendChild(fragment);
 }

@@ -33,10 +33,6 @@ h2 {
   font-weight: 500;
 }
 
-.stock {
-  font-size: 1rem;
-}
-
 /* ----------------- HEADER HERO FOOTER ----------------- */
 
 #contenido-popup {
@@ -147,21 +143,6 @@ footer #redes li a:hover {
 }
 
 /* ----------------- ELEMENTOS / BOTONES ----------------- */
-
-
-.stock-producto {
-  display: none;
-}
-
-.orden-productos-svg {
-  width: 40px;
-  cursor: pointer;
-  display: none;
-}
-
-.orden-productos-svg.invertido {
-  transform: scaleY(-1);
-}
 
 .search-bar,
 button {

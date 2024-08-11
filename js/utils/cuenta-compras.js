@@ -5,9 +5,11 @@ let subtotalDeCompras = 0;
 
 export let listadoDeCompra = [];
 
-
-if (localStorage.getItem('listadoDeCompra') && localStorage.getItem('listadoDeCompra') !== 'Listado de Compra:') {
-  const stringifiedListadoDeCompra = localStorage.getItem('listadoDeCompra');
+if (
+  localStorage.getItem("listadoDeCompra") &&
+  localStorage.getItem("listadoDeCompra") !== "Listado de Compra:"
+) {
+  const stringifiedListadoDeCompra = localStorage.getItem("listadoDeCompra");
   const listadoDeCompraObjeto = JSON.parse(stringifiedListadoDeCompra);
   listadoDeCompra = listadoDeCompraObjeto;
 }
@@ -36,17 +38,21 @@ export function actualizarTotales() {
     JSON.stringify(listadoDeCompra, null, 2)
   );
 
-  const texto = listadoDeCompra.length === 0 
-  ? "Listado de Compra:" 
-  : listadoDeCompra.map(item => 
-    ` ${item.productoMarca}
+  const texto =
+    listadoDeCompra.length === 0
+      ? "Listado de Compra:"
+      : listadoDeCompra
+          .map(
+            (item) =>
+              ` ${item.productoMarca}
  ${item.productoContenido}
  ${item.productoMedida}
  Precio x unidad: $${item.productoPrecio}
  Unidades: ${item.productoUnidades}
  Subtotal: $${item.productoSubtotal}
  ______________________________`
-  ).join("\n");
+          )
+          .join("\n");
 
   document.getElementById("texto-popup").value = texto;
 
@@ -57,10 +63,8 @@ export function actualizarTotales() {
     });
   }
 
-
   const stringifiedProductos = JSON.stringify(productos, null, 2);
-  localStorage.setItem('productos', stringifiedProductos);
+  localStorage.setItem("productos", stringifiedProductos);
 
   return { unidadesDeCompras, subtotalDeCompras };
 }
-

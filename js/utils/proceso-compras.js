@@ -1,13 +1,5 @@
 import { actualizarTotales } from "./cuenta-compras.js";
-import { productos , restablecerProductos } from "../data/productos.js";
-import { actualizarStock , restaurarStock } from "../html/actualizarStock.js";
 
-let stockOriginal = {};
-let stockRestante = 0;
-
-
-
-export { stockOriginal };
 export function procesoCompra(listadoDeCompra) {
   /*--------------------------------------------------------------//
      BOTON AGREGAR PRODUCTO AL LISTADO DE COMPRA
@@ -31,18 +23,12 @@ export function procesoCompra(listadoDeCompra) {
               productoContenido,
               productoMedida,
               productoPrecio,
-              productoStock,
               subtotal,
               productoId = boton.dataset.productoId;
             productoMarca = boton.dataset.productoMarca;
             productoContenido = boton.dataset.productoContenido;
             productoMedida = boton.dataset.productoMedida;
             productoPrecio = boton.dataset.productoPrecio;
-            productoStock = boton.dataset.productoStock;
-
-            if (!stockOriginal[productoId]) {
-              stockOriginal[productoId] = productoStock;
-            }
 
             Swal.fire({
               title: `Ingrese la cantidad:<br>(máximo 15 unidades)`,
@@ -57,29 +43,19 @@ export function procesoCompra(listadoDeCompra) {
               color: "#eaeaea",
               showLoaderOnConfirm: true,
               inputValidator: (value) => {
-                const maximo = parseInt(productoStock);
-                if (value <= 0 || value > 15  || value > maximo) {
+                if (value <= 0 || value > 15) {
                   return "Ingrese un número mayor a 0 sin superar el máximo.";
                 }
               },
               preConfirm: async (cantidad) => {
                 let input = cantidad;
-                if (!isNaN(input) && input > 0 && input <= productoStock) {
-                  stockRestante = productoStock - input;
+                if (!isNaN(input) && input > 0 && input <= 15) {
                   unidades = parseInt(input);
-                  productos.forEach((producto) => {
-                    if (producto.identificador === productoId) {
-                      producto.stock = stockRestante;
-                    }
-                  });
-
-                  actualizarStock(productoId, stockRestante);
-
                   return true;
                 } else {
                   return (
                     "Por favor, ingrese un número positivo mayor que 0 y no mayor a " +
-                    productoStock
+                    15
                   );
                 }
               },
@@ -130,7 +106,7 @@ export function procesoCompra(listadoDeCompra) {
             });
           }
         });
-      
+
       /*--------------------------------------------------------------//
      BOTON CANCELAR PRODUCTO DEL LISTADO DE COMPRA
    //--------------------------------------------------------------*/
@@ -152,12 +128,6 @@ export function procesoCompra(listadoDeCompra) {
             );
 
             if (indice !== -1) {
-              productos.forEach((producto) => {
-                if (producto.identificador === productoId) {
-                  producto.stock = stockOriginal[productoId];
-                }
-              });
-
               listadoDeCompra.splice(indice, 1);
             }
 
@@ -218,20 +188,17 @@ export function procesoCompra(listadoDeCompra) {
     document
       .querySelectorAll(".js-boton-cancelar-producto")
       .forEach((boton) => {
-        const productoId = boton.dataset.productoId; 
+        const productoId = boton.dataset.productoId;
         boton.innerHTML = "AGREGAR";
         boton.classList.remove("js-boton-cancelar-producto");
         boton.classList.add("js-boton-agregar-producto");
         localStorage.removeItem(`boton-${productoId}`);
       });
 
-     restablecerProductos();
-     localStorage.removeItem("productos");
- 
+    localStorage.removeItem("productos");
+
     actualizarTotales([]);
     localStorage.removeItem("listadoDeCompra");
-
-    restaurarStock();
   }
 
   function agregarEventoBoton(tipo) {

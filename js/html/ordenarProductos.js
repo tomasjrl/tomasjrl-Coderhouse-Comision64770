@@ -5,12 +5,18 @@ import { generarHTMLProductos } from "./contenedor-html.js";
 let ordenAlfabetico = true;
 
 export function ordenarProductos() {
-  const botonOrdenar = document.querySelector(".orden-productos-svg");
   const invertido = !ordenAlfabetico;
 
   productos.sort((a, b) => {
-    const comparacion = a.marca.localeCompare(b.marca);
-    return invertido ? -comparacion : comparacion;
+    const marcaA = a?.marca;
+    const marcaB = b?.marca;
+    if (marcaA && marcaB) {
+      const comparacion = marcaA.localeCompare(marcaB);
+      return invertido ? -comparacion : comparacion;
+    } else {
+      // Manejar el caso en que alguno de los objetos no tenga la propiedad "marca"
+      return 0; // o algún otro valor predeterminado
+    }
   });
   let htmlProductos = generarHTMLProductos(productos);
   document.querySelector(".js-productos-grid").innerHTML = htmlProductos;
