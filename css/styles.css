@@ -116,7 +116,7 @@ tbody tr {
 main {
   width: 100%;
   min-height: 100vh;
-  padding: 0px 10px;
+  padding: 10px;
   background-color: rgb(220, 222, 223);
 }
 
