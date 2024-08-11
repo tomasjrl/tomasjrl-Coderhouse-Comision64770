@@ -1,4 +1,12 @@
+
+
+// variable para exportar productos declarada 
+
 export let productos;
+
+
+/*fetch para importar productos el array de objetos de los productos 
+desde el JSON = simulando un backend*/
 
 fetch("./assets/data/productos.json")
   .then(function(resp) {
@@ -6,7 +14,9 @@ fetch("./assets/data/productos.json")
   })
   .then(function(data) {
     productos = data;
-    // Actualizar stock desde localStorage si existe
+
+    // Actualizar stock desde localStorage si este existe, sino toma el stock por defecto declarado en el JSON
+
     const stockGuardado = localStorage.getItem('productos');
     if (stockGuardado) {
       const productosConStock = JSON.parse(stockGuardado);
@@ -19,6 +29,7 @@ fetch("./assets/data/productos.json")
     }
   });
 
+    // Reinicia el stock de los productos para futuras interacciones
 
   export function restablecerProductos() {
   fetch("./assets/data/productos.json")
