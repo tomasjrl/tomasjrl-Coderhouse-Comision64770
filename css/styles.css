@@ -156,6 +156,7 @@ footer #redes li a:hover {
 .orden-productos-svg {
   width: 40px;
   cursor: pointer;
+  display: none;
 }
 
 .orden-productos-svg.invertido {
