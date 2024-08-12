@@ -5,7 +5,8 @@ import { actualizarTotales, listadoDeCompra } from "./utils/cuenta-compras.js";
 import { procesoCompra } from "./utils/proceso-compras.js";
 import { toggleMode } from "./html/dark-mode.js";
 
-// asigno un timeout de 100ms para que al refrescar la pagina los productos carguen antes que la funcion de ordenamiento / botones / etc.
+// asigno un timeout de 100ms para que al refrescar la pagina los productos carguen antes que la función de ordenamiento / botones / etc.
+// **importante** = en ejecución local funciona sin timeout, pero en github al refrescar F5 algunas veces "productos.js" no terminaba de mostrar los mismos.
 setTimeout(() => {
   /* llamo a la funcion que permite cambiar modo claro-oscuro */
   toggleMode();
