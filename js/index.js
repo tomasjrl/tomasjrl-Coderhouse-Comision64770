@@ -4,10 +4,17 @@ import { buscarProductos } from "./html/buscador.js";
 import { actualizarTotales, listadoDeCompra } from "./utils/cuenta-compras.js";
 import { procesoCompra } from "./utils/proceso-compras.js";
 import { toggleMode } from "./html/dark-mode.js";
+import { cargarProductos } from "./data/productos.js";
 
-// asigno un timeout de 100ms para que al refrescar la pagina los productos carguen antes que la función de ordenamiento / botones / etc.
-// **importante** = en ejecución local funciona sin timeout, pero en github al refrescar F5 algunas veces "productos.js" no terminaba de mostrar los mismos.
-setTimeout(() => {
+
+
+/* funcion async para iniciar el codigo */
+
+async function iniciarCodigo() {
+
+  /* espero (await) que se complete la funcion que carga los productos antes de continuar con el código */
+  await cargarProductos();
+
   /* llamo a la funcion que permite cambiar modo claro-oscuro */
   toggleMode();
 
@@ -28,4 +35,8 @@ setTimeout(() => {
   /* llamo a la funcion que ejecuta la logica del procesamiento de datos entre el click del usuario en los botones 
   (agregar / cancelar / pagar total / cancelar total) en relación a los valores de los productos para agregarlo al listado de compras  */
   procesoCompra(listadoDeCompra);
-}, 100); // retraso de 100 milisegundos
+
+}
+
+iniciarCodigo(); // Llama a la función iniciarCodigo
+
