@@ -1,12 +1,21 @@
-/*--------------------------------------------------------------//
-     PARA SUMAR UNIDADES Y SUBTOTAL DEL LISTADO DE COMPRA
-//--------------------------------------------------------------*/
-
-import { listadoDeCompra } from "../index.js";
+import { productos } from "../data/productos.js";
 
 let unidadesDeCompras = 0;
 let subtotalDeCompras = 0;
 
+// variable donde se almacenan los objetos de compra con sus valores y cantidades asignadas
+export let listadoDeCompra = [];
+
+if (
+  localStorage.getItem("listadoDeCompra") &&
+  localStorage.getItem("listadoDeCompra") !== "Listado de Compra:"
+) {
+  const stringifiedListadoDeCompra = localStorage.getItem("listadoDeCompra");
+  const listadoDeCompraObjeto = JSON.parse(stringifiedListadoDeCompra);
+  listadoDeCompra = listadoDeCompraObjeto;
+}
+
+// funcion para sumar la cantidad de productos y el subtotal respecto de su precio por unidad
 export function actualizarTotales() {
   unidadesDeCompras = 0;
   subtotalDeCompras = 0;
@@ -26,42 +35,41 @@ export function actualizarTotales() {
     subtotalDeCompras * 1.21
   ).toFixed(2)}`;
 
-  console.clear();
-
-  console.log(
-    `%cCUENTAS DE SUPERPRECIOS`,
-    "color: lightyellow; font-weight: bold;"
+  localStorage.setItem(
+    "listadoDeCompra",
+    JSON.stringify(listadoDeCompra, null, 2)
   );
 
-  console.log(
-    `%cListado de Compra = ${JSON.stringify(
-      listadoDeCompra.map((producto) => ({
-        ...producto,
-        productoPrecio: `$${producto.productoPrecio}`,
-        productoSubtotal: `$${producto.productoSubtotal}`,
-      })),
-      null,
-      2
-    )}`,
-    "color: lightpink; font-weight: bold;"
-  );
+  // impresion del texto de listado de compras en el HTML para que el usuario pueda visualiarlo
+  const texto =
+    listadoDeCompra.length === 0
+      ? "Listado de Compra:"
+      : listadoDeCompra
+          .map(
+            (item) =>
+              ` ${item.productoMarca}
+ ${item.productoContenido}
+ ${item.productoMedida}
+ Precio x unidad: $${item.productoPrecio}
+ Unidades: ${item.productoUnidades}
+ Subtotal: $${item.productoSubtotal}
+ _________________________`
+          )
+          .join("\n");
 
-  console.log(
-    `%cTOTAL UNIDADES = ${unidadesDeCompras}`,
-    "color: lightblue; font-weight: bold;"
-  );
+  document.getElementById("texto-popup").value = texto;
 
-  console.log(
-    `%cSUB-TOTAL = $${subtotalDeCompras}`,
-    "color: lightblue; font-weight: bold;"
-  );
+  //habilito botones para pagar/cancelar operacion total ya que contiene productos el carrito de compras
+  // solo se habilita si hay productos cargados al carrito de compras
+  if (listadoDeCompra.length > 0) {
+    const botones = document.querySelectorAll(".js-boton-hero");
+    botones.forEach((boton) => {
+      boton.disabled = false;
+    });
+  }
 
-  console.log(`%cIVA: * 1.21`, "color: lightgray; font-weight: bold;");
-
-  console.log(
-    `%cTOTAL = $${(subtotalDeCompras * 1.21).toFixed(2)}`,
-    "color: lightgreen; font-weight: bold;"
-  );
+  const stringifiedProductos = JSON.stringify(productos, null, 2);
+  localStorage.setItem("productos", stringifiedProductos);
 
   return { unidadesDeCompras, subtotalDeCompras };
 }

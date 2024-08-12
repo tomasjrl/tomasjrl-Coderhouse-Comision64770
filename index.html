@@ -7,25 +7,32 @@
   <link rel="shortcut icon" href="assets/icons/favicon.svg" type="image/x-icon">
   <link rel="stylesheet" href="css/styles.css">
   <title>SuperPrecios</title>
-  <meta name="description" content="Sitio estilo 'SuperPrecios' con fines didácticos para el aprendizaje del lenguaje Javascript">
+  <meta name="description"
+    content="Sitio estilo 'SuperPrecios' con fines didácticos para el aprendizaje del lenguaje Javascript">
   <meta name="keywords" content="comercio, productos, venta, compra, tienda, precio, lista">
   <meta name="author" content="Tomás Stabilini">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="SuperPrecios">
-  <meta property="og:description" content="Sitio estilo 'SuperPrecios' con fines didácticos para el aprendizaje del lenguaje Javascript">
+  <meta property="og:description"
+    content="Sitio estilo 'SuperPrecios' con fines didácticos para el aprendizaje del lenguaje Javascript">
   <meta property="og:image" content="assets/icons/meta-image.webp">
   <meta property="og:url" content="https://tomasjrl.github.io/tomasjrl-Coderhouse-Comision64770/">
 </head>
 
 <body>
-
-  <header>
+   <header>
     <h1>SuperPrecios</h1>
   </header>
 
   <main>
+
+      <!-- MODO CLARO/OSCURO -->
+   <input type="checkbox" id="toggleMode">
+   <label for="toggleMode" class="toggleLight" title="Cambiar a modo claro"><svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 16 16"><path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/></svg></label>
+   <label for="toggleMode" class="toggleDark" title="Cambiar a modo oscuro"><svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24"><path fill="currentColor" d="M12 22c5.523 0 10-4.477 10-10c0-.463-.694-.54-.933-.143a6.5 6.5 0 1 1-8.924-8.924C12.54 2.693 12.463 2 12 2C6.477 2 2 6.477 2 12s4.477 10 10 10"/></svg></label>
+  
     <section class="hero-section">
-     <!-- codigo agregado con javascript (index.js -> hero-html.js) -->
+      <!-- codigo agregado con javascript (index.js -> hero-html.js) -->
     </section>
 
     <div id="buscador-productos">
@@ -33,7 +40,7 @@
     </div>
 
     <section class="productos-grid js-productos-grid">
-     <!-- codigo agregado con javascript (index.js -> contenedor-html.js) -->
+      <!-- codigo agregado con javascript (index.js -> contenedor-html.js) -->
     </section>
   </main>
 
@@ -74,7 +81,9 @@
   </footer>
 
   <!-- SCRIPTS -->
+  <!-- libreria externa = SweetAlert2 -->
   <!-- productos.js deben estar cargados ANTES que index.js -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="js/data/productos.js" type="module"></script>
   <script src="js/index.js" type="module"></script>
 </body>
