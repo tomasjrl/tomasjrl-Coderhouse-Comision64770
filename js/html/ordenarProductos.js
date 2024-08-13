@@ -3,22 +3,27 @@ import { generarHTMLProductos } from "./contenedor-html.js";
 
 let ordenAlfabetico = true;
 
+// funcion para ordenar los productos
+
+function bubbleSort(arr) {
+  let n = arr.length;
+  for (let i = 0; i < n - 1; i++) {
+    for (let j = 0; j < n - i - 1; j++) {
+      if (arr[j].marca.localeCompare(arr[j + 1].marca) > 0) {
+        let temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+      }
+    }
+  }
+  return arr;
+}
+
 // ordeno productos alfabéticamente según la marca
 
 export function ordenarProductos() {
   const invertido = !ordenAlfabetico;
-
-  productos.sort((a, b) => {
-    const marcaA = a?.marca;
-    const marcaB = b?.marca;
-    if (marcaA && marcaB) {
-      const comparacion = marcaA.localeCompare(marcaB);
-      return invertido ? -comparacion : comparacion;
-    } else {
-      // Manejar el caso en que alguno de los objetos no tenga la propiedad "marca"
-      return 0; // o algún otro valor predeterminado
-    }
-  });
-  let htmlProductos = generarHTMLProductos(productos);
+  const ordenado = invertido ? bubbleSort(productos).reverse() : bubbleSort(productos);
+  let htmlProductos = generarHTMLProductos(ordenado);
   document.querySelector(".js-productos-grid").innerHTML = htmlProductos;
 }
