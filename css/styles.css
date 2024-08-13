@@ -124,6 +124,10 @@ main.dark-mode {
   background-color: rgb(33, 33, 33);
 }
 
+.hero-section.dark-mode {
+  background-color: #0d1c49;
+}
+
 #buscador-productos {
   display: flex;
   justify-content: center;
@@ -170,7 +174,9 @@ footer #redes li {
 }
 
 .js-pago-total-amarillo,
-footer #redes li a:hover {
+footer #redes li a:hover,
+.toggleDark:hover,
+.toggleLight:hover {
   color: #f5ea1e;
   transition: 0.2s;
 }

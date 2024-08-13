@@ -57,7 +57,22 @@ export function agregarEventoBoton(tipo) {
         confirmButtonText: "Confirmar",
         denyButtonText: "Cancelar",
       }).then((result) => {
-        if (result.isConfirmed) {
+        if (result.isConfirmed && tipo === 'pagar') {
+          Swal.fire({
+            title: 'Procesando su pago...',
+            html: 'Por favor, espere...',
+            background: "#153081",
+            color: "#eaeaea",
+            didOpen: () => {
+              Swal.showLoading()
+              Swal.getContainer().querySelector('.swal-title')?.classList.add('loading')
+            },
+            timer: 1500,
+            timerProgressBar: true
+          }).then(() => {
+            restablecerCompra(tipo);
+          })
+        } else if (result.isConfirmed) {
           restablecerCompra(tipo);
         }
       });
