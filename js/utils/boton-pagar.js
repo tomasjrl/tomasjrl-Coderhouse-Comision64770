@@ -89,7 +89,6 @@ export function agregarEventoBoton(tipo) {
                   ?.classList.add("loading");
               },
               timer: 1250,
-              timerProgressBar: true,
             }).then(() => {
               restablecerCompra(tipo);
             });

@@ -17,9 +17,7 @@ export function generarHTMLProductos(productos) {
        data-producto-marca="${producto.marca}"
        data-producto-contenido="${producto.contenido}"
        data-producto-medida="${producto.medida}">
-          <div>
             <img src="${producto.imagen}">
-          </div>
           <section class="productos-informacion">
             <div class="id-producto">${producto.identificador}</div>
             <div class="marca-producto">${producto.marca}</div>

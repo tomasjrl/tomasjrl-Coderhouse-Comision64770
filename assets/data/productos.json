@@ -35,7 +35,7 @@
     "identificador": "00000005",
     "imagen": "assets/images/5.webp",
     "marca": "NIVEA MEN",
-    "contenido": "Antitranspirante aerosol",
+    "contenido": "Antitranspirante",
     "medida": "x150ml",
     "precio": 1689
   },
@@ -51,7 +51,7 @@
     "identificador": "00000007",
     "imagen": "assets/images/7.webp",
     "marca": "LUCCHETTI",
-    "contenido": "Arroz largo fino",
+    "contenido": "Arroz largo",
     "medida": "x1kg",
     "precio": 1589
   },
@@ -59,7 +59,7 @@
     "identificador": "00000008",
     "imagen": "assets/images/8.webp",
     "marca": "DOLCA",
-    "contenido": "Café instantáneo frasco",
+    "contenido": "Café instantáneo",
     "medida": "x100gr",
     "precio": 2589
   },
@@ -91,7 +91,7 @@
     "identificador": "00000012",
     "imagen": "assets/images/12.webp",
     "marca": "CORONA",
-    "contenido": "Cerveza Corona Rubia",
+    "contenido": "Cerveza Rubia",
     "medida": "x710cc",
     "precio": 2534
   },
@@ -107,7 +107,7 @@
     "identificador": "00000014",
     "imagen": "assets/images/14.webp",
     "marca": "MANI KING",
-    "contenido": "Salado Sin Piel",
+    "contenido": "Salado sin piel",
     "medida": "x100gr",
     "precio": 111
   },
