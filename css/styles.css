@@ -49,7 +49,7 @@ h2 {
 .toggleLight {
   cursor: pointer;
   position: relative;
-  bottom: 80px;
+  bottom: 74px;
   color: rgb(220, 222, 223);
 }
 
@@ -79,11 +79,11 @@ h2 {
   border-radius: 6px;
 }
 
-header,
+
 .hero-section,
 footer,
 footer #redes li a {
-  background-color: #153081;
+  background-color: #213c8c; 
   color: #eaeaea;
 }
 
@@ -145,7 +145,7 @@ main.dark-mode {
 }
 
 .producto-contenedor {
-  background-color: #153081;
+  background-color: #213c8c; 
   border-radius: 4px;
   padding: 2px;
   color: #eaeaea;
@@ -157,8 +157,10 @@ main.dark-mode {
   width: 100%;
 }
 
+header,
 .productos-informacion {
   background-color: rgb(205, 6, 23);
+  color: #eaeaea;
 }
 
 footer,
@@ -227,13 +229,14 @@ button {
 .js-boton-cancelar-producto,
 .boton-cancelar:hover {
   color: rgb(240, 233, 233);
-  background-color: rgb(205, 6, 23);
+  background-color: rgb(214, 36, 51);
   transition: 0.2s;
 }
 
 .js-boton-pagar-compra {
-  background-color: rgb(20, 178, 20);
+  background-color: rgb(79, 69, 225);
 }
+
 
 .js-boton-agregar-producto:enabled:hover,
 .js-boton-pagar-compra:enabled:hover,
