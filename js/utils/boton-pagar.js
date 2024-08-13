@@ -50,6 +50,15 @@ export function agregarEventoBoton(tipo) {
     .addEventListener("click", () => {
       Swal.fire({
         title: `¿Desea ${tipo.toUpperCase()} su compra?`,
+        text: tipo.toUpperCase() === "PAGAR" ? "Complete el formulario:" : "",
+        input: tipo.toUpperCase() === "PAGAR" ? "text" : null,
+        inputPlaceholder: tipo.toUpperCase() === "PAGAR" ? "Escriba su nombre" : "",
+        inputValue: tipo.toUpperCase() === "PAGAR" ? "Comision64770: Tomás Stabilini" : "",
+        inputValidator: (value) => {
+          if (tipo.toUpperCase() === "PAGAR" && !value) {
+            return "Por favor, ingrese su nombre";
+          }
+        },
         icon: "question",
         background: "#153081",
         color: "#eaeaea",
@@ -67,7 +76,7 @@ export function agregarEventoBoton(tipo) {
               Swal.showLoading()
               Swal.getContainer().querySelector('.swal-title')?.classList.add('loading')
             },
-            timer: 1500,
+            timer: 1250,
             timerProgressBar: true
           }).then(() => {
             restablecerCompra(tipo);
