@@ -49,53 +49,65 @@ export function agregarEventoBoton(tipo) {
     .querySelector(`.js-boton-${tipo}-compra`)
     .addEventListener("click", () => {
       if (tipo.toUpperCase() === "PAGAR") {
-        Swal.fire({
-          title: `¿Desea ${tipo.toUpperCase()} su compra?`,
-          html: `
-            <form style="display: flex; flex-direction: column;">
-              <input type="text" id="nombre" value="Tomás Stabilini" placeholder="Nombre" style="width: 100%; margin-bottom: 10px;">
-              <input type="email" id="email" value="Comision64770@coderhouse.com" placeholder="Correo electrónico" style="width: 100%; margin-bottom: 10px;">
-            </form>
-          `,
-          icon: "question",
-          background: "#153081",
-          color: "#eaeaea",
-          showCancelButton: true,
-          confirmButtonText: "Confirmar",
-          denyButtonText: "Cancelar",
-          preConfirm: () => {
-            const nombre = document.getElementById("nombre").value;
-            const email = document.getElementById("email").value;
-            if (!nombre || !email) {
-              Swal.showValidationMessage("Por favor, complete ambos campos");
-            } else if (!email.includes("@")) {
-              Swal.showValidationMessage(
-                "Por favor, ingrese un correo electrónico válido"
-              );
+        try {
+          // Aquí iría el código que procesa el pago
+          Swal.fire({
+            title: `¿Desea ${tipo.toUpperCase()} su compra?`,
+            html: `
+              <form style="display: flex; flex-direction: column;">
+                <input type="text" id="nombre" autocomplete="name" value="Tomás Stabilini" placeholder="Nombre" style="width: 100%; margin-bottom: 10px;">
+                <input type="email" id="email" autocomplete="email" value="Comision64770@coderhouse.com" placeholder="Correo electrónico" style="width: 100%; margin-bottom: 10px;">
+              </form>
+            `,
+            icon: "question",
+            background: "#153081",
+            color: "#eaeaea",
+            showCancelButton: true,
+            confirmButtonText: "Confirmar",
+            denyButtonText: "Cancelar",
+            preConfirm: () => {
+              const nombre = document.getElementById("nombre").value;
+              const email = document.getElementById("email").value;
+              if (!nombre || !email) {
+                Swal.showValidationMessage("Por favor, complete ambos campos");
+              } else if (!email.includes("@")) {
+                Swal.showValidationMessage(
+                  "Por favor, ingrese un correo electrónico válido"
+                );
+              }
+              return { nombre, email };
+            },
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire({
+                title: "Procesando su pago...",
+                html: "Por favor, espere...",
+                background: "#153081",
+                color: "#eaeaea",
+                didOpen: () => {
+                  Swal.showLoading();
+                  Swal.getContainer()
+                    .querySelector(".swal-title")
+                    ?.classList.add("loading");
+                },
+                timer: 1250,
+              }).then(() => {
+                restablecerCompra(tipo);
+              });
             }
-            return { nombre, email };
-          },
-        }).then((result) => {
-          if (result.isConfirmed) {
-            Swal.fire({
-              title: "Procesando su pago...",
-              html: "Por favor, espere...",
-              background: "#153081",
-              color: "#eaeaea",
-              didOpen: () => {
-                Swal.showLoading();
-                Swal.getContainer()
-                  .querySelector(".swal-title")
-                  ?.classList.add("loading");
-              },
-              timer: 1250,
-            }).then(() => {
-              restablecerCompra(tipo);
-            });
-          }
-        });
+          });
+        } catch (error) {
+          Swal.fire({
+            title: "Error al procesar el pago",
+            text: "Por favor, inténtelo nuevamente más tarde",
+            icon: "error",
+            background: "#153081",
+            color: "#eaeaea",
+          });
+        }
       } else {
         Swal.fire({
+          
           title: `¿Desea ${tipo.toUpperCase()} su compra?`,
           icon: "question",
           background: "#153081",
