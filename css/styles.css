@@ -269,3 +269,9 @@ button:disabled:hover {
     flex-direction: column;
   }
 }
+
+@media (max-width: 340px) {
+ h1 {
+  font-size: 1.8rem;
+ }
+}

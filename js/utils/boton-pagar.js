@@ -48,42 +48,67 @@ export function agregarEventoBoton(tipo) {
   document
     .querySelector(`.js-boton-${tipo}-compra`)
     .addEventListener("click", () => {
-      Swal.fire({
-        title: `¿Desea ${tipo.toUpperCase()} su compra?`,
-        text: tipo.toUpperCase() === "PAGAR" ? "Complete el formulario:" : "",
-        input: tipo.toUpperCase() === "PAGAR" ? "text" : null,
-        inputPlaceholder: tipo.toUpperCase() === "PAGAR" ? "Escriba su nombre" : "",
-        inputValue: tipo.toUpperCase() === "PAGAR" ? "Comision64770: Tomás Stabilini" : "",
-        inputValidator: (value) => {
-          if (tipo.toUpperCase() === "PAGAR" && !value) {
-            return "Por favor, ingrese su nombre";
+      if (tipo.toUpperCase() === "PAGAR") {
+        Swal.fire({
+          title: `¿Desea ${tipo.toUpperCase()} su compra?`,
+          html: `
+            <form style="display: flex; flex-direction: column;">
+              <input type="text" id="nombre" value="Tomás Stabilini" placeholder="Nombre" style="width: 100%; margin-bottom: 10px;">
+              <input type="email" id="email" value="Comision64770@coderhouse.com" placeholder="Correo electrónico" style="width: 100%; margin-bottom: 10px;">
+            </form>
+          `,
+          icon: "question",
+          background: "#153081",
+          color: "#eaeaea",
+          showCancelButton: true,
+          confirmButtonText: "Confirmar",
+          denyButtonText: "Cancelar",
+          preConfirm: () => {
+            const nombre = document.getElementById("nombre").value;
+            const email = document.getElementById("email").value;
+            if (!nombre || !email) {
+              Swal.showValidationMessage("Por favor, complete ambos campos");
+            } else if (!email.includes("@")) {
+              Swal.showValidationMessage(
+                "Por favor, ingrese un correo electrónico válido"
+              );
+            }
+            return { nombre, email };
+          },
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire({
+              title: "Procesando su pago...",
+              html: "Por favor, espere...",
+              background: "#153081",
+              color: "#eaeaea",
+              didOpen: () => {
+                Swal.showLoading();
+                Swal.getContainer()
+                  .querySelector(".swal-title")
+                  ?.classList.add("loading");
+              },
+              timer: 1250,
+              timerProgressBar: true,
+            }).then(() => {
+              restablecerCompra(tipo);
+            });
           }
-        },
-        icon: "question",
-        background: "#153081",
-        color: "#eaeaea",
-        showCancelButton: true,
-        confirmButtonText: "Confirmar",
-        denyButtonText: "Cancelar",
-      }).then((result) => {
-        if (result.isConfirmed && tipo === 'pagar') {
-          Swal.fire({
-            title: 'Procesando su pago...',
-            html: 'Por favor, espere...',
-            background: "#153081",
-            color: "#eaeaea",
-            didOpen: () => {
-              Swal.showLoading()
-              Swal.getContainer().querySelector('.swal-title')?.classList.add('loading')
-            },
-            timer: 1250,
-            timerProgressBar: true
-          }).then(() => {
+        });
+      } else {
+        Swal.fire({
+          title: `¿Desea ${tipo.toUpperCase()} su compra?`,
+          icon: "question",
+          background: "#153081",
+          color: "#eaeaea",
+          showCancelButton: true,
+          confirmButtonText: "Confirmar",
+          denyButtonText: "Cancelar",
+        }).then((result) => {
+          if (result.isConfirmed) {
             restablecerCompra(tipo);
-          })
-        } else if (result.isConfirmed) {
-          restablecerCompra(tipo);
-        }
-      });
+          }
+        });
+      }
     });
 }
