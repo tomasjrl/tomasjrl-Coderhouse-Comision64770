@@ -150,6 +150,12 @@ main.dark-mode {
   color: #eaeaea;
   max-width: 400px;
   margin: 0 auto; /* Centra el contenedor del grid */
+  transition: 0.3s;
+}
+
+.producto-contenedor:hover {
+  scale: 1.03;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
 .producto-contenedor img {
@@ -185,8 +191,21 @@ footer #redes li a:hover,
 .toggleDark:hover,
 .toggleLight:hover {
   color: #f5ea1e;
+}
+
+
+.search-bar,
+.boton-cancelar,
+.boton-pagar,
+.boton-agregar,
+.search-bar,
+.js-pago-total-amarillo,
+footer #redes li a,
+.toggleDark,
+.toggleLight {
   transition: 0.2s;
 }
+
 
 /* ----------------- ELEMENTOS / BOTONES ----------------- */
 
@@ -195,9 +214,10 @@ button {
   padding: 6px 12px;
   margin: 10px 0;
   padding: 10px;
-  border-radius: 16px;
+  border-radius: 8px;
   border: none;
   cursor: text;
+  outline: none;
 }
 
 .search-bar {
@@ -210,7 +230,6 @@ button {
 .search-bar:hover {
   color: #342e00;
   background-color: #f5ea1e;
-  transition: 0.2s;
 }
 
 .botones-pago-cancelar {
@@ -234,20 +253,17 @@ button {
 .js-boton-cancelar-producto,
 .boton-cancelar:hover {
   color: rgb(240, 233, 233);
-  background-color: rgb(214, 36, 51);
-  transition: 0.2s;
+  background-color: #dc3741;
 }
 
 .js-boton-pagar-compra {
-  background-color: rgb(79, 69, 225);
+  background-color: #7066e0;
 }
-
 
 .js-boton-agregar-producto:enabled:hover,
 .js-boton-pagar-compra:enabled:hover,
 .js-boton-cancelar-producto:hover {
   transform: scale(1.1);
-  transition: 0.2s;
 }
 
 .pago-total {
