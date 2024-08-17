@@ -72,7 +72,7 @@ h2 {
 
 #texto-popup {
   width: 100%;
-  height: 150px;
+  min-height: 200px;
   resize: vertical;
   background-color: rgb(220, 222, 223);
   padding: 5px;
@@ -221,8 +221,8 @@ button {
 }
 
 .search-bar {
-  margin-right: 10px;
   width: 80%;
+  margin: 20px 10px 20px 0;
 }
 
 .boton-pagar:hover,
@@ -248,6 +248,22 @@ button {
   color: #eaeaea;
   font-size: 1.2rem;
   cursor: pointer;
+}
+
+.boton-pagar:not([disabled]) {
+  animation: escalar 1s infinite;
+}
+
+@keyframes escalar {
+  0% {
+    transform: scale(1.0);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1.0);
+  }
 }
 
 .js-boton-cancelar-producto,
