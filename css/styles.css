@@ -65,38 +65,6 @@ h2 {
 
 /* ----------------- HEADER HERO FOOTER ----------------- */
 
-#contenido-popup {
-  padding: 4px;
-  width: 230px;
-  border-radius: 6px;
-  background-color: #d80811;
-  color: #eaeaea;
-  box-shadow: none;
-  border: none;
-  outline: none;
-}
-
-#texto-popup {
-  width: 100%;
-  min-height: 200px;
-  resize: vertical;
-  background-color: #d80811;
-  padding: 5px;
-  border-radius: 6px;
-  box-shadow: none;
-  border: none;
-  outline: none;
-  text-decoration: none;
-  color: inherit;
-}
-
-#texto-popup:disabled {
-  color: #eaeaea;
-  box-shadow: none;
-  border: none;
-  outline: none;
-  text-decoration: none;
-}
 
 
 .hero-section,
@@ -183,10 +151,36 @@ main.dark-mode {
 }
 
 header,
+#popup,
+#texto-popup,
+#texto-popup:disabled,
 .productos-informacion {
   background-color: #d80811;
   color: #eaeaea;
 }
+
+#popup {
+  padding: 4px;
+  width: 230px;
+  border-radius: 6px;
+}
+
+#texto-popup {
+  width: 100%;
+  min-height: 200px;
+  resize: vertical;
+  padding: 5px;
+  border-radius: 6px;
+}
+
+#popup,
+#texto-popup:disabled {
+  box-shadow: none;
+  border: none;
+  outline: none;
+  text-decoration: none;
+}
+
 
 .productos-informacion {
   margin-top: -4px;
