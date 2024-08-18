@@ -151,12 +151,15 @@ main.dark-mode {
 }
 
 header,
-#popup,
-#texto-popup,
-#texto-popup:disabled,
 .productos-informacion {
   background-color: #d80811;
   color: #eaeaea;
+}
+
+#popup,
+#texto-popup,
+#texto-popup:disabled {
+  background-color: #eaeaea;
 }
 
 #popup {
