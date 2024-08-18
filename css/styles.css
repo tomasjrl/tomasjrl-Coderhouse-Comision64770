@@ -81,12 +81,13 @@ h2 {
   min-height: 200px;
   resize: vertical;
   background-color: #d80811;
-  color: #eaeaea;
   padding: 5px;
   border-radius: 6px;
   box-shadow: none;
   border: none;
   outline: none;
+  text-decoration: none;
+  color: inherit;
 }
 
 
