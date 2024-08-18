@@ -90,6 +90,10 @@ h2 {
   color: inherit;
 }
 
+#texto-popup:disabled {
+  color: #eaeaea;
+}
+
 
 .hero-section,
 footer,
