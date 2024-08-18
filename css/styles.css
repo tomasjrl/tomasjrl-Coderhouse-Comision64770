@@ -66,8 +66,14 @@ h2 {
 /* ----------------- HEADER HERO FOOTER ----------------- */
 
 #contenido-popup {
-  padding: 10px;
+  padding: 4px;
   width: 230px;
+  border-radius: 6px;
+  background-color: #d80811;
+  color: #eaeaea;
+  box-shadow: none;
+  border: none;
+  outline: none;
 }
 
 #texto-popup {
@@ -78,6 +84,9 @@ h2 {
   color: #eaeaea;
   padding: 5px;
   border-radius: 6px;
+  box-shadow: none;
+  border: none;
+  outline: none;
 }
 
 
