@@ -92,6 +92,10 @@ h2 {
 
 #texto-popup:disabled {
   color: #eaeaea;
+  box-shadow: none;
+  border: none;
+  outline: none;
+  text-decoration: none;
 }
 
 
