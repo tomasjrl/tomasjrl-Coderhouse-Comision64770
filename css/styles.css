@@ -76,7 +76,6 @@ h2 {
   resize: vertical;
   background-color: lightgrey !important;
   background-clip: padding-box;
-  background-image: none;
   padding: 5px;
   border-radius: 6px;
 }
