@@ -17,7 +17,7 @@ export function restablecerCompra(tipo) {
   // texto popup para informar que la operación final fue completada o cancelada
   Swal.fire({
     icon: tipo === "pagar" ? "success" : "info",
-    background: "#153081",
+    background: "#1e4180",
     color: "#eaeaea",
     title: `Proceso de compra <br> ${
       tipo === "pagar" ? "COMPLETADO" : "CANCELADO"
@@ -60,7 +60,7 @@ export function agregarEventoBoton(tipo) {
               </form>
             `,
             icon: "question",
-            background: "#153081",
+            background: "#1e4180",
             color: "#eaeaea",
             showCancelButton: true,
             confirmButtonText: "Confirmar",
@@ -82,7 +82,7 @@ export function agregarEventoBoton(tipo) {
               Swal.fire({
                 title: "Procesando su pago...",
                 html: "Por favor, espere...",
-                background: "#153081",
+                background: "#1e4180",
                 color: "#eaeaea",
                 didOpen: () => {
                   Swal.showLoading();
@@ -101,7 +101,7 @@ export function agregarEventoBoton(tipo) {
             title: "Error al procesar el pago",
             text: "Por favor, inténtelo nuevamente más tarde",
             icon: "error",
-            background: "#153081",
+            background: "#1e4180",
             color: "#eaeaea",
           });
         }
@@ -110,7 +110,7 @@ export function agregarEventoBoton(tipo) {
           
           title: `¿Desea ${tipo.toUpperCase()} su compra?`,
           icon: "question",
-          background: "#153081",
+          background: "#1e4180",
           color: "#eaeaea",
           showCancelButton: true,
           confirmButtonText: "Confirmar",

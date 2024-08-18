@@ -74,7 +74,8 @@ h2 {
   width: 100%;
   min-height: 200px;
   resize: vertical;
-  background-color: rgb(220, 222, 223);
+  background-color: rgb(220, 222, 223) !important;
+  background-image: none;
   padding: 5px;
   border-radius: 6px;
 }

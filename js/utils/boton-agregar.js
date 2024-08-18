@@ -13,7 +13,7 @@ export function botonesProductos(listadoDeCompra) {
         Swal.fire({
           title: "¿AGREGAR a la lista de compras?",
           icon: "question",
-          background: "#153081",
+          background: "#1e4180",
           color: "#eaeaea",
           showDenyButton: true,
           confirmButtonText: "Sí",
@@ -46,7 +46,7 @@ export function botonesProductos(listadoDeCompra) {
               showCancelButton: true,
               cancelButtonText: "Cancelar",
               confirmButtonText: "Agregar",
-              background: "#153081",
+              background: "#1e4180",
               color: "#eaeaea",
               showLoaderOnConfirm: true,
               inputValidator: (value) => {
@@ -79,7 +79,7 @@ export function botonesProductos(listadoDeCompra) {
                 Swal.fire({
                   title: `AGREGADO<br>a lista de compras`,
                   icon: "success",
-                  background: "#153081",
+                  background: "#1e4180",
                   color: "#eaeaea",
                   confirmButtonText: "Continuar",
                 });
@@ -126,7 +126,7 @@ export function botonesProductos(listadoDeCompra) {
                 Swal.fire({
                   title: "Producto CANCELADO de la lista de compras.",
                   icon: "info",
-                  background: "#153081",
+                  background: "#1e4180",
                   color: "#dcdedf",
                   showConfirmButton: true,
                 });
@@ -146,7 +146,7 @@ export function botonesProductos(listadoDeCompra) {
           title: "¿ELIMINAR de la lista de compras?",
           icon: "question",
           showDenyButton: true,
-          background: "#153081",
+          background: "#1e4180",
           color: "#dcdedf",
           confirmButtonText: "Sí",
           denyButtonText: `No`,
@@ -194,7 +194,7 @@ export function botonesProductos(listadoDeCompra) {
             Swal.fire({
               title: `ELIMINADO<br>de la lista de compras`,
               icon: "info",
-              background: "#153081",
+              background: "#1e4180",
               color: "#eaeaea",
               confirmButtonText: "Continuar",
             });
