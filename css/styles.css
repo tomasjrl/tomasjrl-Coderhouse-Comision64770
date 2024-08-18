@@ -160,6 +160,8 @@ header,
 #texto-popup,
 #texto-popup:disabled {
   background-color: #eaeaea;
+  font-weight: 400;
+  color: rgb(33, 33, 33);
 }
 
 #popup {
