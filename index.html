@@ -32,7 +32,48 @@
    <label for="toggleMode" class="toggleDark" title="Cambiar a modo oscuro"><svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24"><path fill="currentColor" d="M12 22c5.523 0 10-4.477 10-10c0-.463-.694-.54-.933-.143a6.5 6.5 0 1 1-8.924-8.924C12.54 2.693 12.463 2 12 2C6.477 2 2 6.477 2 12s4.477 10 10 10"/></svg></label>
   
     <section class="hero-section">
-      <!-- codigo agregado con javascript (index.js -> hero-html.js) -->
+      <div class="su-compra">
+        <h2>SU COMPRA</h2>
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#f2f2f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="10" cy="20.5" r="1" />
+          <circle cx="18" cy="20.5" r="1" />
+          <path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1" />
+        </svg>
+      </div>
+      <table>
+        <tbody>
+          <tr>
+            <td>Unidades:</td>
+            <td class="js-cantidad-compras">0</td>
+          </tr>
+          <tr>
+            <td>Sub-Total:</td>
+            <td class="js-suma-compras">$0</td>
+          </tr>
+          <tr>
+            <td>IVA:</td>
+            <td>* 1.21</td>
+          </tr>
+          <tr>
+            <td class="pago-total">Total:</td>
+            <td class="pago-total js-pago-total js-pago-total-amarillo">$0.00</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2" class="botones-pago-cancelar">
+              <button class="boton-pagar js-boton-pagar-compra js-boton-hero" disabled >PAGAR</button>
+              <button class="boton-cancelar js-boton-cancelar-compra js-boton-hero" disabled >Cancelar</button>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+      <!-- Popup -->
+      <div id="popup">
+        <div id="contenido-popup">
+          <textarea id="texto-popup" disabled></textarea>
+        </div>
+      </div>
     </section>
 
     <div id="buscador-productos">
