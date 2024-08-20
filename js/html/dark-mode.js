@@ -8,13 +8,18 @@ export function toggleMode() {
   const modoActual = localStorage.getItem("modo");
   if (modoActual === "dark") {
     main.classList.add("dark-mode");
-    heroSection.classList.add("dark-mode"); // Agregar esta línea
+    heroSection.classList.add("dark-mode");
     toggleMode.checked = true;
   }
 
   toggleMode.addEventListener("change", () => {
     main.classList.toggle("dark-mode");
-    heroSection.classList.toggle("dark-mode"); // Agregar esta línea
+    heroSection.classList.toggle("dark-mode");
+
+    // Transición al activar/desactivar modo oscuro
+
+    main.style.transition = "background-color 0.2s";
+    heroSection.style.transition = "background-color 0.2s";
 
     // Guardar el modo en localStorage
 
