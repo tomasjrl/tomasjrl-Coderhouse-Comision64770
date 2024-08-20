@@ -137,7 +137,18 @@ main.dark-mode {
   color: #eaeaea;
   max-width: 400px;
   margin: 0 auto; /* Centra el contenedor del grid */
-  transition: 0.3s;
+  transition: scale .3s ease-in-out;
+  scale: 1;
+
+  @starting-style {
+    scale: 0;
+  }
+}
+
+.js-producto-contenedor[style*="display: none"] {
+  transition: scale .3s ease,
+ display .3s ease allow-discrete;
+ scale: 0;
 }
 
 .producto-contenedor:hover {
