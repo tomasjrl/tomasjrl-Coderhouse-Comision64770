@@ -1,4 +1,3 @@
-import { crearHeroSection } from "./html/hero-html.js";
 import { ordenarProductos } from "./html/ordenarProductos.js";
 import { buscarProductos } from "./html/buscador.js";
 import { actualizarTotales, listadoDeCompra } from "./utils/cuenta-compras.js";
@@ -17,10 +16,6 @@ async function iniciarCodigo() {
 
   /* llamo a la funcion que permite cambiar modo claro-oscuro */
   toggleMode();
-
-  /* llamo a la funcion para generar el contenido HTML que estará dentro de <section class="hero-section"> 
-  Aquí esta ubicado el listado de compras, las cuentas y la opción de pagar/cancelar la operación*/
-  crearHeroSection();
 
   /* llamo a la funcion que permite buscar/encontrar productos según parámetros de búsqueda*/
   buscarProductos();
