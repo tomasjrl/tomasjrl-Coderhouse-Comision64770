@@ -138,10 +138,25 @@ main.dark-mode {
   max-width: 400px;
   margin: 0 auto; /* Centra el contenedor del grid */
   transition: scale .2s ease-in-out;
-  scale: 1;
+  transform: scale(0); 
+  animation: aparecer 0.5s forwards; 
+}
 
-  @starting-style {
-    scale: 0;
+@keyframes aparecer {
+  from {
+    transform: scale(0); /* Inicia con escala 0 */
+  }
+  to {
+    transform: scale(1); /* Termina con escala 1 */
+  }
+}
+
+@keyframes desaparecer {
+  from {
+    transform: scale(1); /* Inicia con escala 0 */
+  }
+  to {
+    transform: scale(0); /* Termina con escala 1 */
   }
 }
 
