@@ -134,8 +134,6 @@ main.dark-mode {
 .producto-contenedor {
   background-color: #1e4180; 
   border-radius: 8px;
-  color: #eaeaea;
-  max-width: 400px;
   margin: 0 auto; /* Centra el contenedor del grid */
   transition: scale .2s ease-in-out;
   transform: scale(0); 
@@ -215,7 +213,7 @@ header,
 
 .productos-informacion {
   margin-top: -4px;
-  padding: 6px 10px ;
+  padding: 6px 10px;
 }
 
 footer,
@@ -318,6 +316,7 @@ button {
 
 .js-boton-pagar-compra {
   background-color: #7066e0;
+  color: #fff;
 }
 
 .js-boton-agregar-producto:enabled:hover,
