@@ -1,13 +1,15 @@
 import { listadoDeCompra, actualizarTotales } from "./cuenta-compras.js";
 
-// funcion para restablecer la compra ya sea habiendo pagado o cancelado la compra
+// función para restablecer la compra ya sea habiendo pagado o cancelado la compra
+
 export function restablecerCompra(tipo) {
   if (tipo === null || tipo === undefined) return;
 
   const botones = document.querySelectorAll(".js-boton-hero");
 
   // deshabilito los botones de pagar/cancelar puesto que quedara vacío de productos
-  // estos botones solo pueden habilitarse con productos en el carrito de compras
+  // estos botones solo pueden habilitarse si hay productos agregados en el carrito de compras
+
   botones.forEach((boton) => {
     boton.disabled = true;
   });
@@ -15,6 +17,7 @@ export function restablecerCompra(tipo) {
   listadoDeCompra.splice(0, listadoDeCompra.length);
 
   // texto popup para informar que la operación final fue completada o cancelada
+
   Swal.fire({
     icon: tipo === "pagar" ? "success" : "info",
     background: "#1e4180",
@@ -36,6 +39,7 @@ export function restablecerCompra(tipo) {
   });
 
   // vacío los arrays de objetos almacenados
+
   localStorage.removeItem("productos");
   actualizarTotales([]);
   localStorage.removeItem("listadoDeCompra");
@@ -50,7 +54,9 @@ export function agregarEventoBoton(tipo) {
     .addEventListener("click", () => {
       if (tipo.toUpperCase() === "PAGAR") {
         try {
-          // Aquí iría el código que procesa el pago
+
+          // mensajes popup para concretar/cancelar el pago de compra
+
           Swal.fire({
             title: `¿Desea ${tipo.toUpperCase()} su compra?`,
             html: `

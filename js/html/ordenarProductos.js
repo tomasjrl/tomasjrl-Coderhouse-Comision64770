@@ -3,7 +3,7 @@ import { generarHTMLProductos } from "./contenedor-html.js";
 
 let ordenAlfabetico = true;
 
-// funcion para ordenar los productos
+// función para ordenar los productos
 
 function bubbleSort(arr) {
   let n = arr.length;

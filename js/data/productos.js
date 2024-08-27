@@ -2,8 +2,7 @@
 
 export let productos;
 
-
-// funcion para cargar los productos traidos del JSON
+// función para cargar los productos traídos del JSON
 
 export async function cargarProductos() {
   try {
@@ -13,12 +12,12 @@ export async function cargarProductos() {
     }
     const data = await respuesta.json();
     productos = data;
-    return productos; //devuelva la promesa con los productos cargados
+    return productos; //devuelve la promesa con los productos cargados
   } catch (error) {
     Swal.fire({
-      title: 'Sitio en mantenimiento.',
-      text: 'Ingrese más tarde. Disculpe las molestias.',
-      icon: 'warning'
+      title: "Sitio en mantenimiento.",
+      text: "Ingrese más tarde. Disculpe las molestias.",
+      icon: "warning",
     });
   }
 }

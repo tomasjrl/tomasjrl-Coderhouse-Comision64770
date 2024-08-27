@@ -4,14 +4,15 @@ import { restablecerCompra, agregarEventoBoton } from "./boton-pagar.js";
 let tipo = null;
 
 export function procesoCompra(listadoDeCompra) {
+  
   /*--------------------------------------------------------------//
-     BOTON PARA AGREGAR / CANCELAR PRODUCTO AL LISTADO DE COMPRA
+     BOTÓN PARA AGREGAR / CANCELAR PRODUCTO AL LISTADO DE COMPRA
   //--------------------------------------------------------------*/
 
   botonesProductos(listadoDeCompra);
 
   /*--------------------------------------------------------------//
-     BOTON PARA PAGAR / CANCELAR LA COMPRA TOTAL
+     BOTÓN PARA PAGAR / CANCELAR LA COMPRA TOTAL
   //--------------------------------------------------------------*/
 
   restablecerCompra(tipo);
@@ -20,6 +21,7 @@ export function procesoCompra(listadoDeCompra) {
   agregarEventoBoton("cancelar");
 
   // Recuperar el estado de los botones desde localStorage
+
   document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
     const productoId = boton.dataset.productoId;
     const estadoBoton = localStorage.getItem(`boton-${productoId}`);

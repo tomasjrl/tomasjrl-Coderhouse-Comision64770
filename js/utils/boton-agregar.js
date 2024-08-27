@@ -1,12 +1,14 @@
 import { actualizarTotales } from "./cuenta-compras.js";
 
-//funcion para agregar productos al carrito de compras
+//función para agregar productos al carrito de compras
 
 export function botonesProductos(listadoDeCompra) {
-  //escucho el click del boton del producto que corresponda a su contenedor
+
+  //escucho el click del botón del producto que corresponda a su contenedor
 
   document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
     boton.addEventListener("click", () => {
+
       // inicio texto popup con pregunta para agregar producto al carrito de compras
 
       if (boton.classList.contains("js-boton-agregar-producto"))
@@ -19,6 +21,7 @@ export function botonesProductos(listadoDeCompra) {
           confirmButtonText: "Sí",
           denyButtonText: `No`,
         }).then((result) => {
+
           // si confirma, asigno variables con los contenidos del objeto del array productos.js
 
           if (result.isConfirmed) {
@@ -63,6 +66,7 @@ export function botonesProductos(listadoDeCompra) {
                   unidades = parseInt(input);
                   return true;
                 } else {
+                  
                   // si NO cumple con los parámetros la cantidad asignada, informa y devuelve al estado anterior
 
                   return (
@@ -73,6 +77,7 @@ export function botonesProductos(listadoDeCompra) {
               },
               allowOutsideClick: () => !Swal.isLoading(),
             }).then((result) => {
+
               // mensaje popup de confirmación del producto agregado al carrito de compras
 
               if (result.isConfirmed) {
@@ -84,11 +89,11 @@ export function botonesProductos(listadoDeCompra) {
                   confirmButtonText: "Continuar",
                 });
 
-                // operacion multiplicando precio por cantidad de unidades elegidas por el usuario
+                // operación multiplicando precio por cantidad de unidades elegidas por el usuario
 
                 subtotal = parseFloat(productoPrecio) * unidades;
 
-                // envio datos a la variable listadoDeCompra
+                // envío datos a la variable listadoDeCompra
 
                 listadoDeCompra.push({
                   productoId: productoId,
@@ -114,13 +119,14 @@ export function botonesProductos(listadoDeCompra) {
                 localStorage.setItem(`boton-${productoId}`, "cancelar");
 
                 // habilito botones de pagar/cancelar para concretar la operación
-                //en la seccion hero de la pagina
+                //en la sección hero de la pagina
 
                 const botones = document.querySelectorAll(".js-boton-hero");
                 botones.forEach((boton) => {
                   boton.disabled = false;
                 });
               } else if (result.isDismissed) {
+
                 //mensaje popup si cancela el producto del carrito
 
                 Swal.fire({
@@ -135,12 +141,13 @@ export function botonesProductos(listadoDeCompra) {
           }
         });
 
-      /*--------------------------------------------------------------//
-     BOTON CANCELAR PRODUCTO DEL LISTADO DE COMPRA
+    /*--------------------------------------------------------------//
+          BOTÓN CANCELAR PRODUCTO DEL LISTADO DE COMPRA
    //--------------------------------------------------------------*/
 
       if (boton.classList.contains("js-boton-cancelar-producto")) {
         Swal.fire({
+
           //mensaje popup preguntando si desea cancelar el producto del carrito de compras
 
           title: "¿ELIMINAR de la lista de compras?",
@@ -152,6 +159,7 @@ export function botonesProductos(listadoDeCompra) {
           denyButtonText: `No`,
         }).then((result) => {
           if (result.isConfirmed) {
+
             //busco el producto del listado de compras a eliminar
 
             let productoId = boton.dataset.productoId;
@@ -175,12 +183,10 @@ export function botonesProductos(listadoDeCompra) {
             }
 
             // actualizo cuentas totales si se eliminan productos individualmente
+
             actualizarTotales();
 
-            const idProducto = boton.dataset.productoId;
-            const elementos = document.querySelectorAll(".id-producto");
-
-            // devuelvo al boton del producto su condicio original (agregar)
+            // devuelvo al botón del producto su condición original (agregar)
 
             boton.innerHTML = "AGREGAR";
             boton.classList.remove("js-boton-cancelar-producto");
@@ -191,6 +197,7 @@ export function botonesProductos(listadoDeCompra) {
             localStorage.setItem(`boton-${productoId}`, "agregar");
 
             // texto popup confirmando la eliminación del producto del carrito de compras
+
             Swal.fire({
               title: `ELIMINADO<br>de la lista de compras`,
               icon: "info",

@@ -1,5 +1,5 @@
 /*--------------------------------------------------------------//
-      FUNCION PARA AGREGAR AL HTML EL LISTADO DE PRODUCTOS (productos.js)
+      FUNCIÓN PARA AGREGAR AL HTML EL LISTADO DE PRODUCTOS (productos.js)
 //--------------------------------------------------------------*/
 
 /* La función recorre cada "objeto" de productos.js y le asigna código HTML
@@ -9,7 +9,7 @@
 export function generarHTMLProductos(productos) {
   let productosHTML = "";
   productos.forEach((producto) => {
-    // codigo HTML que se generará en el navegador por cada producto (objeto del array)
+    // código HTML que se generará en el navegador por cada producto (objeto del array)
 
     productosHTML += `
     <div class="producto-contenedor js-producto-contenedor" 

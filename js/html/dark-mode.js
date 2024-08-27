@@ -3,7 +3,7 @@ export function toggleMode() {
   const main = document.querySelector("main");
   const heroSection = document.querySelector(".hero-section");
 
-  // Verificar si ya hay un modo guardado en localStorage
+  // Verifica si ya hay un modo guardado en localStorage
 
   const modoActual = localStorage.getItem("modo");
   if (modoActual === "dark") {
