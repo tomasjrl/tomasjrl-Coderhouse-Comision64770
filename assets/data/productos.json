@@ -174,5 +174,21 @@
     "contenido": "Sabor Original",
     "medida": "x2L",
     "precio": 1463
+  },
+  {
+    "identificador": "00000023",
+    "imagen": "assets/images/23.webp",
+    "marca": "FRESH MP",
+    "contenido": "Empanada De Pollo",
+    "medida": "x120gr",
+    "precio": 1089
+  },
+  {
+    "identificador": "00000024",
+    "imagen": "assets/images/24.webp",
+    "marca": "FRESH MP",
+    "contenido": "Empanada De Carne",
+    "medida": "x120gr",
+    "precio": 1089
   }
 ]
