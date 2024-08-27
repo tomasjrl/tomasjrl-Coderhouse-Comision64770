@@ -1,4 +1,4 @@
-import { cargarProductosJson, eliminarProductos, mensajeError } from './productos-utils.js';
+import { cargarProductosJson, eliminarProductos, mensajeError } from './functions/productos-utils.js';
 
 
 export let productos = []; // variable para exportar productos declarada

@@ -10,7 +10,7 @@ export function manejarErrorPago() {
   });
 }
 
-//Función para mostrar mensaje si concreta o si cancela el pago
+// Función para mostrar mensaje si concreta o si cancela el pago
 
 export function mensajePago(tipo) {
   return Swal.fire({

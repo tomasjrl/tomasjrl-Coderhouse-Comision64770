@@ -5,13 +5,11 @@ import {
   mensajeFinal,
   mensajePago,
   procesandoPago,
-} from "./boton-pagar-utils.js";
+} from "./functions/boton-pagar-utils.js";
 
-
- /*--------------------------------------------------------------//
+/*--------------------------------------------------------------//
                  BOTÓN PAGAR/CANCELAR COMPRA
  //--------------------------------------------------------------*/
-
 
 // función para poder concretar o cancelar el pago de la compra
 
@@ -77,5 +75,3 @@ export function restablecerCompra(tipo) {
   actualizarTotales([]);
   localStorage.removeItem("listadoDeCompra");
 }
-
-

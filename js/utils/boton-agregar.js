@@ -6,15 +6,14 @@ import {
   mensajeProductoCancelado,
   preguntaCancelarProducto,
   mensajeProductoEliminado,
-} from "./boton-agregar-utils.js";
+} from "./functions/boton-agregar-utils.js";
 
 // función para agregar productos al carrito de compras
 
 export function botonesProductos(listadoDeCompra) {
-
   // escucho el click del botón del producto que corresponda a su contenedor
 
-    /*--------------------------------------------------------------//
+  /*--------------------------------------------------------------//
                BOTÓN AGREGAR PRODUCTO DEL LISTADO DE COMPRA
     //--------------------------------------------------------------*/
 
@@ -24,7 +23,7 @@ export function botonesProductos(listadoDeCompra) {
       // función con inicio texto popup con pregunta para agregar producto al carrito de compras
 
       preguntaAgregarProducto().then((result) => {
-
+        
         // si confirma, asigno variables con los contenidos del objeto del array productos.js
 
         if (result.isConfirmed) {
@@ -87,7 +86,6 @@ export function botonesProductos(listadoDeCompra) {
                 boton.disabled = false;
               });
             } else if (result.isDismissed) {
-
               // función con mensaje popup si se CANCELA/ELIMINA el producto del carrito
 
               mensajeProductoCancelado();
@@ -101,12 +99,10 @@ export function botonesProductos(listadoDeCompra) {
       //--------------------------------------------------------------*/
 
       if (boton.classList.contains("js-boton-cancelar-producto")) {
-
         // función con mensaje popup preguntando si desea CANCELAR el producto del carrito de compras
 
         preguntaCancelarProducto().then((result) => {
           if (result.isConfirmed) {
-            
             // busco el producto del listado de compras a cancelar/eliminar
 
             let productoId = boton.dataset.productoId;
