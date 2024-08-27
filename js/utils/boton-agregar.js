@@ -6,7 +6,7 @@ import {
   mensajeProductoCancelado,
   preguntaCancelarProducto,
   mensajeProductoEliminado,
-} from "./utils-agregar.js";
+} from "./boton-agregar-utils.js";
 
 //función para agregar productos al carrito de compras
 

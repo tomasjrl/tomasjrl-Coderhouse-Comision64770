@@ -5,7 +5,7 @@ import {
   mensajeFinal,
   mensajePago,
   procesandoPago,
-} from "./utils-pagar.js";
+} from "./boton-pagar-utils.js";
 
 // función para restablecer la compra ya sea habiendo pagado o cancelado la compra
 
