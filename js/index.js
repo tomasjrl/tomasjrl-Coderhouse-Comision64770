@@ -39,6 +39,6 @@ async function iniciarCodigo() {
 
 }
 
-// Llama a la función iniciarCodigo
+// llamo a la función iniciarCodigo
 
 iniciarCodigo(); 

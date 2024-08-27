@@ -8,16 +8,20 @@ import {
   mensajeProductoEliminado,
 } from "./boton-agregar-utils.js";
 
-//función para agregar productos al carrito de compras
+// función para agregar productos al carrito de compras
 
 export function botonesProductos(listadoDeCompra) {
 
-  //escucho el click del botón del producto que corresponda a su contenedor
+  // escucho el click del botón del producto que corresponda a su contenedor
+
+    /*--------------------------------------------------------------//
+               BOTÓN AGREGAR PRODUCTO DEL LISTADO DE COMPRA
+    //--------------------------------------------------------------*/
 
   document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
     boton.addEventListener("click", () => {
 
-      // Función con inicio texto popup con pregunta para agregar producto al carrito de compras
+      // función con inicio texto popup con pregunta para agregar producto al carrito de compras
 
       preguntaAgregarProducto().then((result) => {
 
@@ -62,12 +66,12 @@ export function botonesProductos(listadoDeCompra) {
                 productoSubtotal: subtotal,
               });
 
-              //actualizo cuentas totales a medida que se sumen productos a la lista
+              // actualizo cuentas totales a medida que se sumen productos a la lista
 
               actualizarTotales();
 
-              //cambio el estado del boton de la carta del producto
-              // pasando de agregar a CANCELAR
+              // cambio el estado del boton de la carta del producto
+              // cambio texto de botón de AGREGAR por CANCELAR
 
               boton.innerHTML = "CANCELAR";
               boton.classList.add("js-boton-cancelar-producto");
@@ -75,8 +79,8 @@ export function botonesProductos(listadoDeCompra) {
 
               localStorage.setItem(`boton-${productoId}`, "cancelar");
 
-              // habilito botones de pagar/cancelar para concretar la operación
-              //en la sección hero de la pagina
+              // habilito botones de PAGAR/CANCELAR para concretar la operación
+              // en la sección hero de la pagina
 
               const botones = document.querySelectorAll(".js-boton-hero");
               botones.forEach((boton) => {
@@ -84,7 +88,7 @@ export function botonesProductos(listadoDeCompra) {
               });
             } else if (result.isDismissed) {
 
-              //mensaje popup si cancela el producto del carrito
+              // función con mensaje popup si se CANCELA/ELIMINA el producto del carrito
 
               mensajeProductoCancelado();
             }
@@ -93,30 +97,30 @@ export function botonesProductos(listadoDeCompra) {
       });
 
       /*--------------------------------------------------------------//
-          BOTÓN CANCELAR PRODUCTO DEL LISTADO DE COMPRA
-   //--------------------------------------------------------------*/
+               BOTÓN CANCELAR PRODUCTO DEL LISTADO DE COMPRA
+      //--------------------------------------------------------------*/
 
       if (boton.classList.contains("js-boton-cancelar-producto")) {
 
-        //Función con mensaje popup preguntando si desea cancelar el producto del carrito de compras
+        // función con mensaje popup preguntando si desea CANCELAR el producto del carrito de compras
 
         preguntaCancelarProducto().then((result) => {
           if (result.isConfirmed) {
             
-            //busco el producto del listado de compras a eliminar
+            // busco el producto del listado de compras a cancelar/eliminar
 
             let productoId = boton.dataset.productoId;
             let indice = listadoDeCompra.findIndex(
               (item) => item.productoId === productoId
             );
 
-            // elimino el producto del listado de compras
+            // cancelo/elimino el producto del listado de compras
 
             if (indice !== -1) {
               listadoDeCompra.splice(indice, 1);
             }
 
-            // deshabilito el boton pagar/cancelar si no hay productos en el carrito de compras
+            // deshabilito el boton PAGAR/CANCELAR si no hay más productos en el carrito de compras
 
             if (listadoDeCompra.length === 0) {
               const botones = document.querySelectorAll(".js-boton-hero");
@@ -129,17 +133,17 @@ export function botonesProductos(listadoDeCompra) {
 
             actualizarTotales();
 
-            // devuelvo al botón del producto su condición original (agregar)
+            // devuelvo al botón AGREGAR/CANCELAR del producto su condición original (agregar)
 
             boton.innerHTML = "AGREGAR";
             boton.classList.remove("js-boton-cancelar-producto");
             boton.classList.add("js-boton-agregar-producto");
 
-            // guardo cambios en localstorage
+            // guardo cambios en el localstorage
 
             localStorage.setItem(`boton-${productoId}`, "agregar");
 
-            // Función texto popup confirmando la eliminación del producto del carrito de compras
+            // función texto popup confirmando la cancelación/eliminación del producto del carrito de compras
 
             mensajeProductoEliminado();
           }

@@ -7,42 +7,13 @@ import {
   procesandoPago,
 } from "./boton-pagar-utils.js";
 
-// función para restablecer la compra ya sea habiendo pagado o cancelado la compra
 
-export function restablecerCompra(tipo) {
-  if (tipo === null || tipo === undefined) return;
+ /*--------------------------------------------------------------//
+                 BOTÓN PAGAR/CANCELAR COMPRA
+ //--------------------------------------------------------------*/
 
-  const botones = document.querySelectorAll(".js-boton-hero");
 
-  // deshabilito los botones de pagar/cancelar puesto que quedara vacío de productos
-  // estos botones solo pueden habilitarse si hay productos agregados en el carrito de compras
-
-  botones.forEach((boton) => {
-    boton.disabled = true;
-  });
-
-  listadoDeCompra.splice(0, listadoDeCompra.length);
-
-  mensajeFinal(tipo); // texto popup para informar que la operación final fue completada o cancelada
-
-  // devuelvo clases originales a las etiquetas de los botones
-
-  document.querySelectorAll(".js-boton-cancelar-producto").forEach((boton) => {
-    const productoId = boton.dataset.productoId;
-    boton.innerHTML = "AGREGAR";
-    boton.classList.remove("js-boton-cancelar-producto");
-    boton.classList.add("js-boton-agregar-producto");
-    localStorage.removeItem(`boton-${productoId}`);
-  });
-
-  // vacío los arrays de objetos almacenados
-
-  localStorage.removeItem("productos");
-  actualizarTotales([]);
-  localStorage.removeItem("listadoDeCompra");
-}
-
-// texto popup para concretar o cancelar el pago de la compra
+// función para poder concretar o cancelar el pago de la compra
 
 export function agregarEventoBoton(tipo) {
   if (tipo === null || tipo === undefined) return;
@@ -51,7 +22,7 @@ export function agregarEventoBoton(tipo) {
     .addEventListener("click", () => {
       if (tipo.toUpperCase() === "PAGAR") {
         try {
-          // mensaje popup para concretar/cancelar el pago de compra
+          // función con el mensaje popup para poder concretar/cancelar el pago de la compra
           mensajePago(tipo).then((result) => {
             if (result.isConfirmed) {
               procesandoPago().then(() => {
@@ -71,3 +42,40 @@ export function agregarEventoBoton(tipo) {
       }
     });
 }
+
+// función para restablecer el proceso de compra ya sea por haber PAGANDO o CANCELADO la misma
+
+export function restablecerCompra(tipo) {
+  if (tipo === null || tipo === undefined) return;
+
+  const botones = document.querySelectorAll(".js-boton-hero");
+
+  // deshabilito los botones de PAGAR/CANCELAR ya que vacío de productos el carrito de compras
+  // (estos botones solo pueden habilitarse si hay productos agregados)
+
+  botones.forEach((boton) => {
+    boton.disabled = true;
+  });
+
+  listadoDeCompra.splice(0, listadoDeCompra.length);
+
+  mensajeFinal(tipo); // texto popup para informar que la operación final fue completada o cancelada
+
+  // devuelvo clases originales a las etiquetas de los botones AGREGAR/CANCELAR de los productos
+
+  document.querySelectorAll(".js-boton-cancelar-producto").forEach((boton) => {
+    const productoId = boton.dataset.productoId;
+    boton.innerHTML = "AGREGAR";
+    boton.classList.remove("js-boton-cancelar-producto");
+    boton.classList.add("js-boton-agregar-producto");
+    localStorage.removeItem(`boton-${productoId}`);
+  });
+
+  // vacío los arrays de objetos almacenados
+
+  localStorage.removeItem("productos");
+  actualizarTotales([]);
+  localStorage.removeItem("listadoDeCompra");
+}
+
+

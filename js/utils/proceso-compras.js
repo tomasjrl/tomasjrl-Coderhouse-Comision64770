@@ -1,7 +1,8 @@
 import { botonesProductos } from "./boton-agregar.js";
 import { restablecerCompra, agregarEventoBoton } from "./boton-pagar.js";
 
-let tipo = null;
+
+let tipo; // variable "tipo" indefinida como estado inicial
 
 export function procesoCompra(listadoDeCompra) {
   
@@ -20,7 +21,10 @@ export function procesoCompra(listadoDeCompra) {
   agregarEventoBoton("pagar");
   agregarEventoBoton("cancelar");
 
-  // Recuperar el estado de los botones desde localStorage
+
+    /*--------------------------------------------------------------//
+     RECUPERO ESTADO DE BOTONES DESDE LOCALSTORAGE
+  //--------------------------------------------------------------*/
 
   document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
     const productoId = boton.dataset.productoId;
