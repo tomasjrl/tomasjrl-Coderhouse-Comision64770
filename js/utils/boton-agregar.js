@@ -1,4 +1,12 @@
 import { actualizarTotales } from "./cuenta-compras.js";
+import {
+  preguntaAgregarProducto,
+  preguntaCantidad,
+  mensajeProductoAgregado,
+  mensajeProductoCancelado,
+  preguntaCancelarProducto,
+  mensajeProductoEliminado,
+} from "./utils-agregar.js";
 
 //función para agregar productos al carrito de compras
 
@@ -9,157 +17,92 @@ export function botonesProductos(listadoDeCompra) {
   document.querySelectorAll(".js-boton-agregar-producto").forEach((boton) => {
     boton.addEventListener("click", () => {
 
-      // inicio texto popup con pregunta para agregar producto al carrito de compras
+      // Función con inicio texto popup con pregunta para agregar producto al carrito de compras
 
-      if (boton.classList.contains("js-boton-agregar-producto"))
-        Swal.fire({
-          title: "¿AGREGAR a la lista de compras?",
-          icon: "question",
-          background: "#1e4180",
-          color: "#eaeaea",
-          showDenyButton: true,
-          confirmButtonText: "Sí",
-          denyButtonText: `No`,
-        }).then((result) => {
+      preguntaAgregarProducto().then((result) => {
 
-          // si confirma, asigno variables con los contenidos del objeto del array productos.js
+        // si confirma, asigno variables con los contenidos del objeto del array productos.js
 
-          if (result.isConfirmed) {
-            let unidades,
-              productoMarca,
-              productoContenido,
-              productoMedida,
-              productoPrecio,
-              subtotal,
-              productoId = boton.dataset.productoId;
-            productoMarca = boton.dataset.productoMarca;
-            productoContenido = boton.dataset.productoContenido;
-            productoMedida = boton.dataset.productoMedida;
-            productoPrecio = boton.dataset.productoPrecio;
+        if (result.isConfirmed) {
+          let productoMarca,
+            productoContenido,
+            productoMedida,
+            productoPrecio,
+            subtotal,
+            productoId = boton.dataset.productoId;
+          productoMarca = boton.dataset.productoMarca;
+          productoContenido = boton.dataset.productoContenido;
+          productoMedida = boton.dataset.productoMedida;
+          productoPrecio = boton.dataset.productoPrecio;
 
-            // texto popup con pregunta sobre cantidad de unidades a incorporar al carrito de compras
-            // establezco  mínimo 1 unidad y máximo 15 unidades
+          // texto popup con pregunta sobre cantidad de unidades a incorporar al carrito de compras
+          // establezco  mínimo 1 unidad y máximo 15 unidades
 
-            Swal.fire({
-              title: `Ingrese la cantidad:<br>(máximo 15 unidades)`,
-              input: "number",
-              inputAttributes: {
-                autocapitalize: "off",
-              },
-              showCancelButton: true,
-              cancelButtonText: "Cancelar",
-              confirmButtonText: "Agregar",
-              background: "#1e4180",
-              color: "#eaeaea",
-              showLoaderOnConfirm: true,
-              inputValidator: (value) => {
-                if (value < 1 || value > 15) {
-                  return "Ingrese un número mayor a 0 sin superar el máximo.";
-                }
-              },
+          preguntaCantidad().then((result) => {
+            const unidades = result.value;
 
-              // si cumple con los parámetros la cantidad asignada, devuelve positivo
+            // mensaje popup de confirmación del producto agregado al carrito de compras
 
-              preConfirm: async (cantidad) => {
-                let input = cantidad;
-                if (!isNaN(input) && input > 0 && input <= 15) {
-                  unidades = parseInt(input);
-                  return true;
-                } else {
-                  
-                  // si NO cumple con los parámetros la cantidad asignada, informa y devuelve al estado anterior
+            if (result.isConfirmed) {
+              mensajeProductoAgregado();
 
-                  return (
-                    "Por favor, ingrese un número positivo mayor que 0 y no mayor a " +
-                    15
-                  );
-                }
-              },
-              allowOutsideClick: () => !Swal.isLoading(),
-            }).then((result) => {
+              // operación multiplicando precio por cantidad de unidades elegidas por el usuario
 
-              // mensaje popup de confirmación del producto agregado al carrito de compras
+              subtotal = parseFloat(productoPrecio) * unidades;
 
-              if (result.isConfirmed) {
-                Swal.fire({
-                  title: `AGREGADO<br>a lista de compras`,
-                  icon: "success",
-                  background: "#1e4180",
-                  color: "#eaeaea",
-                  confirmButtonText: "Continuar",
-                });
+              // envío datos a la variable listadoDeCompra
 
-                // operación multiplicando precio por cantidad de unidades elegidas por el usuario
+              listadoDeCompra.push({
+                productoId: productoId,
+                productoMarca: productoMarca,
+                productoContenido: productoContenido,
+                productoMedida: productoMedida,
+                productoPrecio: productoPrecio,
+                productoUnidades: unidades,
+                productoSubtotal: subtotal,
+              });
 
-                subtotal = parseFloat(productoPrecio) * unidades;
+              //actualizo cuentas totales a medida que se sumen productos a la lista
 
-                // envío datos a la variable listadoDeCompra
+              actualizarTotales();
 
-                listadoDeCompra.push({
-                  productoId: productoId,
-                  productoMarca: productoMarca,
-                  productoContenido: productoContenido,
-                  productoMedida: productoMedida,
-                  productoPrecio: productoPrecio,
-                  productoUnidades: unidades,
-                  productoSubtotal: subtotal,
-                });
+              //cambio el estado del boton de la carta del producto
+              // pasando de agregar a CANCELAR
 
-                //actualizo cuentas totales a medida que se sumen productos a la lista
+              boton.innerHTML = "CANCELAR";
+              boton.classList.add("js-boton-cancelar-producto");
+              boton.classList.remove("js-boton-agregar-producto");
 
-                actualizarTotales();
+              localStorage.setItem(`boton-${productoId}`, "cancelar");
 
-                //cambio el estado del boton de la carta del producto
-                // pasando de agregar a CANCELAR
+              // habilito botones de pagar/cancelar para concretar la operación
+              //en la sección hero de la pagina
 
-                boton.innerHTML = "CANCELAR";
-                boton.classList.add("js-boton-cancelar-producto");
-                boton.classList.remove("js-boton-agregar-producto");
+              const botones = document.querySelectorAll(".js-boton-hero");
+              botones.forEach((boton) => {
+                boton.disabled = false;
+              });
+            } else if (result.isDismissed) {
 
-                localStorage.setItem(`boton-${productoId}`, "cancelar");
+              //mensaje popup si cancela el producto del carrito
 
-                // habilito botones de pagar/cancelar para concretar la operación
-                //en la sección hero de la pagina
+              mensajeProductoCancelado();
+            }
+          });
+        }
+      });
 
-                const botones = document.querySelectorAll(".js-boton-hero");
-                botones.forEach((boton) => {
-                  boton.disabled = false;
-                });
-              } else if (result.isDismissed) {
-
-                //mensaje popup si cancela el producto del carrito
-
-                Swal.fire({
-                  title: "Producto CANCELADO de la lista de compras.",
-                  icon: "info",
-                  background: "#1e4180",
-                  color: "#dcdedf",
-                  showConfirmButton: true,
-                });
-              }
-            });
-          }
-        });
-
-    /*--------------------------------------------------------------//
+      /*--------------------------------------------------------------//
           BOTÓN CANCELAR PRODUCTO DEL LISTADO DE COMPRA
    //--------------------------------------------------------------*/
 
       if (boton.classList.contains("js-boton-cancelar-producto")) {
-        Swal.fire({
 
-          //mensaje popup preguntando si desea cancelar el producto del carrito de compras
+        //Función con mensaje popup preguntando si desea cancelar el producto del carrito de compras
 
-          title: "¿ELIMINAR de la lista de compras?",
-          icon: "question",
-          showDenyButton: true,
-          background: "#1e4180",
-          color: "#dcdedf",
-          confirmButtonText: "Sí",
-          denyButtonText: `No`,
-        }).then((result) => {
+        preguntaCancelarProducto().then((result) => {
           if (result.isConfirmed) {
-
+            
             //busco el producto del listado de compras a eliminar
 
             let productoId = boton.dataset.productoId;
@@ -196,15 +139,9 @@ export function botonesProductos(listadoDeCompra) {
 
             localStorage.setItem(`boton-${productoId}`, "agregar");
 
-            // texto popup confirmando la eliminación del producto del carrito de compras
+            // Función texto popup confirmando la eliminación del producto del carrito de compras
 
-            Swal.fire({
-              title: `ELIMINADO<br>de la lista de compras`,
-              icon: "info",
-              background: "#1e4180",
-              color: "#eaeaea",
-              confirmButtonText: "Continuar",
-            });
+            mensajeProductoEliminado();
           }
         });
       }

@@ -5,7 +5,7 @@ import {
   mensajeFinal,
   mensajePago,
   procesandoPago,
-} from "./mensajes-sweetalert.js";
+} from "./utils-pagar.js";
 
 // función para restablecer la compra ya sea habiendo pagado o cancelado la compra
 
