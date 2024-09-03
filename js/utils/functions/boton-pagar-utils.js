@@ -16,9 +16,9 @@ export function mensajePago(tipo) {
   return Swal.fire({
     title: `¿Desea ${tipo.toUpperCase()} su compra?`,
     html: `
-      <form style="display: flex; flex-direction: column;">
-        <input type="text" id="nombre" autocomplete="name" value="Tomás Stabilini" placeholder="Nombre" style="width: 100%; margin-bottom: 10px;">
-        <input type="email" id="email" autocomplete="email" value="Comision64770@coderhouse.com" placeholder="Correo electrónico" style="width: 100%; margin-bottom: 10px;">
+      <form class="js-formulario-de-pago" style="display: flex; flex-direction: column;">
+        <input type="text" id="nombre" autocomplete="name" class="js-input-form" value="Tomás Stabilini" placeholder="Nombre" style="width: 100%; margin-bottom: 10px;">
+        <input type="email" id="email" autocomplete="email" class="js-input-form" value="Comision64770@coderhouse.com" placeholder="Correo electrónico" style="width: 100%; margin-bottom: 10px;">
       </form>
     `,
     icon: "question",

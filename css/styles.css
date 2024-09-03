@@ -330,6 +330,21 @@ button {
   font-weight: 500;
 }
 
+.js-formulario-de-pago {
+  display: flex;
+  flex-direction: column;
+}
+
+.js-input-form {
+  width: 100%;
+  margin-bottom: 10px;
+  outline: none;
+  padding: 10px; 
+  border: 1px solid #eaeaea; 
+  border-radius: 5px; 
+  background-color: #eaeaea;
+}
+
 main #lista-productos {
   padding: 20px 0;
 }
