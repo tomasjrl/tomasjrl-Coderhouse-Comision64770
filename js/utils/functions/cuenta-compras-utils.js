@@ -1,4 +1,6 @@
-// Función para sumar la cantidad de productos y el subtotal respecto de su precio por unidad
+/*--------------------------------------------------------------//
+        FUNCIÓN = SUMA CANTIDAD / SUBTOTAL DE PRODUCTOS
+//--------------------------------------------------------------*/
 
 export function actualizarCuentas(unidadesDeCompras, subtotalDeCompras, listadoDeCompra, productos){
 
@@ -22,7 +24,7 @@ export function actualizarCuentas(unidadesDeCompras, subtotalDeCompras, listadoD
     JSON.stringify(listadoDeCompra, null, 2)
   );
 
-  // impresión del texto de listado de compras en el HTML para que el usuario pueda visualizarlo
+  // texto de listado de compras en el HTML (resumen de productos agregados)
 
   const texto =
     listadoDeCompra.length === 0
@@ -42,8 +44,7 @@ export function actualizarCuentas(unidadesDeCompras, subtotalDeCompras, listadoD
 
   document.getElementById("texto-popup").value = texto;
 
-  //habilito botones para pagar/cancelar operación total ya que contiene productos el carrito de compras
-  // solo se habilita si hay productos cargados al carrito de compras
+  // habilito botones para pagar/cancelar SOLO si hay productos cargados al carrito
   
   if (listadoDeCompra.length > 0) {
     const botones = document.querySelectorAll(".js-boton-hero");

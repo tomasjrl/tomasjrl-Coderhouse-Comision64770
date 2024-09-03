@@ -1,6 +1,3 @@
-// Función para cargar los productos traídos del JSON
-// Carga los productos desde el JSON y devuelve la promesa con los productos cargados.
-
 export async function cargarProductosJson() {
   const respuesta = await fetch("./assets/data/productos.json");
   if (!respuesta.ok) {
@@ -8,9 +5,6 @@ export async function cargarProductosJson() {
   }
   return await respuesta.json();
 }
-
-// Función para reiniciar el stock de los productos para futuras interacciones
-// Reinicia el stock de los productos desde el JSON y elimina el almacenamiento local
 
 export async function eliminarProductos() {
   const respuesta = await fetch("./assets/data/productos.json");
@@ -20,10 +14,6 @@ export async function eliminarProductos() {
   productos = await respuesta.json();
   localStorage.removeItem("productos");
 }
-
-
-// Función de mensaje de mantenimiento de sitio
-// Muestra un mensaje de mantenimiento de sitio.
 
 export function mensajeError(error) {
   Swal.fire({

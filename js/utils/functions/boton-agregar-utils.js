@@ -1,4 +1,6 @@
-// Función de texto popup con pregunta para agregar producto al carrito de compras
+/*--------------------------------------------------------------//
+    MENSAJES SWEETALERT2 PARA AGREGAR/CANCELAR PRODUCTOS
+//--------------------------------------------------------------*/
 
 export function preguntaAgregarProducto() {
   return Swal.fire({
@@ -11,8 +13,6 @@ export function preguntaAgregarProducto() {
     denyButtonText: `No`,
   });
 }
-
-// Función texto popup con pregunta sobre cantidad de unidades a incorporar al carrito de compras
 
 export function preguntaCantidad() {
   return Swal.fire({
@@ -47,8 +47,6 @@ export function preguntaCantidad() {
   });
 }
 
-// Función de mensaje popup de confirmación del producto agregado al carrito de compras
-
 export function mensajeProductoAgregado() {
   Swal.fire({
     title: `AGREGADO<br>a lista de compras`,
@@ -59,8 +57,6 @@ export function mensajeProductoAgregado() {
   });
 }
 
-//Función de mensaje popup si cancela el producto del carrito
-
 export function mensajeProductoCancelado() {
   Swal.fire({
     title: "Producto CANCELADO de la lista de compras.",
@@ -69,30 +65,26 @@ export function mensajeProductoCancelado() {
     color: "#dcdedf",
     showConfirmButton: true,
   });
-};
+}
 
-
-//Función de mensaje popup que pregunta si quiere eliminar el producto del carrito
-
-export function preguntaCancelarProducto() { 
+export function preguntaCancelarProducto() {
   return Swal.fire({
-  title: "¿ELIMINAR de la lista de compras?",
-  icon: "question",
-  showDenyButton: true,
-  background: "#1e4180",
-  color: "#dcdedf",
-  confirmButtonText: "Sí",
-  denyButtonText: `No`,
-})};
-
-
-// Función de texto popup confirmando la eliminación del producto del carrito de compras
+    title: "¿ELIMINAR de la lista de compras?",
+    icon: "question",
+    showDenyButton: true,
+    background: "#1e4180",
+    color: "#dcdedf",
+    confirmButtonText: "Sí",
+    denyButtonText: `No`,
+  });
+}
 
 export function mensajeProductoEliminado() {
-return Swal.fire({
-  title: `ELIMINADO<br>de la lista de compras`,
-  icon: "info",
-  background: "#1e4180",
-  color: "#eaeaea",
-  confirmButtonText: "Continuar",
-})}
+  return Swal.fire({
+    title: `ELIMINADO<br>de la lista de compras`,
+    icon: "info",
+    background: "#1e4180",
+    color: "#eaeaea",
+    confirmButtonText: "Continuar",
+  });
+}

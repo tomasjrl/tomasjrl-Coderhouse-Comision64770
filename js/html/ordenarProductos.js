@@ -1,9 +1,11 @@
+/*--------------------------------------------------------------//
+               FUNCIÓN ORDENAR (A-Z) LOS PRODUCTOS
+//--------------------------------------------------------------*/
+
 import { productos } from "../data/productos.js";
 import { generarHTMLProductos } from "./contenedor-html.js";
 
 let ordenAlfabetico = true;
-
-// función para ordenar los productos
 
 function bubbleSort(arr) {
   let n = arr.length;
@@ -19,11 +21,11 @@ function bubbleSort(arr) {
   return arr;
 }
 
-// ordeno productos alfabéticamente según la marca
-
 export function ordenarProductos() {
   const invertido = !ordenAlfabetico;
-  const ordenado = invertido ? bubbleSort(productos).reverse() : bubbleSort(productos);
+  const ordenado = invertido
+    ? bubbleSort(productos).reverse()
+    : bubbleSort(productos);
   let htmlProductos = generarHTMLProductos(ordenado);
   document.querySelector(".js-productos-grid").innerHTML = htmlProductos;
 }

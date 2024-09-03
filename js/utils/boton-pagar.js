@@ -1,3 +1,7 @@
+ /*--------------------------------------------------------------//
+            FUNCIONES DE BOTONES PAGAR Y CANCELAR COMPRA
+ //--------------------------------------------------------------*/
+
 import { listadoDeCompra, actualizarTotales } from "./cuenta-compras.js";
 import {
   manejarErrorPago,
@@ -7,12 +11,6 @@ import {
   procesandoPago,
 } from "./functions/boton-pagar-utils.js";
 
-/*--------------------------------------------------------------//
-                 BOTÓN PAGAR/CANCELAR COMPRA
- //--------------------------------------------------------------*/
-
-// función para poder concretar o cancelar el pago de la compra
-
 export function agregarEventoBoton(tipo) {
   if (tipo === null || tipo === undefined) return;
   document
@@ -20,36 +18,30 @@ export function agregarEventoBoton(tipo) {
     .addEventListener("click", () => {
       if (tipo.toUpperCase() === "PAGAR") {
         try {
-          // función con el mensaje popup para poder concretar/cancelar el pago de la compra
           mensajePago(tipo).then((result) => {
             if (result.isConfirmed) {
               procesandoPago().then(() => {
-                restablecerCompra(tipo); // función para restablecer valores
+                restablecerCompra(tipo);
               });
             }
           });
         } catch (error) {
-          manejarErrorPago(); // mensaje popup por si hay error
+          manejarErrorPago();
         }
       } else {
         mostrarMensajeConfirmacion(tipo).then((result) => {
           if (result.isConfirmed) {
-            restablecerCompra(tipo); // función para restablecer valores
+            restablecerCompra(tipo);
           }
         });
       }
     });
 }
 
-// función para restablecer el proceso de compra ya sea por haber PAGANDO o CANCELADO la misma
-
 export function restablecerCompra(tipo) {
   if (tipo === null || tipo === undefined) return;
 
   const botones = document.querySelectorAll(".js-boton-hero");
-
-  // deshabilito los botones de PAGAR/CANCELAR ya que vacío de productos el carrito de compras
-  // (estos botones solo pueden habilitarse si hay productos agregados)
 
   botones.forEach((boton) => {
     boton.disabled = true;
@@ -57,9 +49,7 @@ export function restablecerCompra(tipo) {
 
   listadoDeCompra.splice(0, listadoDeCompra.length);
 
-  mensajeFinal(tipo); // texto popup para informar que la operación final fue completada o cancelada
-
-  // devuelvo clases originales a las etiquetas de los botones AGREGAR/CANCELAR de los productos
+  mensajeFinal(tipo);
 
   document.querySelectorAll(".js-boton-cancelar-producto").forEach((boton) => {
     const productoId = boton.dataset.productoId;
@@ -68,8 +58,6 @@ export function restablecerCompra(tipo) {
     boton.classList.add("js-boton-agregar-producto");
     localStorage.removeItem(`boton-${productoId}`);
   });
-
-  // vacío los arrays de objetos almacenados
 
   localStorage.removeItem("productos");
   actualizarTotales([]);

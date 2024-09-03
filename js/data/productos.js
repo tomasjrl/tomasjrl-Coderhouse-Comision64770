@@ -1,10 +1,10 @@
+/*--------------------------------------------------------------//
+            FUNCIÓN PARA CARGAR / ELIMINAR PRODUCTOS
+//--------------------------------------------------------------*/
+
 import { cargarProductosJson, eliminarProductos, mensajeError } from './functions/productos-utils.js';
 
-
-export let productos = []; // variable para exportar productos declarada
-
-// Función para cargar los productos
-// Carga los productos desde el JSON
+export let productos = [];
 
 export async function cargarProductos() {
   try {
@@ -13,9 +13,6 @@ export async function cargarProductos() {
     mensajeError(error);
   }
 }
-
-// Función para reiniciar el stock de los productos para futuras interacciones
-// Reinicia el stock de los productos desde el JSON y elimina el almacenamiento local
 
 export async function restablecerProductos() {
   try {

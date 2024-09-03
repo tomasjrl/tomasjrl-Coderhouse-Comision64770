@@ -2,15 +2,9 @@
       FUNCIÓN PARA AGREGAR AL HTML EL LISTADO DE PRODUCTOS (productos.js)
 //--------------------------------------------------------------*/
 
-/* La función recorre cada "objeto" de productos.js y le asigna código HTML
- para que sume en el navegador las etiquetas correspondientes por cada producto
- Cada producto contiene un ID - Marca - contenido - medida */
-
 export function generarHTMLProductos(productos) {
   let productosHTML = "";
   productos.forEach((producto) => {
-    // código HTML que se generará en el navegador por cada producto (objeto del array)
-
     productosHTML += `
     <div class="producto-contenedor js-producto-contenedor" 
        data-producto-id="${producto.identificador}"
@@ -37,8 +31,6 @@ export function generarHTMLProductos(productos) {
         </div>
     `;
   });
-
-  // productosHTML = es el código html que contiene todas las cartas de productos
 
   return productosHTML;
 }

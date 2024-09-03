@@ -1,4 +1,6 @@
-// Función para manejar errores al procesar el pago
+/*--------------------------------------------------------------//
+    MENSAJES SWEETALERT2 PARA PAGAR/CANCELAR COMPRA
+//--------------------------------------------------------------*/
 
 export function manejarErrorPago() {
   Swal.fire({
@@ -9,8 +11,6 @@ export function manejarErrorPago() {
     color: "#eaeaea",
   });
 }
-
-// Función para mostrar mensaje si concreta o si cancela el pago
 
 export function mensajePago(tipo) {
   return Swal.fire({
@@ -42,8 +42,6 @@ export function mensajePago(tipo) {
   });
 }
 
-// Función para preguntar si confirma el pago
-
 export function mostrarMensajeConfirmacion(tipo) {
   return Swal.fire({
     title: `¿Desea ${tipo.toUpperCase()} su compra?`,
@@ -55,8 +53,6 @@ export function mostrarMensajeConfirmacion(tipo) {
     denyButtonText: "Cancelar",
   });
 }
-
-// Función procesando pago
 
 export function procesandoPago() {
   return Swal.fire({
@@ -73,8 +69,6 @@ export function procesandoPago() {
     timer: 1250,
   });
 }
-
-// Función mensaje final con pago concretado o cancelado
 
 export function mensajeFinal(tipo) {
   Swal.fire({

@@ -134,7 +134,7 @@ main.dark-mode {
 .producto-contenedor {
   background-color: #1e4180; 
   border-radius: 8px;
-  margin: 0 auto; /* Centra el contenedor del grid */
+  margin: 0 auto; 
   transition: scale .2s ease-in-out;
   transform: scale(0); 
   animation: aparecer 0.5s forwards; 
@@ -142,19 +142,19 @@ main.dark-mode {
 
 @keyframes aparecer {
   from {
-    transform: scale(0); /* Inicia con escala 0 */
+    transform: scale(0); 
   }
   to {
-    transform: scale(1); /* Termina con escala 1 */
+    transform: scale(1); 
   }
 }
 
 @keyframes desaparecer {
   from {
-    transform: scale(1); /* Inicia con escala 0 */
+    transform: scale(1); 
   }
   to {
-    transform: scale(0); /* Termina con escala 1 */
+    transform: scale(0); 
   }
 }
 
