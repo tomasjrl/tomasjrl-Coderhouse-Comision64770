@@ -9,7 +9,7 @@ import {
   mensajeFinal,
   mensajePago,
   procesandoPago,
-} from "./functions/boton-pagar-utils.js";
+} from "./functions/mensajes-pagos.js";
 
 export function agregarEventoBoton(tipo) {
   if (tipo === null || tipo === undefined) return;

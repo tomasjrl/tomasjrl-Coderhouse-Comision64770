@@ -3,7 +3,7 @@
  //--------------------------------------------------------------*/
 
 import { productos } from "../data/productos.js";
-import { actualizarCuentas } from "./functions/cuenta-compras-utils.js";
+import { actualizarCuentas } from "./functions/utils-cuenta-compras.js";
 
 let unidadesDeCompras = 0;
 let subtotalDeCompras = 0;

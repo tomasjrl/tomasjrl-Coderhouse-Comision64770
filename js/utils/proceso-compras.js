@@ -4,7 +4,7 @@
 
 import { botonesProductos } from "./agregar-cancelar-productos.js";
 import { restablecerCompra, agregarEventoBoton } from "./pagar-cancelar-compra.js";
-import { recuperarEstadoBotones } from "./functions/proceso-compras-utils.js";
+import { recuperarEstadoBotones } from "./functions/utils-proceso-compras.js";
 
 let tipo; // variable indefinida como estado inicial
 
