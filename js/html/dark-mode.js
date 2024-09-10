@@ -2,7 +2,7 @@
                   FUNCIÓN MODO CLARO / OSCURO
 //--------------------------------------------------------------*/
 
-export function toggleMode() {
+export function modoOscuro() {
   const toggleMode = document.getElementById("toggleMode");
   const main = document.querySelector("main");
   const heroSection = document.querySelector(".hero-section");
